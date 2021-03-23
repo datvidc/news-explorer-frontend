@@ -1,3 +1,27 @@
+# FINAL project in Practicum WebDeveloper Bootcamp
+
+Project consists of integrating news API with own backend, serving a frontend that enables users to search for news articles.
+
+Practicum by Yandex course overview:
+
+Basics of HTML, CSS:
+Advanced HTML & CSS
+Adaptive Web Design and Working with Layouts
+Basic JavaScript and Working with the Browser
+Applied JavaScript
+Creating an Interface with React
+Back-end Basics for Web Developers
+Final Project
+
+## Backend : 
+API Repo can be found at 
+https://github.com/datvidc/news-explorer-api
+
+Live API can be found at
+api.dave.students.nomoreparties.site https://api.dave.students.nomoreparties.site http://api.dave.students.nomoreparties.site
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
