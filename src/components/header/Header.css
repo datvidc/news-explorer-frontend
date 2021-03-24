@@ -1,0 +1,21 @@
+
+.header {
+  background-image: url(../../images/georgia-de-lotz--mobile-unsplash.webp);
+}
+
+@media (min-width: 320px) {
+
+  .header {
+    background-image: url(../../images/georgia-de-lotz--Tablet-unsplash.webp);
+  }
+
+}
+
+@media (min-width: 768px) {
+
+  .header {
+    background-image: url(../../images/georgia-de-lotz--bigScreen-unsplash.webp);
+  }
+
+}
+

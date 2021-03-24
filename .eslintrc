@@ -1,22 +1,39 @@
 {
-  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb-base"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
     "ecmaVersion": 12
   },
-  "env": {
-    "browser": true,
-    "commonjs": true,
-    "es2021": true
-
-  },
   "plugins": [
     "react"
   ],
-  "extends": ["plugin:react/recommended", "airbnb-base"],
+  "globals": {
+    "next": "readonly"
+  },
   "rules": {
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "next",
+        "varsIgnorePattern": "^[A-Z]"
+      }
+    ],
+    "no-var": [
+      "off"
+    ],
+    "one-var": [
+      "off"
+    ],
     "no-underscore-dangle": [
       "error",
       {
@@ -25,8 +42,18 @@
         ]
       }
     ],
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
     "allowIndentationTabs": 0,
     "no-tabs": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ]
   }
 }

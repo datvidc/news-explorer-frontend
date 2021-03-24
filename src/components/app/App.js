@@ -6,21 +6,29 @@ import {
   Redirect,
 } from 'react-router-dom';
 import './App.css';
+import Main from '../main/Main';
 
-/* import { CurrentUserContext } from '../../context/CurrentUserContext'; */
+import CurrentUserContext from '../../context/CurrentUserContext';
 
 const App = () => {
+  const [SetCurrentUser, currentUser] = useState({});
 
-  const [setCurrentUser, currentUser] = useState({});
-  const [setLoggedIn, LoggedIn] = useState(false);
-
-  const [setWinSize, WinSize] = useState('mobile');
   return (
     <CurrentUserContext.Provider value={currentUser}>
 
       <main className="app">
+        <Router>
+          <Switch>
+            <Route exact path='/'>
+              <Main />
+            </Route>
 
-        <h1> hello world</h1>
+            <Route exact path='/saved-news'>
+
+            </Route>
+          </Switch>
+          <Redirect from='*' to='/' />
+        </Router>
 
       </main>
     </CurrentUserContext.Provider>
