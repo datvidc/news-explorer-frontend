@@ -1,35 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import './App.css';
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      currentUser: {},
-      // name: "Lacking Gravitas",
-      // about: "SPaceSHip", avatar: defaultAvatarPicture, _id" some id.
-    };
+/* import { CurrentUserContext } from '../../context/CurrentUserContext'; */
 
-    this.handleLogin = this.handleLogin.bind(this);
-  }
+const App = () => {
 
-  componentDidMount() {
-    const token = localStorage.getItem('jwt');
+  const [setCurrentUser, currentUser] = useState({});
+  const [setLoggedIn, LoggedIn] = useState(false);
 
-    if (token) {
-      this.checkToken(token);
-      // now for generating cards
-    }
-  }
+  const [setWinSize, WinSize] = useState('mobile');
+  return (
+    <CurrentUserContext.Provider value={currentUser}>
 
-  render() {
-    return (
-      <div>
+      <main className="app">
 
-      </div>
-    );
-  }
-}
+        <h1> hello world</h1>
+
+      </main>
+    </CurrentUserContext.Provider>
+
+  );
+};
 export default App;
-
-
