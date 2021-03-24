@@ -6,7 +6,10 @@ import Header from '../header/Header';
 
 function Main() {
   return (
+    <div className="main">
     <Header />
+    </div>
+
   );
 }
 

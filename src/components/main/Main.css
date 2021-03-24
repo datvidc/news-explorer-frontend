@@ -1,0 +1,25 @@
+
+.main {
+  background-image: url(../../images/georgia-de-lotz--mobile-unsplash.webp);
+}
+
+@media (min-width: 320px) {
+
+  .main {
+    background-image: url(../../images/georgia-de-lotz--Tablet-unsplash.webp);
+  }
+
+}
+
+@media (min-width: 768px) {
+
+  .main {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background: url(../../images/georgia-de-lotz--bigScreen-unsplash.jpg) no-repeat center;
+    background-size: 100%;
+  }
+
+}
