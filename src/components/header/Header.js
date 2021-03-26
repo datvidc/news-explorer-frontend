@@ -4,7 +4,9 @@ import './Header.css';
 import Nav from '../nav/Nav';
 
 function Header(props) {
-  const { mobile, mobileMenu, loggedIn, MobileMenuToggle } = props;
+  const {
+    mobile, mobileMenu, loggedIn, MobileMenuToggle,
+  } = props;
 
   return (
     <header className="header">

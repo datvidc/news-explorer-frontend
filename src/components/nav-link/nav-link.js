@@ -1,24 +1,44 @@
 import React from 'react';
 
-import "./nav-link.css";
-
-import menuBtn from '../../images/menu.png';
+import './nav-link.css';
 
 function NavLink({
   isLoggedIn,
-  isMobile
 }) {
-
   return (
 
-    { isMobile && (
-      <>
-        <button className="navbar__button"> <img src={menuBtn}></img> </button>
-        <MobileMenu />
-      </>
-    )
-  }
+    <ul>
+      {
+        isLoggedIn && (
+          <>
+            <li>
+              <a href="/"> Home </a>
+            </li>
+            <li>
+              <a href="/"> Saved Articles </a>
+            </li>
 
+            <li>
+              <button type="button" href="/"> UserName </button>
+            </li>
+          </>
+        )
+
+
+      }
+      {
+        !isLoggedIn && (
+        <>
+          <li>
+            <a href="/"> Home </a>
+          </li>
+          <li>
+            <button type="button" href="/"> Log In </button>
+          </li>
+        </>
+        )
+      }
+    </ul>
   );
 }
 

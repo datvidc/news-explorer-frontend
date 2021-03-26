@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './Nav.css';
 import NavLink from '../nav-link/nav-link';
-import menuBtn from '../../images/menu.png';
+import openbtn from '../../images/menu.png';
+import closebtn from '../../images/close.png';
 
 function Nav({
   isMobile,
@@ -10,21 +11,27 @@ function Nav({
   isLoggedIn,
   toggleMenu,
 }) {
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const menuBtn = mobileMenu ? closebtn : openbtn;
+  const navClass = mobileMenu ? 'navbar navbar-active' : 'navbar';
 
   function toggleMobileMenu() {
-    toggleMenu();
+    setMobileMenu(!mobileMenu);
   }
 
   return (
 
-    <nav className="navbar">
+    <nav className={navClass}>
       <a href="/" className="navbar__title">NewsExplorer</a>
       { isMobile && (
         <>
           <button type="button" onClick={toggleMobileMenu} className="navbar__button">
             <img alt="menu" src={menuBtn} />
           </button>
-          <NavLink />
+          { mobileMenu && (
+            <NavLink />
+          )}
+
         </>
       )}
       ;
@@ -35,9 +42,7 @@ function Nav({
             <>
               <li className="navbar__linkSaved"> Saved Articles </li>
               <li className="navbar__linkUser">
-                {
-                  user.name
-                }
+                <p>UserName</p>
               </li>
             </>
           )}

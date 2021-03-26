@@ -14,11 +14,6 @@ const App = () => {
   const [currentUser, SetCurrentUser] = useState({});
   const [Loggedin, SetLoggedIn] = useState(false);
   const [UserWindow, SetUserWindow] = useState('');
-  const [mobileMenu, setMobileMenu] = useState(false);
-
-  function toogleMobileMenu() {
-    setMobileMenu(!mobileMenu);
-  };
 
   useEffect(() => {
     const userDevice = window.innerWidth;
@@ -39,20 +34,18 @@ const App = () => {
       <main className="app">
         <Router>
           <Switch>
-            <Route exact path='/'>
+            <Route exact path="/">
               <Main
                 device={UserWindow}
-                toogleMobNav={mobileMenu}
                 knownUser={Loggedin}
-                toggleMenu={toogleMobileMenu}
               />
             </Route>
 
-            <Route exact path='/saved-news'>
-
+            <Route exact path="/saved-news">
+              <Main />
             </Route>
           </Switch>
-          <Redirect from='*' to='/' />
+          <Redirect from="*" to="/" />
         </Router>
 
       </main>

@@ -5,7 +5,10 @@ import './Main.css';
 import Header from '../header/Header';
 
 function Main(props) {
-  const { toogleMobNav, device, knownUser, toggleMenu } = props;
+  const {
+    toogleMobNav, device, knownUser, toggleMenu,
+  } = props;
+
   let isMobile;
   if (device === 'mobile') {
     isMobile = true;
