@@ -32,7 +32,6 @@ function Nav({
 
         </>
       )}
-      ;
       { !isMobile && (
         <ul className="navbar__links-container">
           <li className="navbar__linkhome"> Home </li>
@@ -46,7 +45,6 @@ function Nav({
           )}
         </ul>
       )}
-      ;
     </nav>
   );
 }
