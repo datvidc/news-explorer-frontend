@@ -7,9 +7,7 @@ import closebtn from '../../images/close.png';
 
 function Nav({
   isMobile,
-  menuOpen,
   isLoggedIn,
-  toggleMenu,
 }) {
   const [mobileMenu, setMobileMenu] = useState(false);
   const menuBtn = mobileMenu ? closebtn : openbtn;
