@@ -1,6 +1,21 @@
 .navbar {
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid #c4c4c4;
+  position: relative;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.navbar-active {
+  height: 248px;
+  width: 100vw;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #1a1b22;
+  box-shadow: 0 6px 10px 4px rgb(8 29 45 / 10%);
 }
 
 .navbar__title {
@@ -18,8 +33,12 @@
   color: #fff;
   border: none;
   background: no-repeat url(../../images/menu.svg);
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
 }
-
 
 @media (min-width: 414px) {
   .navbar__title {
@@ -28,7 +47,6 @@
 }
 
 @media (min-width: 800px) {
-
   .navbar__title {
     margin: 30px 0px 26px 104px;
   }
