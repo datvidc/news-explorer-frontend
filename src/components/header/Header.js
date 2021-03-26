@@ -3,12 +3,19 @@ import './Header.css';
 
 import Nav from '../nav/Nav';
 
-function Header() {
-  return (
-<header className="header" >
-  <Nav />
+function Header(props) {
+  const { mobile, mobileMenu, loggedIn, MobileMenuToggle } = props;
 
-</header>
+  return (
+    <header className="header">
+      <Nav
+        isMobile={mobile}
+        menuOpen={mobileMenu}
+        isLoggedIn={loggedIn}
+        toggleMenu={MobileMenuToggle}
+      />
+
+    </header>
   );
 }
 export default Header;
