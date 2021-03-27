@@ -38,6 +38,7 @@ const App = () => {
               <Main
                 device={UserWindow}
                 knownUser={Loggedin}
+                mainPage
               />
             </Route>
 
