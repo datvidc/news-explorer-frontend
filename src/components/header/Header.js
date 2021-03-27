@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.css';
 
 import Nav from '../nav/Nav';
+import SearchForm from '../searchForm/SearchForm';
 
 function Header(props) {
   const {
@@ -19,6 +20,7 @@ function Header(props) {
               isLoggedIn={loggedIn}
               toggleMenu={MobileMenuToggle}
             />
+            <SearchForm />
           </header>
         ) : (
           <header className="header-savednews">
@@ -28,6 +30,7 @@ function Header(props) {
               isLoggedIn={loggedIn}
               toggleMenu={MobileMenuToggle}
             />
+            <SearchForm />
           </header>
         )
       }
