@@ -6,7 +6,7 @@ import Header from '../header/Header';
 
 function Main(props) {
   const {
-    toogleMobNav, device, knownUser, toggleMenu,
+    toogleMobNav, device, knownUser, toggleMenu, mainPage,
   } = props;
 
   let isMobile;
@@ -23,6 +23,7 @@ function Main(props) {
         mobileMenu={toogleMobNav}
         loggedIn={knownUser}
         MobileMenuToggle={toggleMenu}
+        isMain={mainPage}
       />
     </div>
 

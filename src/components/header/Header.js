@@ -5,19 +5,34 @@ import Nav from '../nav/Nav';
 
 function Header(props) {
   const {
-    mobile, mobileMenu, loggedIn, MobileMenuToggle,
+    mobile, mobileMenu, loggedIn, MobileMenuToggle, isMain,
   } = props;
 
   return (
-    <header className="header">
-      <Nav
-        isMobile={mobile}
-        menuOpen={mobileMenu}
-        isLoggedIn={loggedIn}
-        toggleMenu={MobileMenuToggle}
-      />
+    <>
+      {
+        isMain ? (
+          <header className="header">
+            <Nav
+              isMobile={mobile}
+              menuOpen={mobileMenu}
+              isLoggedIn={loggedIn}
+              toggleMenu={MobileMenuToggle}
+            />
+          </header>
+        ) : (
+          <header className="header-savednews">
+            <Nav
+              isMobile={mobile}
+              menuOpen={mobileMenu}
+              isLoggedIn={loggedIn}
+              toggleMenu={MobileMenuToggle}
+            />
+          </header>
+        )
+      }
 
-    </header>
+    </>
   );
 }
 export default Header;
