@@ -1,10 +1,18 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #c4c4c4;
   position: relative;
   box-sizing: border-box;
   margin: auto;
+}
+
+.navbar__black {
+  color: black;
+}
+
+.navbar__top {
+  width: 100%;
+  padding: 16px 0px 15px 0px;
 }
 
 .navbar-active {
@@ -18,6 +26,27 @@
   box-shadow: 0 6px 10px 4px rgb(8 29 45 / 10%);
 }
 
+.navbar__links-container {
+  list-style: none;
+}
+
+.navbar__linkUser {
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  width: 176px;
+  height: 48px;
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  border-radius: 100px;
+  background: none;
+  margin: 0 0px 0 54px;
+}
+
 .navbar__title {
   color: #fff;
   text-decoration: none;
@@ -25,7 +54,6 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
-  color: #fff;
   margin: 16px;
 }
 
@@ -33,21 +61,51 @@
   color: #fff;
   border: none;
   background: no-repeat url(../../images/menu.svg);
-  height: 24px;
-  width: 24px;
   position: absolute;
   top: 16px;
   right: 16px;
 }
+.navbar__button img {
+  height: 24px;
+  width: 24px;
+}
+
+.navbar-border-bottom {
+  border-bottom: 3px solid #fff;
+}
 
 @media (min-width: 414px) {
-  .navbar__title {
-    margin: 22.73px 0px 18.47px 40px;
+
+  .navbar__top {
+    padding: 22px 40px 0px 40px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    box-sizing: border-box;
+    margin: auto;
+  }
+
+  .navbar__linkhome {
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    text-decoration: none;
+    padding-bottom: 17px;
+    text-align: center;
+    height: 100%;
+
+  }
+  .navbar__links-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    box-sizing: border-box;
+    margin: 0;
   }
 }
 
 @media (min-width: 800px) {
-  .navbar__title {
-    margin: 30px 0px 26px 104px;
-  }
+
 }

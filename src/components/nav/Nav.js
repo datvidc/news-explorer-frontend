@@ -17,33 +17,43 @@ function Nav({
     setMobileMenu(!mobileMenu);
   }
 
+  const btntext = isLoggedIn ? 'userName' : 'Sign in';
+
   return (
 
     <nav className={navClass}>
-      <a href="/" className="navbar__title">NewsExplorer</a>
-      { isMobile && (
-        <>
-          <button type="button" onClick={toggleMobileMenu} className="navbar__button">
-            <img alt="menu" src={menuBtn} />
-          </button>
-          { mobileMenu && (
-            <NavLink />
-          )}
+      <div className="navbar__top">
+        <a href="/" className="navbar__title">NewsExplorer</a>
+        {isMobile && (
+          <>
+            <button type="button" onClick={toggleMobileMenu} className="navbar__button">
+              <img alt="menu" src={menuBtn} />
+            </button>
+          </>
+        )}
 
-        </>
-      )}
-      { !isMobile && (
-        <ul className="navbar__links-container">
-          <li className="navbar__linkhome"> Home </li>
-          { isLoggedIn && (
-            <>
-              <li className="navbar__linkSaved"> Saved Articles </li>
-              <li className="navbar__linkUser">
-                <p>UserName</p>
-              </li>
-            </>
-          )}
-        </ul>
+        {!isMobile && (
+          <ul className="navbar__links-container">
+            <li className="navbar-border-bottom">
+              <a href="/" className="navbar__linkhome">Home </a>
+            </li>
+            { isLoggedIn && (
+              <>
+                <li>
+                  <a className="navbar__linkSaved navbar__linkhome" href="/saved-news">Saved Articles</a>
+                </li>
+              </>
+            )}
+            <li>
+              <button type="button" className="navbar__linkUser">
+                {btntext}
+              </button>
+            </li>
+          </ul>
+        )}
+      </div>
+      {mobileMenu && (
+        <NavLink />
       )}
     </nav>
   );
