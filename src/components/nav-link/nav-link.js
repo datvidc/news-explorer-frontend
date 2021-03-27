@@ -7,7 +7,7 @@ function NavLink({
 }) {
   return (
 
-    <ul>
+    <ul className="navbar__links-container">
       {
         isLoggedIn && (
           <>
@@ -17,7 +17,6 @@ function NavLink({
             <li>
               <a href="/"> Saved Articles </a>
             </li>
-
             <li>
               <button type="button" href="/"> UserName </button>
             </li>
@@ -27,14 +26,14 @@ function NavLink({
       }
       {
         !isLoggedIn && (
-        <>
-          <li>
-            <a href="/"> Home </a>
-          </li>
-          <li>
-            <button type="button" href="/"> Log In </button>
-          </li>
-        </>
+          <>
+            <li>
+              <a href="/"> Home </a>
+            </li>
+            <li>
+              <button type="button" href="/"> Log In </button>
+            </li>
+          </>
         )
       }
     </ul>
