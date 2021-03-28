@@ -13,25 +13,29 @@ function Header(props) {
     <>
       {
         isMain ? (
-          <header className="header">
-            <Nav
-              isMobile={mobile}
-              menuOpen={mobileMenu}
-              isLoggedIn={loggedIn}
-              toggleMenu={MobileMenuToggle}
-            />
+          <>
+            <header className="header">
+              <Nav
+                isMobile={mobile}
+                menuOpen={mobileMenu}
+                isLoggedIn={loggedIn}
+                toggleMenu={MobileMenuToggle}
+              />
+            </header>
             <SearchForm />
-          </header>
+          </>
         ) : (
-          <header className="header-savednews">
-            <Nav
-              isMobile={mobile}
-              menuOpen={mobileMenu}
-              isLoggedIn={loggedIn}
-              toggleMenu={MobileMenuToggle}
-            />
+          <>
+            <header className="header-savednews">
+              <Nav
+                isMobile={mobile}
+                menuOpen={mobileMenu}
+                isLoggedIn={loggedIn}
+                toggleMenu={MobileMenuToggle}
+              />
+            </header>
             <SearchForm />
-          </header>
+          </>
         )
       }
 
