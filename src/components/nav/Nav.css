@@ -12,7 +12,7 @@
 
 .navbar__top {
   width: 100%;
-  padding: 16px 0px 15px 0px;
+  padding: 16px 0px 1px 0px;
 }
 
 .navbar-active {
@@ -74,10 +74,11 @@
   border-bottom: 3px solid #fff;
 }
 
-@media (min-width: 414px) {
+/* Default tablet start size */
+@media (min-width: 415px) {
 
   .navbar__top {
-    padding: 22px 40px 0px 40px;
+    padding-right: 2.500em;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -107,5 +108,7 @@
 }
 
 @media (min-width: 800px) {
-
+  .navbar__top {
+    padding-right: 7.250em;
+  }
 }

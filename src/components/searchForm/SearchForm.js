@@ -8,8 +8,8 @@ function SearchForm() {
 
     <section className="search">
       <div className="search__heading">
-        <h2>What&#39;s going on in the world? </h2>
-        <p> Find the latest news on any topic and save them in your personal account.</p>
+        <h2 className="search__title">What&#39;s going on in the world? </h2>
+        <p className="search__sub"> Find the latest news on any topic and save them in your personal account.</p>
       </div>
 
       <form className="search__form">

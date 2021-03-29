@@ -7,6 +7,9 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import Main from '../main/Main';
+import SearchResults from '../search-results/Search-results';
+import About from '../about/About';
+import Footer from '../footer/Footer';
 
 import CurrentUserContext from '../../context/CurrentUserContext';
 
@@ -18,7 +21,7 @@ const App = () => {
   useEffect(() => {
     const userDevice = window.innerWidth;
     if (userDevice) {
-      if (userDevice <= 414) {
+      if (userDevice <= 500) {
         SetUserWindow('mobile');
       } else if (userDevice <= 768) {
         SetUserWindow('tablet');
@@ -40,6 +43,8 @@ const App = () => {
                 knownUser={Loggedin}
                 mainPage
               />
+              { Loggedin && <SearchResults /> }
+              <About />
             </Route>
 
             <Route exact path="/saved-news">
@@ -48,7 +53,7 @@ const App = () => {
           </Switch>
           <Redirect from="*" to="/" />
         </Router>
-
+        <Footer />
       </main>
     </CurrentUserContext.Provider>
 
