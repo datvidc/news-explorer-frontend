@@ -12,7 +12,8 @@
 
 .navbar__top {
   width: 100%;
-  padding: 16px 0px 1px 0px;
+  padding: 16px 0px 16px 0px;
+  border-bottom: 1px solid #c4c4c4;
 }
 
 .navbar-active {
@@ -28,6 +29,7 @@
 
 .navbar__links-container {
   list-style: none;
+  padding: 0em;
 }
 
 .navbar__linkUser {
@@ -78,7 +80,9 @@
 @media (min-width: 415px) {
 
   .navbar__top {
+
     padding-right: 2.500em;
+    padding-bottom: 0px;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -110,5 +114,7 @@
 @media (min-width: 800px) {
   .navbar__top {
     padding-right: 7.250em;
+    padding-bottom: 0px;
+
   }
 }

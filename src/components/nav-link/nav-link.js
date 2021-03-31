@@ -28,10 +28,10 @@ function NavLink({
         !isLoggedIn && (
           <>
             <li>
-              <a href="/"> Home </a>
+              <a className="navlink__home" href="/"> Home </a>
             </li>
             <li>
-              <button type="button" href="/"> Log In </button>
+              <button className="navlink__button" type="button" href="/"> Log In </button>
             </li>
           </>
         )

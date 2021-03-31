@@ -10,6 +10,7 @@ import Main from '../main/Main';
 import SearchResults from '../search-results/Search-results';
 import About from '../about/About';
 import Footer from '../footer/Footer';
+import { MobileNav } from '../navbars/Navbars';
 
 import CurrentUserContext from '../../context/CurrentUserContext';
 
@@ -17,6 +18,12 @@ const App = () => {
   const [currentUser, SetCurrentUser] = useState({});
   const [Loggedin, SetLoggedIn] = useState(false);
   const [UserWindow, SetUserWindow] = useState('');
+  const [mobileMenu, SetMobileMenu] = useState(false);
+
+  const toggleMobileMenu = (e) => {
+    e.preventDefault();
+    SetMobileMenu(!mobileMenu);
+  };
 
   useEffect(() => {
     const userDevice = window.innerWidth;
@@ -42,8 +49,9 @@ const App = () => {
                 device={UserWindow}
                 knownUser={Loggedin}
                 mainPage
+                toogleMobNav={toggleMobileMenu}
               />
-              { Loggedin && <SearchResults /> }
+              {Loggedin && <SearchResults />}
               <About />
             </Route>
 
@@ -54,6 +62,13 @@ const App = () => {
           <Redirect from="*" to="/" />
         </Router>
         <Footer />
+        {mobileMenu && (
+          <MobileNav
+            isOpen={mobileMenu}
+            setMobileMenu={toggleMobileMenu}
+            isLoggedIn={Loggedin}
+          />
+        )}
       </main>
     </CurrentUserContext.Provider>
 

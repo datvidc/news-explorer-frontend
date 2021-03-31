@@ -6,7 +6,7 @@ import SearchForm from '../searchForm/SearchForm';
 
 function Header(props) {
   const {
-    mobile, mobileMenu, loggedIn, MobileMenuToggle, isMain,
+    mobile, loggedIn, toogleMobNav, isMain,
   } = props;
 
   return (
@@ -17,9 +17,8 @@ function Header(props) {
             <header className="header">
               <Nav
                 isMobile={mobile}
-                menuOpen={mobileMenu}
                 isLoggedIn={loggedIn}
-                toggleMenu={MobileMenuToggle}
+                toggleMenu={toogleMobNav}
               />
             </header>
             <SearchForm />
@@ -29,7 +28,6 @@ function Header(props) {
             <header className="header-savednews">
               <Nav
                 isMobile={mobile}
-                menuOpen={mobileMenu}
                 isLoggedIn={loggedIn}
                 toggleMenu={MobileMenuToggle}
               />
