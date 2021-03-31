@@ -65,7 +65,7 @@ const App = () => {
         {mobileMenu && (
           <MobileNav
             isOpen={mobileMenu}
-            setMobileMenu={toggleMobileMenu}
+            toogleMobNav={toggleMobileMenu}
             isLoggedIn={Loggedin}
           />
         )}

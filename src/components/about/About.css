@@ -4,6 +4,9 @@
   flex-direction: column;
   padding: 1rem;
 }
+.about__text {
+  padding-bottom: 8.000em;
+}
 .about__title {
   text-align: center;
 }

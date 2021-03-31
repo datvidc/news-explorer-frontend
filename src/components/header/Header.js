@@ -18,7 +18,7 @@ function Header(props) {
               <Nav
                 isMobile={mobile}
                 isLoggedIn={loggedIn}
-                toggleMenu={toogleMobNav}
+                toogleMobNav={toogleMobNav}
               />
             </header>
             <SearchForm />
@@ -29,7 +29,7 @@ function Header(props) {
               <Nav
                 isMobile={mobile}
                 isLoggedIn={loggedIn}
-                toggleMenu={MobileMenuToggle}
+                toogleMobNav={toogleMobNav}
               />
             </header>
             <SearchForm />

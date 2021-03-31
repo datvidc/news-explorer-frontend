@@ -8,20 +8,22 @@ function Footer() {
   return (
     <section className="footer">
       <p className="footer__copytext"> © 2020 No/Mad, Powered by News API</p>
-      <nav>
-        <ul className="footer__list">
-          <li className="footer_listItem">
+      <nav className="footer__nav">
+        <ul className="footer__links">
+          <li className="footer_listItem footer__navilink">
             <a href="/"> Home </a>
           </li>
-          <li className="footer_listItem">
+          <li className="footer_listItem footer__navilink">
             <a href="https://practicum.yandex.com/web/"> Practicum by Yandex </a>
           </li>
-          <li className="footer_listItem">
+        </ul>
+        <ul className="footer__linkspro">
+          <li className="footer_listItem footer__pro">
             <a href="https://github.com/datvidc">
               <img className="footer__img" src={github} alt="github" />
             </a>
           </li>
-          <li className="footer_listItem">
+          <li className="footer_listItem footer__pro">
             <a href="https://www.linkedin.com/in/dacpo/">
               <img className="footer__img" src={Linkedin} alt="LinkedIn" />
             </a>
