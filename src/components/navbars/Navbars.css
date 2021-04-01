@@ -1,0 +1,7 @@
+.navbar__linkSaved {
+  padding-left: 1em;
+}
+.navbar__linkItem {
+  align-self: center;
+  display: flex;
+}

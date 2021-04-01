@@ -3,29 +3,29 @@ import React from 'react';
 import './nav-link.css';
 
 function NavLink({
-  isLoggedIn,
+  user,
 }) {
   return (
 
     <ul className="navbar__links-container">
       {
-        isLoggedIn && (
+        user && (
           <>
             <li>
-              <a href="/"> Home </a>
+              <a href="/" className="navlink__home"> Home </a>
             </li>
             <li>
-              <a href="/"> Saved Articles </a>
+              <a className="navlink__home" href="/"> Saved Articles </a>
             </li>
             <li>
-              <button type="button" href="/"> UserName </button>
+              <button className="navlink__button" type="button" href="/"> UserName </button>
             </li>
           </>
         )
 
       }
       {
-        !isLoggedIn && (
+        !user && (
           <>
             <li>
               <a className="navlink__home" href="/"> Home </a>

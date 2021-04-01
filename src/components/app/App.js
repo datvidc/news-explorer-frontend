@@ -15,8 +15,14 @@ import { MobileNav } from '../navbars/Navbars';
 import CurrentUserContext from '../../context/CurrentUserContext';
 
 const App = () => {
-  const [currentUser, SetCurrentUser] = useState({});
-  const [Loggedin, SetLoggedIn] = useState(false);
+  const [currentUser, SetCurrentUser] = useState({
+    data: {
+      id: '60540ceed1ccba35d1986789',
+      name: 'me',
+      email: 'd@vidc.dk',
+    },
+  });
+  const [Loggedin, SetLoggedIn] = useState(true);
   const [UserWindow, SetUserWindow] = useState('');
   const [mobileMenu, SetMobileMenu] = useState(false);
 

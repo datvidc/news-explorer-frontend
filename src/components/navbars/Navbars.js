@@ -5,6 +5,7 @@ import Popup from '../popup/Popup';
 import openbtn from '../../images/menu.png';
 import closebtn from '../../images/close.png';
 import './Navbars.css';
+import logOut from '../../images/logout.png';
 
 function OpenNav(props) {
   const { toogleMobNav, menuBtn, isLoggedIn } = props;
@@ -70,12 +71,12 @@ function Navigation(props) {
       <div className="navbar__top">
         <a href="/" className="navbar__title">NewsExplorer</a>
         <ul className="navbar__links-container">
-          <li className="navbar-border-bottom">
+          <li className="navbar-border-bottom navbar__linkItem">
             <a href="/" className="navbar__linkhome">Home </a>
           </li>
           {isLoggedIn && (
             <>
-              <li>
+              <li className="navbar__linkItem">
                 <a className="navbar__linkSaved navbar__linkhome" href="/saved-news">Saved Articles</a>
               </li>
             </>
@@ -83,6 +84,7 @@ function Navigation(props) {
           <li>
             <button type="button" className="navbar__linkUser">
               {btntext}
+              {isLoggedIn && (<img src={logOut} alt="Log Out" />)}
             </button>
           </li>
         </ul>
