@@ -22,6 +22,46 @@ const App = () => {
       email: 'd@vidc.dk',
     },
   });
+
+  const articleList = [
+    {
+      _id: '60666432161cbb48f32c2d1c',
+      keyword: 'yay',
+      title: 'Yay is yay',
+      text: 'yay is text',
+      date: 'Monday',
+      source: 'http://www.website.is',
+      link: 'http://www.website.com',
+      image: 'http://photo.website.is',
+      owner: '60540ceed1ccba35d1986789',
+      createdAt: '2021-04-02T00:24:18.426Z',
+    },
+    {
+      _id: '60666432161cbb48f32c2d1c',
+      keyword: 'yay',
+      title: 'Yay is yay',
+      text: 'yay is text',
+      date: 'Monday',
+      source: 'http://www.website.is',
+      link: 'http://www.website.com',
+      image: 'http://photo.website.is',
+      owner: '60540ceed1ccba35d1986789',
+      createdAt: '2021-04-02T00:24:18.426Z',
+    },
+    {
+      _id: '60666432161cbb48f32c2d1c',
+      keyword: 'yay',
+      title: 'Yay is yay',
+      text: 'yay is text',
+      date: 'Monday',
+      source: 'http://www.website.is',
+      link: 'http://www.website.com',
+      image: 'http://photo.website.is',
+      owner: '60540ceed1ccba35d1986789',
+      createdAt: '2021-04-02T00:24:18.426Z',
+    },
+  ];
+  const [Articles, SetArticles] = useState(articleList);
   const [Loggedin, SetLoggedIn] = useState(true);
   const [UserWindow, SetUserWindow] = useState('');
   const [mobileMenu, SetMobileMenu] = useState(false);
@@ -55,14 +95,18 @@ const App = () => {
                 device={UserWindow}
                 knownUser={Loggedin}
                 mainPage
+                articleResults={Articles}
+                userInfo={currentUser}
                 toogleMobNav={toggleMobileMenu}
               />
-              {Loggedin && <SearchResults />}
+              {Articles && <SearchResults />}
               <About />
             </Route>
 
             <Route exact path="/saved-news">
-              <Main />
+              <Main
+                mainpage={false}
+              />
             </Route>
           </Switch>
           <Redirect from="*" to="/" />
