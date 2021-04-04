@@ -23,44 +23,36 @@ const App = () => {
     },
   });
 
-  const articleList = [
-    {
-      _id: '60666432161cbb48f32c2d1c',
-      keyword: 'yay',
-      title: 'Yay is yay',
-      text: 'yay is text',
-      date: 'Monday',
-      source: 'http://www.website.is',
-      link: 'http://www.website.com',
-      image: 'http://photo.website.is',
-      owner: '60540ceed1ccba35d1986789',
-      createdAt: '2021-04-02T00:24:18.426Z',
-    },
-    {
-      _id: '60666432161cbb48f32c2d1c',
-      keyword: 'yay',
-      title: 'Yay is yay',
-      text: 'yay is text',
-      date: 'Monday',
-      source: 'http://www.website.is',
-      link: 'http://www.website.com',
-      image: 'http://photo.website.is',
-      owner: '60540ceed1ccba35d1986789',
-      createdAt: '2021-04-02T00:24:18.426Z',
-    },
-    {
-      _id: '60666432161cbb48f32c2d1c',
-      keyword: 'yay',
-      title: 'Yay is yay',
-      text: 'yay is text',
-      date: 'Monday',
-      source: 'http://www.website.is',
-      link: 'http://www.website.com',
-      image: 'http://photo.website.is',
-      owner: '60540ceed1ccba35d1986789',
-      createdAt: '2021-04-02T00:24:18.426Z',
-    },
-  ];
+  const articleList = {
+    status: 'ok',
+    totalResults: 2,
+    articles: [
+      {
+        _id: '60666432161cbb48f32c2d1c',
+        keyword: 'yay',
+        title: 'Yay is yay',
+        text: 'yay is text',
+        date: 'Monday',
+        source: 'http://www.website.is',
+        link: 'http://www.website.com',
+        image: 'https://techcrunch.com/wp-content/uploads/2021/03/nbrhd-reef-cartken.jpg?w=600',
+        owner: '60540ceed1ccba35d1986789',
+        createdAt: '2021-04-02T00:24:18.426Z',
+      },
+      {
+        _id: '60666432161cbb48f32c2d1c',
+        keyword: 'yay',
+        title: 'Yay is yay',
+        text: 'yay is text',
+        date: 'Monday',
+        source: 'http://www.website.is',
+        link: 'http://www.website.com',
+        image: 'https://techcrunch.com/wp-content/uploads/2021/03/nbrhd-reef-cartken.jpg?w=600',
+        owner: '60540ceed1ccba35d1986789',
+        createdAt: '2021-04-02T00:24:18.426Z',
+      },
+    ],
+  };
   const [Articles, SetArticles] = useState(articleList);
   const [Loggedin, SetLoggedIn] = useState(true);
   const [UserWindow, SetUserWindow] = useState('');
@@ -84,6 +76,7 @@ const App = () => {
     }
   }, []);
 
+  console.log(Articles.articles);
   return (
     <CurrentUserContext.Provider value={currentUser}>
 
@@ -99,7 +92,7 @@ const App = () => {
                 userInfo={currentUser}
                 toogleMobNav={toggleMobileMenu}
               />
-              {Articles && <SearchResults />}
+              {Articles && <SearchResults articles={articleList.articles} />}
               <About />
             </Route>
 

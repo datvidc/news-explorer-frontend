@@ -2,41 +2,36 @@ import React from 'react';
 
 import './NewsCard.css';
 
-import bookmark from '../../images/bookmark.png';
-import trash from '../../images/trash.png';
-
 function NewsCard(props) {
+  const { oneArticle } = props;
+
   const {
-    url,
+    keyword,
     title,
     date,
-    keyword,
     source,
-  } = props;
+    image,
+    text,
+  } = oneArticle;
 
-  const { name } = source;
-
+  console.log(oneArticle);
 
   return (
     <li>
-      {
-      result ?
-      (<button type="button" className="newsCard__bookmark"> <img src={bookmark} /> </button>)
-    :
-    ( <>
-        <button type="button" className="newsCard__searcTerm"> {keyword} </button>
-        <button type="button" className="newsCard__trash"> <img src={trash} /> </button>
-      </>
-    );
-    }
 
-      <img alt={title} src={url} />
+      <img alt={title} src={image} />
       <div>
-        <p> {date}</p>
-        <h4> HEADING OF ARTICLE</h4>
-        <p> We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the ..</p>
+        <p>
+          {date}
+        </p>
+        <h4>
+          {keyword}
+        </h4>
+        <p>
+          {text}
+        </p>
 
-      <h4>{name}</h4>
+        <h4>{source}</h4>
       </div>
     </li>
   );
