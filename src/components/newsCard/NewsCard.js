@@ -17,22 +17,23 @@ function NewsCard(props) {
   console.log(oneArticle);
 
   return (
-    <li>
+    <li className="newscard">
+      <article className="newscard__article">
+        <img className="newscard__img" alt={title} src={image} />
+        <div className="newscard__articlebottom">
+          <p className="newscard__date">
+            {date}
+          </p>
+          <h4 className="newscard__heading">
+            {keyword}
+          </h4>
+          <p className="newscard__text">
+            {text}
+          </p>
 
-      <img alt={title} src={image} />
-      <div>
-        <p>
-          {date}
-        </p>
-        <h4>
-          {keyword}
-        </h4>
-        <p>
-          {text}
-        </p>
-
-        <h4>{source}</h4>
-      </div>
+          <h4 className="newscard__source">{source}</h4>
+        </div>
+      </article>
     </li>
   );
 }
