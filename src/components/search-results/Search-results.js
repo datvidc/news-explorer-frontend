@@ -7,14 +7,17 @@ function SearchResults(props) {
   const { articles } = props;
   console.log(typeof articles);
   return (
-    <>
+    <section className="search">
       <h1> Hello SearchResults</h1>
-      {articles.map((card) => (
-        <NewsCard
-          oneArticle={card}
-        />
-      ))}
-    </>
+      <ul className="search-results">
+        {articles.map((card) => (
+          <NewsCard
+            oneArticle={card}
+          />
+        ))}
+      </ul>
+
+    </section>
 
   );
 }
