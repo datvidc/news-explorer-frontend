@@ -6,7 +6,7 @@ import Header from '../header/Header';
 
 function Main(props) {
   const {
-    toogleMobNav, device, knownUser, mainPage,
+    toogleMobNav, device, knownUser, mainPage, handleLogout,
   } = props;
 
   let isMobile;
@@ -19,6 +19,7 @@ function Main(props) {
   return (
     <div className="main">
       <Header
+        handleLogout={handleLogout}
         mobile={isMobile}
         loggedIn={knownUser}
         toogleMobNav={toogleMobNav}

@@ -9,31 +9,112 @@
   padding: 0;
 }
 
+.newscard__button{
+  position: absolute;
+  border-radius: 8px;
+  border: none;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.newscard__bookmark {
+  right: 1em;
+  top: 1em;
+  height: 40px;
+  width: 40px;
+}
+
 .newscard__img {
   max-width: 18em;
+  max-height: 12.250em;
   border-radius: 16px 16px 0px 0px;
 }
 
 .newscard__articlebottom {
   max-width: 16em;
-  display: flex;
+  max-height: 244px;
   margin: auto;
+  padding: 0 1em;
   font-family: "Roboto Slab", serif;
-  font-family: "Roboto Slab";
   color: #1a1b22;
 }
 
 .newscard__heading {
+  text-align: left;
+  margin: 0 1em 42px 1em;
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
   line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.newscard__text {
+  max-height: 88px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  -webkit-line-clamp: 4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.newscard__source {
+  font-family: Roboto Slab;
+  padding-top: 8px;
+  padding-bottom: 16px;
+  margin: auto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #b6bcbf;
+}
+
+.newscard__date {
+  margin: 1em 0 10px 0;
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #b6bcbf;
 }
 
 @media (min-width: 449px) {
-}
+  .newscard__img {
+    max-width: 14.000em;
+    max-height: 9.375em;
+  }
+  .newscard {
+    max-width: 14.000em;
+  }
+  .newscard__bookmark {
+    right: 0.5em;
+    top: 0.5em;
+    height: 40px;
+    width: 40px;
+  }
 
-@media (min-width: 900px) {
+
+}
+@media (min-width: 1050px) {
+  .newscard {
+    max-width: 25.000em;
+  }
+  .newscard__img {
+    max-width: 25.000em;
+    max-height: 17.000em;
+  }
+
   .newscard__articlebottom {
     font-size: 26px;
     line-height: 30px;

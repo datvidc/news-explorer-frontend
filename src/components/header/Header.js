@@ -6,7 +6,7 @@ import SearchForm from '../searchForm/SearchForm';
 
 function Header(props) {
   const {
-    mobile, loggedIn, toogleMobNav, isMain,
+    mobile, loggedIn, toogleMobNav, isMain, handleLogout,
   } = props;
 
   return (
@@ -19,6 +19,7 @@ function Header(props) {
                 isMobile={mobile}
                 isLoggedIn={loggedIn}
                 toogleMobNav={toogleMobNav}
+                handleLogout={handleLogout}
               />
             </header>
             <SearchForm />
@@ -30,6 +31,7 @@ function Header(props) {
                 isMobile={mobile}
                 isLoggedIn={loggedIn}
                 toogleMobNav={toogleMobNav}
+                handleLogout={handleLogout}
               />
             </header>
             <SearchForm />

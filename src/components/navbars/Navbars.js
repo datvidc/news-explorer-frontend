@@ -6,9 +6,17 @@ import openbtn from '../../images/menu.png';
 import closebtn from '../../images/close.png';
 import './Navbars.css';
 import logOut from '../../images/logout.png';
+import currentUserContext from '../../context/CurrentUserContext';
 
 function OpenNav(props) {
-  const { toogleMobNav, menuBtn, isLoggedIn } = props;
+  const {
+    toogleMobNav,
+    menuBtn,
+    isLoggedIn,
+    handleLogout,
+  } = props;
+  const user = React.useContext(currentUserContext);
+
   return (
     <Popup>
       <nav className="navbar navbar-active">
@@ -18,7 +26,7 @@ function OpenNav(props) {
             <img alt="menu" src={menuBtn} />
           </button>
         </div>
-        <NavLink user={isLoggedIn} />
+        <NavLink name={user.data.name} handleLogout={handleLogout} user={isLoggedIn} />
       </nav>
     </Popup>
   );
@@ -39,14 +47,22 @@ function ClosedNav(props) {
 }
 
 function MobileNav(props) {
-  const { isOpen, toogleMobNav, isLoggedIn } = props;
+  const {
+    isOpen,
+    toogleMobNav,
+    isLoggedIn,
+    handleLogout,
+  } = props;
+  const user = React.useContext(currentUserContext);
   const menuBtn = isOpen ? closebtn : openbtn;
   return (
     <>
       {
         isOpen ? (
           <OpenNav
+            handleLogout={handleLogout}
             isLoggedIn={isLoggedIn}
+            user={user}
             toogleMobNav={toogleMobNav}
             menuBtn={menuBtn}
           />
@@ -63,8 +79,12 @@ function MobileNav(props) {
 }
 
 function Navigation(props) {
-  const { isLoggedIn } = props;
-  const btntext = isLoggedIn ? 'userName' : 'Sign in';
+  const { isLoggedIn, handleLogout } = props;
+
+  const user = React.useContext(currentUserContext);
+
+  const btntext = isLoggedIn ? user.data.name : 'Sign in';
+  const clickHandler = isLoggedIn ? handleLogout : handleLogout;
 
   return (
     <nav className="navbar">
@@ -82,7 +102,7 @@ function Navigation(props) {
             </>
           )}
           <li>
-            <button type="button" className="navbar__linkUser">
+            <button type="button" onClick={clickHandler} className="navbar__linkUser">
               {btntext}
               {isLoggedIn && (<img src={logOut} alt="Log Out" />)}
             </button>

@@ -3,7 +3,7 @@ import React from 'react';
 import './nav-link.css';
 
 function NavLink({
-  user,
+  user, name, handleLogout,
 }) {
   return (
 
@@ -18,7 +18,9 @@ function NavLink({
               <a className="navlink__home" href="/"> Saved Articles </a>
             </li>
             <li>
-              <button className="navlink__button" type="button" href="/"> UserName </button>
+              <button className="navlink__button" type="button" onClick={handleLogout}>
+                {name}
+              </button>
             </li>
           </>
         )

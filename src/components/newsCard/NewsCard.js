@@ -1,9 +1,11 @@
 import React from 'react';
 
 import './NewsCard.css';
+import trash from '../../images/trash.png';
+import bookmark from '../../images/bookmark.png';
 
 function NewsCard(props) {
-  const { oneArticle } = props;
+  const { oneArticle, mainpage } = props;
 
   const {
     keyword,
@@ -19,13 +21,21 @@ function NewsCard(props) {
   return (
     <li className="newscard">
       <article className="newscard__article">
-        <img className="newscard__img" alt={title} src={image} />
+        <button type="button" className="newscard__button newscard__bookmark">
+          <img alt="put in trash" src={bookmark} />
+        </button>
+        { !mainpage && (
+        <button type="button" className="newscard__button">
+          <img alt="put in trash" src={trash} />
+        </button>
+        )}
+        <img className="newscard__img" alt={keyword} src={image} />
         <div className="newscard__articlebottom">
           <p className="newscard__date">
             {date}
           </p>
           <h4 className="newscard__heading">
-            {keyword}
+            {title}
           </h4>
           <p className="newscard__text">
             {text}

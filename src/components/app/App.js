@@ -30,7 +30,7 @@ const App = () => {
       {
         _id: '60666432161cbb48f32c2d1c',
         keyword: 'yay',
-        title: 'Yay is yay',
+        title: 'Yay is yay no1',
         text: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
         date: 'Monday',
         source: 'http://www.website.is',
@@ -42,31 +42,7 @@ const App = () => {
       {
         _id: '60666432161cbb48f32c2d1c',
         keyword: 'yay',
-        title: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
-        text: 'yay is text',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://techcrunch.com/wp-content/uploads/2021/03/Remix-Press.jpg?w=764',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yay',
-        title: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
-        text: 'yay is text',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://techcrunch.com/wp-content/uploads/2021/03/Remix-Press.jpg?w=764',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yay',
-        title: 'Yay is yay',
+        title: 'Yay is no 2',
         text: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
         date: 'Monday',
         source: 'http://www.website.is',
@@ -78,7 +54,31 @@ const App = () => {
       {
         _id: '60666432161cbb48f32c2d1c',
         keyword: 'yay',
-        title: 'Yay is yay',
+        title: 'yay is title 3',
+        text: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
+        date: 'Monday',
+        source: 'http://www.website.is',
+        link: 'http://www.website.com',
+        image: 'https://techcrunch.com/wp-content/uploads/2021/03/Remix-Press.jpg?w=764',
+        owner: '60540ceed1ccba35d1986789',
+        createdAt: '2021-04-02T00:24:18.426Z',
+      },
+      {
+        _id: '60666432161cbb48f32c2d1c',
+        keyword: 'yay',
+        title: 'Yay is yay no 4',
+        text: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
+        date: 'Monday',
+        source: 'http://www.website.is',
+        link: 'http://www.website.com',
+        image: 'https://techcrunch.com/wp-content/uploads/2021/03/Remix-Press.jpg?w=764',
+        owner: '60540ceed1ccba35d1986789',
+        createdAt: '2021-04-02T00:24:18.426Z',
+      },
+      {
+        _id: '60666432161cbb48f32c2d1c',
+        keyword: 'yay',
+        title: 'Yay is yay no 5',
         text: 'yay is text',
         date: 'Monday',
         source: 'http://www.website.is',
@@ -90,7 +90,7 @@ const App = () => {
       {
         _id: '60666432161cbb48f32c2d1c',
         keyword: 'yay',
-        title: 'Yay is yay',
+        title: 'Yay is yay no 6',
         text: 'yay is text',
         date: 'Monday',
         source: 'http://www.website.is',
@@ -102,7 +102,7 @@ const App = () => {
       {
         _id: '60666432161cbb48f32c2d1c',
         keyword: 'yay',
-        title: 'Yay is yay',
+        title: 'Yay is yay no 7',
         text: 'yay is text',
         date: 'Monday',
         source: 'http://www.website.is',
@@ -122,6 +122,11 @@ const App = () => {
   const toggleMobileMenu = (e) => {
     e.preventDefault();
     SetMobileMenu(!mobileMenu);
+  };
+  const handleLogout = (e) => {
+    e.preventDefault();
+    SetCurrentUser();
+    SetLoggedIn(false);
   };
 
   useEffect(() => {
@@ -146,6 +151,7 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               <Main
+                handleLogout={handleLogout}
                 device={UserWindow}
                 knownUser={Loggedin}
                 mainPage
