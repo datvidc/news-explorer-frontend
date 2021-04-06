@@ -39,11 +39,12 @@
         ]
       }
     ],
+    "react/prop-types": "off",
+    "react/destructuring-assignment": "off",
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     "allowIndentationTabs": 0,
     "no-tabs": 0,
-    "react/prop-types": 0,
     "react/jsx-filename-extension": [
       1,
       {

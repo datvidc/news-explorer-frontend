@@ -2,7 +2,6 @@ import React from 'react';
 
 import './NewsCard.css';
 import trash from '../../images/trash.png';
-import bookmark from '../../images/bookmark.png';
 
 function NewsCard(props) {
   const { oneArticle, mainpage } = props;
@@ -16,13 +15,20 @@ function NewsCard(props) {
     text,
   } = oneArticle;
 
+  let bookmark = props.isbookmarked ? 'newscard__button newscard__isBookmarked' : 'newscard__button newscard__bookmark';
+
+  const handleBookmarkClick = () => {
+    // code for changing isbookmarked state
+    bookmark = props.isbookmarked ? 'newscard__button newscard__isBookmarked' : 'newscard__button newscard__bookmark';
+  };
+
   console.log(oneArticle);
 
   return (
     <li className="newscard">
       <article className="newscard__article">
-        <button type="button" className="newscard__button newscard__bookmark">
-          <img alt="put in trash" src={bookmark} />
+        <button type="button" onClick={handleBookmarkClick} className={bookmark}>
+          {/* <img alt="Bookmark this news" src={bookmark} /> */}
         </button>
         { !mainpage && (
         <button type="button" className="newscard__button">

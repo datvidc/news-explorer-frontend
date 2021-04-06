@@ -9,7 +9,7 @@
   padding: 0;
 }
 
-.newscard__button{
+.newscard__button {
   position: absolute;
   border-radius: 8px;
   border: none;
@@ -22,11 +22,31 @@
   top: 1em;
   height: 40px;
   width: 40px;
+  background-image: url(../../images/bookmark.png);
+}
+
+.newscard__isBookmarked {
+  right: 1em;
+  top: 1em;
+  height: 40px;
+  width: 40px;
+  background-image: url(../../images/bookmarked.png);
+}
+
+.newscard__bookmark:hover {
+  border: 2px solid #1a1b22;
+  box-sizing: border-box;
+  background-image: url(../../images/bookmarkhover.svg);
+}
+
+.newscard__isBookmarked:hover {
+  border: 2px solid #2F71E5;
+  box-sizing: border-box;
 }
 
 .newscard__img {
   max-width: 18em;
-  max-height: 12.250em;
+  max-height: 12.25em;
   border-radius: 16px 16px 0px 0px;
 }
 
@@ -91,11 +111,11 @@
 
 @media (min-width: 449px) {
   .newscard__img {
-    max-width: 14.000em;
+    max-width: 14em;
     max-height: 9.375em;
   }
   .newscard {
-    max-width: 14.000em;
+    max-width: 14em;
   }
   .newscard__bookmark {
     right: 0.5em;
@@ -103,16 +123,14 @@
     height: 40px;
     width: 40px;
   }
-
-
 }
 @media (min-width: 1050px) {
   .newscard {
-    max-width: 25.000em;
+    max-width: 25em;
   }
   .newscard__img {
-    max-width: 25.000em;
-    max-height: 17.000em;
+    max-width: 25em;
+    max-height: 17em;
   }
 
   .newscard__articlebottom {
