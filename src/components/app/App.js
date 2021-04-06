@@ -162,14 +162,13 @@ const App = () => {
               {Articles && <SearchResults articles={articleList.articles} />}
               <About />
             </Route>
-
-            <Route exact path="/saved-news">
-              <Main
-                mainpage={false}
-              />
+            <Route path="/saved">
+              <h1>hello</h1>
+            </Route>
+            <Route path="*">
+              <Redirect to="/" />
             </Route>
           </Switch>
-          <Redirect from="*" to="/" />
         </Router>
         <Footer />
         {mobileMenu && (
