@@ -13,11 +13,12 @@
   position: relative;
 }
 .newscard__rusure {
-  display: none;
+  display:none;
 }
 .newscard__prompt {
   display:none;
 }
+
 
 .newscard__button {
   position: absolute;
@@ -60,6 +61,10 @@
   height: 40px;
   width: 40px;
   background-image: url(../../images/trash.png);
+  cursor: pointer;
+}
+.newscard__trash:hover {
+background-image: url(../../images/blckTrash.png);
 }
 .newscard__keyword {
   font-family: Roboto;
@@ -69,7 +74,6 @@
   line-height: 24px;
   text-align: center;
   color: #000000;
-  margin: 0.5em 1.375em;
   display: flex;
   border: none;
   cursor: pointer;
@@ -78,7 +82,6 @@
   justify-content: center;
   padding: 0.5em 1.250em;
   position: absolute;
-  top: 1em;
   left: 1em;
   background: #ffffff;
   border-radius: 10px;
@@ -177,6 +180,29 @@
   .newscard__img {
     max-width: 25em;
     max-height: 17em;
+  }
+  .newscard__isShown {
+    display:block;
+  }
+  .newscard__trash:hover + .newscard__rusure {
+    position: absolute;
+    border-radius: 8px;
+    top: 1em;
+    right: 4em;
+    background: #ffffff;
+    /* border-radius: 10px; */
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    margin: 0em 0.3em 0em 0em;
+    display: flex;
+    border: none;
+    cursor: pointer;
+    padding: 0.5em 1.250em;
+    transition: 0.2s ease;
   }
 
   .newscard__articlebottom {
