@@ -27,3 +27,21 @@ color: #1A1B22;
 .overview__keywords {
   font-weight: bold;
 }
+.overview {
+  margin-left: 1em;
+  margin-bottom: 2em;
+}
+
+@media (min-width: 500px) {
+  .overview {
+    margin-left: 2.500em;
+    margin-bottom: 2em;
+  }
+}
+
+@media (min-width: 800px) {
+  .overview {
+    margin-left: 6.500em;
+    margin-bottom: 2em;
+  }
+}

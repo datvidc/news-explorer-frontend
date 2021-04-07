@@ -4,7 +4,7 @@ import './NewsCard.css';
 import trash from '../../images/trash.png';
 
 function NewsCard(props) {
-  const { oneArticle, mainpage } = props;
+  const { oneArticle, mainpage, isDesktop, isLoggedIn, } = props;
 
   const {
     keyword,
@@ -29,13 +29,24 @@ function NewsCard(props) {
   return (
     <li className="newscard">
       <article className="newscard__article">
-        <button type="button" onClick={handleBookmarkClick} className={bookmark}>
-          {/* <img alt="Bookmark this news" src={bookmark} /> */}
-        </button>
-        { !mainpage && (
-        <button type="button" className="newscard__button">
-          <img alt="put in trash" src={trash} />
-        </button>
+        {!isLoggedIn && (
+          <p className="newscard__prompt"> Sign in to save articles </p>
+        )}
+        {mainpage && (
+
+          <button type="button" aria-label="Bookmark this newsarticle" onClick={handleBookmarkClick} className={bookmark} />
+        )}
+
+        {!mainpage && (
+          <div className="newscard__buttons">
+            <p className="newscard__rusure"> Remove from saved </p>
+            <p className="newscard__keyword">
+              {keyword}
+            </p>
+            <button type="button" className="newscard__button newscard__trash">
+              <img alt="put in trash" src={trash} />
+            </button>
+          </div>
         )}
         <img className="newscard__img" alt={keyword} src={image} />
         <div className="newscard__articlebottom">

@@ -29,13 +29,13 @@ const App = () => {
     articles: [
       {
         _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yay',
+        keyword: 'ok',
         title: 'Yay is yay no1',
         text: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
         date: 'Monday',
         source: 'http://www.website.is',
         link: 'http://www.website.com',
-        image: 'https://techcrunch.com/wp-content/uploads/2021/03/Remix-Press.jpg?w=764',
+        image: 'https://mondrian.mashable.com/2021%252F03%252F19%252F0a%252Ff6d61b7c5df64b469ff49ca039929631.49d2c.jpg%252F1200x630.jpg?signature=DQLKBlXpy-YTv1tQmTOlQTOaPgw=',
         owner: '60540ceed1ccba35d1986789',
         createdAt: '2021-04-02T00:24:18.426Z',
       },
@@ -47,49 +47,49 @@ const App = () => {
         date: 'Monday',
         source: 'http://www.website.is',
         link: 'http://www.website.com',
-        image: 'https://techcrunch.com/wp-content/uploads/2021/03/Remix-Press.jpg?w=764',
+        image: 'https://mondrian.mashable.com/2021%252F03%252F19%252F0a%252Ff6d61b7c5df64b469ff49ca039929631.49d2c.jpg%252F1200x630.jpg?signature=DQLKBlXpy-YTv1tQmTOlQTOaPgw=',
         owner: '60540ceed1ccba35d1986789',
         createdAt: '2021-04-02T00:24:18.426Z',
       },
       {
         _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yay',
+        keyword: 'yaasdy',
         title: 'yay is title 3',
         text: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
         date: 'Monday',
         source: 'http://www.website.is',
         link: 'http://www.website.com',
-        image: 'https://techcrunch.com/wp-content/uploads/2021/03/Remix-Press.jpg?w=764',
+        image: 'https://mondrian.mashable.com/2021%252F03%252F19%252F0a%252Ff6d61b7c5df64b469ff49ca039929631.49d2c.jpg%252F1200x630.jpg?signature=DQLKBlXpy-YTv1tQmTOlQTOaPgw=',
         owner: '60540ceed1ccba35d1986789',
         createdAt: '2021-04-02T00:24:18.426Z',
       },
       {
         _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yay',
+        keyword: 'sadasdyay',
         title: 'Yay is yay no 4',
         text: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
         date: 'Monday',
         source: 'http://www.website.is',
         link: 'http://www.website.com',
-        image: 'https://techcrunch.com/wp-content/uploads/2021/03/Remix-Press.jpg?w=764',
+        image: 'https://mondrian.mashable.com/2021%252F03%252F19%252F0a%252Ff6d61b7c5df64b469ff49ca039929631.49d2c.jpg%252F1200x630.jpg?signature=DQLKBlXpy-YTv1tQmTOlQTOaPgw=',
         owner: '60540ceed1ccba35d1986789',
         createdAt: '2021-04-02T00:24:18.426Z',
       },
       {
         _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yay',
+        keyword: 'yasday',
         title: 'Yay is yay no 5',
         text: 'yay is text',
         date: 'Monday',
         source: 'http://www.website.is',
         link: 'http://www.website.com',
-        image: 'https://techcrunch.com/wp-content/uploads/2021/03/Remix-Press.jpg?w=764',
+        image: 'https://mondrian.mashable.com/2021%252F03%252F19%252F0a%252Ff6d61b7c5df64b469ff49ca039929631.49d2c.jpg%252F1200x630.jpg?signature=DQLKBlXpy-YTv1tQmTOlQTOaPgw=',
         owner: '60540ceed1ccba35d1986789',
         createdAt: '2021-04-02T00:24:18.426Z',
       },
       {
         _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yay',
+        keyword: 'yaqwy',
         title: 'Yay is yay no 6',
         text: 'yay is text',
         date: 'Monday',
@@ -159,7 +159,15 @@ const App = () => {
                 userInfo={currentUser}
                 toogleMobNav={toggleMobileMenu}
               />
-              {Articles && <SearchResults articles={articleList.articles} />}
+              {Articles && (
+                <SearchResults
+                  articles={articleList.articles}
+                  isMain
+                  device={UserWindow}
+                  knownUser={Loggedin}
+                />
+              )}
+              {/* The above will be search results */}
               <About />
             </Route>
             <Route path="/saved-news">
@@ -172,7 +180,12 @@ const App = () => {
                 articleResults={Articles}
                 userInfo={currentUser}
                 toogleMobNav={toggleMobileMenu}
+              />
+              <SearchResults
                 articles={articleList.articles}
+                isMain={false}
+                device={UserWindow}
+                knownUser={Loggedin}
               />
             </Route>
             <Route path="*">

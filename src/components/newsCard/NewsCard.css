@@ -6,7 +6,17 @@
   color: black;
   position: relative;
   margin: 0;
+  margin-bottom: 1.300em;
   padding: 0;
+}
+.newscard__article {
+  position: relative;
+}
+.newscard__rusure {
+  display: none;
+}
+.newscard__prompt {
+  display:none;
 }
 
 .newscard__button {
@@ -40,8 +50,44 @@
 }
 
 .newscard__isBookmarked:hover {
-  border: 2px solid #2F71E5;
+  border: 2px solid #2f71e5;
   box-sizing: border-box;
+}
+
+.newscard__trash {
+  right: 1em;
+  top: 1em;
+  height: 40px;
+  width: 40px;
+  background-image: url(../../images/trash.png);
+}
+.newscard__keyword {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  color: #000000;
+  margin: 0.5em 1.375em;
+  display: flex;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+  background: none;
+  justify-content: center;
+  padding: 0.5em 1.250em;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.newscard__buttons {
+  display: flex;
+  flex-direction: row;
+  position: relative;
 }
 
 .newscard__img {

@@ -40,7 +40,7 @@ function Overview() {
           <p className="overview__text">By Keywords <span className="overview__keywords"> {keywordslist()} </span> </p>
         </>
       )}
-      {!artikelnums}
+
     </section>
   );
 }

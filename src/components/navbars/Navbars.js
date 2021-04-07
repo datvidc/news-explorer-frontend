@@ -6,6 +6,7 @@ import openbtn from '../../images/menu.png';
 import closebtn from '../../images/close.png';
 import './Navbars.css';
 import logOut from '../../images/logout.png';
+import blckMenuBtn from '../../images/menuBlack.png';
 import logoutBlack from '../../images/logoutBlack.png';
 import currentUserContext from '../../context/CurrentUserContext';
 
@@ -34,13 +35,16 @@ function OpenNav(props) {
 }
 
 function ClosedNav(props) {
-  const { menuBtn, toogleMobNav } = props;
+  const { menuBtn, toogleMobNav, isMain } = props;
+  const MenuButton = isMain ? menuBtn : blckMenuBtn;
+  const titleClass = isMain ? 'navbar__title' : 'navbar__title-saved';
+
   return (
     <nav className="navbar">
       <div className="navbar__top">
-        <a href="/" className="navbar__title">NewsExplorer</a>
+        <a href="/" className={titleClass}>NewsExplorer</a>
         <button type="button" onClick={toogleMobNav} className="navbar__button">
-          <img alt="menu" src={menuBtn} />
+          <img alt="menu" src={MenuButton} />
         </button>
       </div>
     </nav>
@@ -53,6 +57,7 @@ function MobileNav(props) {
     toogleMobNav,
     isLoggedIn,
     handleLogout,
+    isMain,
   } = props;
   const user = React.useContext(currentUserContext);
   const menuBtn = isOpen ? closebtn : openbtn;
@@ -61,6 +66,7 @@ function MobileNav(props) {
       {
         isOpen ? (
           <OpenNav
+            isMain={isMain}
             handleLogout={handleLogout}
             isLoggedIn={isLoggedIn}
             user={user}
@@ -70,6 +76,7 @@ function MobileNav(props) {
         )
           : (
             <ClosedNav
+              isMain={isMain}
               toogleMobNav={toogleMobNav}
               menuBtn={menuBtn}
             />
