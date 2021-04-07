@@ -1,0 +1,29 @@
+.overview__title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 24px;
+  color: rgba(26, 27, 34, 0.5);
+}
+
+.overview__heading {
+  font-family: Roboto Slab;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 34px;
+color: #1A1B22;
+}
+
+.overview__text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.overview__keywords {
+  font-weight: bold;
+}

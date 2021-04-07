@@ -162,8 +162,18 @@ const App = () => {
               {Articles && <SearchResults articles={articleList.articles} />}
               <About />
             </Route>
-            <Route path="/saved">
-              <h1>hello</h1>
+            <Route path="/saved-news">
+              {/* This will be a protected route */}
+              <Main
+                mainPage={false}
+                handleLogout={handleLogout}
+                device={UserWindow}
+                knownUser={Loggedin}
+                articleResults={Articles}
+                userInfo={currentUser}
+                toogleMobNav={toggleMobileMenu}
+                articles={articleList.articles}
+              />
             </Route>
             <Route path="*">
               <Redirect to="/" />

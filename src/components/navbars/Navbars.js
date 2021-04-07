@@ -6,6 +6,7 @@ import openbtn from '../../images/menu.png';
 import closebtn from '../../images/close.png';
 import './Navbars.css';
 import logOut from '../../images/logout.png';
+import logoutBlack from '../../images/logoutBlack.png';
 import currentUserContext from '../../context/CurrentUserContext';
 
 function OpenNav(props) {
@@ -79,7 +80,7 @@ function MobileNav(props) {
 }
 
 function Navigation(props) {
-  const { isLoggedIn, handleLogout } = props;
+  const { isLoggedIn, handleLogout, isMain } = props;
 
   const user = React.useContext(currentUserContext);
 
@@ -87,30 +88,60 @@ function Navigation(props) {
   const clickHandler = isLoggedIn ? handleLogout : handleLogout;
 
   return (
-    <nav className="navbar">
-      <div className="navbar__top">
-        <a href="/" className="navbar__title">NewsExplorer</a>
-        <ul className="navbar__links-container">
-          <li className="navbar-border-bottom navbar__linkItem">
-            <a href="/" className="navbar__linkhome">Home </a>
-          </li>
-          {isLoggedIn && (
-            <>
-              <li className="navbar__linkItem">
-                <a className="navbar__linkSaved navbar__linkhome" href="/saved-news">Saved Articles</a>
+    <>
+      {isMain && (
+        <nav className="navbar">
+          <div className="navbar__top">
+            <a href="/" className="navbar__title">NewsExplorer</a>
+            <ul className="navbar__links-container">
+              <li className="navbar-border-bottom navbar__linkItem">
+                <a href="/" className="navbar__linkhome">Home </a>
               </li>
-            </>
-          )}
-          <li>
-            <button type="button" onClick={clickHandler} className="navbar__linkUser">
-              {btntext}
-              {isLoggedIn && (<img src={logOut} alt="Log Out" />)}
-            </button>
-          </li>
-        </ul>
-      </div>
+              {isLoggedIn && (
+                <>
+                  <li className="navbar__linkItem">
+                    <a className="navbar__linkSaved navbar__linkhome" href="/saved-news">Saved Articles</a>
+                  </li>
+                </>
+              )}
+              <li>
+                <button type="button" onClick={clickHandler} className="navbar__linkUser">
+                  {btntext}
+                  {isLoggedIn && (<img src={logOut} alt="Log Out" />)}
+                </button>
+              </li>
+            </ul>
+          </div>
 
-    </nav>
+        </nav>
+      )}
+      {!isMain && (
+        <nav className="navbar">
+          <div className="navbar__top-saved">
+            <a href="/" className="navbar__title-saved">NewsExplorer</a>
+            <ul className="navbar__links-container">
+              <li className="navbar__linkItem">
+                <a href="/" className="navbar__linkhome-saved">Home </a>
+              </li>
+              {isLoggedIn && (
+                <>
+                  <li className="navbar-border-bottom-saved navbar__linkItem-saved">
+                    <a className="navbar__linkSaved navbar__linkhome-saved" href="/saved-news">Saved Articles</a>
+                  </li>
+                </>
+              )}
+              <li>
+                <button type="button" onClick={clickHandler} className="navbar__linkUser-saved">
+                  {btntext}
+                  {isLoggedIn && (<img src={logoutBlack} alt="Log Out" />)}
+                </button>
+              </li>
+            </ul>
+          </div>
+
+        </nav>
+      )}
+    </>
   );
 }
 

@@ -3,6 +3,7 @@ import React from 'react';
 import './Main.css';
 
 import Header from '../header/Header';
+import Overview from '../overview/Overview';
 
 function Main(props) {
   const {
@@ -17,16 +18,32 @@ function Main(props) {
   }
 
   return (
-    <div className="main">
-      <Header
-        handleLogout={handleLogout}
-        mobile={isMobile}
-        loggedIn={knownUser}
-        toogleMobNav={toogleMobNav}
-        isMain={mainPage}
-      />
-    </div>
+    <>
+      {mainPage && (
+        <div className="main">
+          <Header
+            handleLogout={handleLogout}
+            mobile={isMobile}
+            loggedIn={knownUser}
+            toogleMobNav={toogleMobNav}
+            isMain={mainPage}
+          />
+        </div>
+      )}
+      {!mainPage && (
+        <div className="main-saved">
+          <Header
+            handleLogout={handleLogout}
+            mobile={isMobile}
+            loggedIn={knownUser}
+            toogleMobNav={toogleMobNav}
+            isMain={false}
+          />
+          <Overview />
+        </div>
 
+      )}
+    </>
   );
 }
 

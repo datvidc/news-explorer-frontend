@@ -20,6 +20,7 @@ function Header(props) {
                 isLoggedIn={loggedIn}
                 toogleMobNav={toogleMobNav}
                 handleLogout={handleLogout}
+                isMain={isMain}
               />
             </header>
             <SearchForm />
@@ -32,9 +33,10 @@ function Header(props) {
                 isLoggedIn={loggedIn}
                 toogleMobNav={toogleMobNav}
                 handleLogout={handleLogout}
+                isMain={isMain}
               />
             </header>
-            <SearchForm />
+
           </>
         )
       }

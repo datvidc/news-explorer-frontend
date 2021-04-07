@@ -15,6 +15,8 @@ function NewsCard(props) {
     text,
   } = oneArticle;
 
+  // logic for determining if newsArticle is bookmarked
+
   let bookmark = props.isbookmarked ? 'newscard__button newscard__isBookmarked' : 'newscard__button newscard__bookmark';
 
   const handleBookmarkClick = () => {

@@ -5,3 +5,9 @@
   align-self: center;
   display: flex;
 }
+
+.navbar__linkItem-saved {
+  align-self: center;
+  display: flex;
+  margin-left: 2.750em;
+}

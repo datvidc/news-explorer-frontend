@@ -7,10 +7,22 @@
   background: url(../../images/georgia-de-lotz--mobile-unsplash.webp) no-repeat;
 }
 
+.main-saved {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 536px;
+}
+
 @media (min-width: 321px) {
   .main {
     background: url(../../images/georgia-de-lotz--Tablet-unsplash.webp)
       no-repeat;
+    height: 400px;
+    overflow: hidden;
+  }
+  .main-saved {
     height: 400px;
     overflow: hidden;
   }
@@ -21,6 +33,8 @@
     background: url(../../images/georgia-de-lotz--bigScreen-unsplash.webp)
       no-repeat;
     background-size: 100%;
-
+  }
+  .main-saved {
+    background-size: 100%;
   }
 }
