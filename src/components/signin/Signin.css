@@ -5,7 +5,8 @@
   position: absolute;
   top: -1em;
   right: -3em;
-
+  background-color: transparent;
+  border: none;
 }
 
 .signin__signup {
@@ -19,4 +20,48 @@
   padding: 34px 36px 28px;
   margin: auto;
   margin-top: 20vh;
+}
+
+.signin {
+  width: 430px;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 34px 36px 28px;
+  margin: auto;
+  margin-top: 20vh;
+}
+
+.signin__form {
+  display: flex;
+  flex-direction: column;
+}
+.signin__error {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  margin: 0em 0em 1em 0em;
+}
+
+label {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #2f71e5;
+}
+input {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
 }

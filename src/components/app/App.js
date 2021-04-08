@@ -121,7 +121,7 @@ const App = () => {
   const [Loggedin, SetLoggedIn] = useState(true); /* use for testing */
   const [UserWindow, SetUserWindow] = useState('');
   const [mobileMenu, SetMobileMenu] = useState(false);
-  const [signIn, setSigning] = useState(false);
+  const [signIn, setSigning] = useState(true);
   const [signUp, setSignUp] = useState(false);
 
   const toggleMobileMenu = (e) => {
@@ -208,11 +208,17 @@ const App = () => {
         )}
         {signIn && (
           <Popup>
-            <Signin />
+            <Signin signin />
           </Popup>
-
         )}
+        {signUp && (
+          <Popup>
+            <Signin signin={false} />
+          </Popup>
+        )}
+
       </main>
+
     </CurrentUserContext.Provider>
 
   );
