@@ -216,12 +216,12 @@ const App = () => {
           />
         )}
         {signIn && (
-          <Popup>
+          <Popup close={toggleSigninPopup}>
             <Signin signin close={toggleSigninPopup} />
           </Popup>
         )}
         {signUp && (
-          <Popup>
+          <Popup close={toggleSignUpPopup}>
             <Signin signin={false} close={toggleSignUpPopup} />
           </Popup>
         )}
