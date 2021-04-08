@@ -1,0 +1,22 @@
+.signin__close {
+  background-image: url(../../images/close.png);
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: -1em;
+  right: -3em;
+
+}
+
+.signin__signup {
+  width: 430px;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 34px 36px 28px;
+  margin: auto;
+  margin-top: 20vh;
+}

@@ -14,11 +14,17 @@ function SearchResults(props) {
 
   const [next, Setnext] = useState(3);
   const [articlesShowing, setArticlesShowing] = useState([]);
+  const [showbutton, setshowbutton] = useState(true);
   const isDesktop = device === 'desktop';
 
   const handleShowMoreArticles = () => {
+    if (next >= articles.length) {
+      Setnext(articles.length);
+      setshowbutton(false);
+    } else {
+      Setnext(next + 3);
+    }
     setArticlesShowing(articles.slice(0, next));
-    Setnext(next + 3);
   };
 
   useEffect(() => {
@@ -43,7 +49,9 @@ function SearchResults(props) {
               ))
             }
           </ul>
-          <button className="searchpage__showmore" type="button" onClick={handleShowMoreArticles}> Show More</button>
+          {showbutton && (
+            <button className="searchpage__showmore" type="button" onClick={handleShowMoreArticles}> Show More</button>
+          )}
         </section>
       )}
       {!isMain && (

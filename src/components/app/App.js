@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
@@ -11,6 +12,8 @@ import SearchResults from '../search-results/Search-results';
 import About from '../about/About';
 import Footer from '../footer/Footer';
 import { MobileNav } from '../navbars/Navbars';
+import Popup from '../popup/Popup';
+import Signin from '../signin/Signin';
 
 import CurrentUserContext from '../../context/CurrentUserContext';
 
@@ -203,7 +206,10 @@ const App = () => {
             isLoggedIn={Loggedin}
           />
         )}
-        {signin && (
+        {signIn && (
+          <Popup>
+            <Signin />
+          </Popup>
 
         )}
       </main>

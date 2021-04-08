@@ -46,6 +46,13 @@
     "allowIndentationTabs": 0,
     "no-tabs": 0,
     "react/jsx-one-expression-per-line": "off",
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "labelComponents": ["CustomLabel"],
+      "labelAttributes": ["inputLabel"],
+      "controlComponents": ["CustomInput"],
+      "assert": "either",
+      "depth": 3
+    }],
     "react/jsx-filename-extension": [
       1,
       {
