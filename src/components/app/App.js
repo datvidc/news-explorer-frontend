@@ -128,6 +128,13 @@ const App = () => {
     e.preventDefault();
     SetMobileMenu(!mobileMenu);
   };
+
+  const toggleSigninPopup = (e) => {
+    setSigning(!signIn);
+  }
+  const toggleSignUpPopup = (e) => {
+    setSignUp(!signUp);
+  }
   const handleLogout = (e) => {
     e.preventDefault();
     SetCurrentUser();
@@ -208,12 +215,12 @@ const App = () => {
         )}
         {signIn && (
           <Popup>
-            <Signin signin />
+            <Signin signin close={toggleSigninPopup} />
           </Popup>
         )}
         {signUp && (
           <Popup>
-            <Signin signin={false} />
+            <Signin signin={false} close={toggleSignUpPopup} />
           </Popup>
         )}
 

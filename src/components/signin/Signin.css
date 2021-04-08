@@ -32,7 +32,7 @@
   border-radius: 16px;
   padding: 34px 36px 28px;
   margin: auto;
-  margin-top: 20vh;
+  margin-top: 12.938em;
 }
 
 .signin__form {
@@ -47,6 +47,22 @@
   line-height: 15px;
   color: #ff0000;
   margin: 0em 0em 1em 0em;
+}
+.signin__submit {
+  width: 358px;
+  height: 64px;
+  background: #e6e8eb;
+  border-radius: 100px;
+  font-family: "Roboto",sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #b6bcbf;
+  margin: 8px 0 0;
 }
 
 label {
@@ -64,4 +80,5 @@ input {
   font-size: 14px;
   line-height: 17px;
   color: #000000;
+  border: none;
 }

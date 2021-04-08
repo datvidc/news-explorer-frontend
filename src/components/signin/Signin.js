@@ -22,10 +22,10 @@ function Signin(props) {
       <h3>{title}</h3>
       <form className="signin__form">
         <label htmlFor="email">Email </label>
-        <input className="signin__email" name="email" type="email" placeholder="Enter email" minLength="7" required="" value="" />
+        <input className="signin__email" name="email" type="email"  autoComplete="on" placeholder="Enter email" minLength="7" required="" value="" />
         <p className="signin__error signing__email-warning">{emailWarn}</p>
         <label htmlFor="password">Password</label>
-        <input className="signing__password" name="password" type="password" placeholder="Enter Password" minLength="4" required="" value="" />
+        <input className="signing__password" name="password" autoComplete="on" type="password" placeholder="Enter Password" minLength="4" required="" value="" />
         <p className="signin__error signin__password-warning"> {passwordWarn} </p>
 
         {!props.signin && (
@@ -35,6 +35,8 @@ function Signin(props) {
             <p className="signin__error signin__username-warning"> {usernameWarn} </p>
           </>
         )}
+        <button type="submit" className="signin__submit">Sign in</button>
+        <p>or <a href="/">Sign up</a></p>
       </form>
     </div>
   );
