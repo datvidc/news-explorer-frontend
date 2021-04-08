@@ -18,7 +18,7 @@ function Signin(props) {
 
   return (
     <div className={type}>
-      <button type="button" aria-label="close" className="signin__close" />
+      <button type="button" aria-label="close" className="signin__close" onClick={props.close} />
       <h3>{title}</h3>
       <form className="signin__form">
         <label htmlFor="email">Email </label>
