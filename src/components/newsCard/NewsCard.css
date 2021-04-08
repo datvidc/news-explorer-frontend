@@ -204,9 +204,33 @@ background-image: url(../../images/blckTrash.png);
     padding: 0.5em 1.250em;
     transition: 0.2s ease;
   }
+  .newscard__bookmark:hover + .newscard__prompt {
+    position: absolute;
+    border-radius: 8px;
+    top: 1.5em;
+    right: 4em;
+    background: #ffffff;
+    /* border-radius: 10px; */
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    margin: 0em 0.3em 0em 0em;
+    display: flex;
+    border: none;
+    cursor: pointer;
+    padding: 0.5em 1.250em;
+    transition: 0.2s ease;
 
+  }
   .newscard__articlebottom {
     font-size: 26px;
     line-height: 30px;
   }
+  .newscard__bookmark {
+  top: 1.500em;
+  }
+
 }

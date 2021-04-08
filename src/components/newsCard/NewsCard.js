@@ -1,10 +1,13 @@
 import React from 'react';
 
 import './NewsCard.css';
-import trash from '../../images/trash.png';
 
 function NewsCard(props) {
-  const { oneArticle, mainpage, isDesktop, isLoggedIn, } = props;
+  const {
+    oneArticle,
+    mainpage,
+    isLoggedIn,
+  } = props;
 
   const {
     keyword,
@@ -29,23 +32,22 @@ function NewsCard(props) {
   return (
     <li className="newscard">
       <article className="newscard__article">
-        {!isLoggedIn && (
-          <p className="newscard__prompt"> Sign in to save articles </p>
-        )}
+
         {mainpage && (
 
           <button type="button" aria-label="Bookmark this newsarticle" onClick={handleBookmarkClick} className={bookmark} />
         )}
+        {!isLoggedIn && mainpage && (
+          <p className="newscard__prompt"> Sign in to save articles </p>
+        )}
 
         {!mainpage && (
           <div className="newscard__buttons">
-            <p className="newscard__rusure"> Remove from saved </p>
             <p className="newscard__keyword">
               {keyword}
             </p>
-            <button type="button" className="newscard__button newscard__trash">
-              <img alt="put in trash" src={trash} />
-            </button>
+            <button type="button" aria-label="remove" className="newscard__button newscard__trash" />
+            <p className="newscard__rusure"> Remove from saved </p>
           </div>
         )}
         <img className="newscard__img" alt={keyword} src={image} />
