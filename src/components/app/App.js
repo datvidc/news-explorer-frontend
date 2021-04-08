@@ -131,10 +131,12 @@ const App = () => {
 
   const toggleSigninPopup = (e) => {
     setSigning(!signIn);
-  }
+  };
+
   const toggleSignUpPopup = (e) => {
     setSignUp(!signUp);
-  }
+  };
+
   const handleLogout = (e) => {
     e.preventDefault();
     SetCurrentUser();
