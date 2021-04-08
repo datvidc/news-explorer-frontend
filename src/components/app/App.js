@@ -115,9 +115,11 @@ const App = () => {
     ],
   };
   const [Articles, SetArticles] = useState(articleList);
-  const [Loggedin, SetLoggedIn] = useState(false);
+  const [Loggedin, SetLoggedIn] = useState(true); /* use for testing */
   const [UserWindow, SetUserWindow] = useState('');
   const [mobileMenu, SetMobileMenu] = useState(false);
+  const [signIn, setSigning] = useState(false);
+  const [signUp, setSignUp] = useState(false);
 
   const toggleMobileMenu = (e) => {
     e.preventDefault();
@@ -200,6 +202,9 @@ const App = () => {
             toogleMobNav={toggleMobileMenu}
             isLoggedIn={Loggedin}
           />
+        )}
+        {signin && (
+
         )}
       </main>
     </CurrentUserContext.Provider>
