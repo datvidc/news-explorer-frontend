@@ -4,9 +4,9 @@
   border-radius: 16px;
   color: black;
   position: relative;
-  margin: 0;
   background-color: white;
   padding: 0;
+  margin: auto;
 }
 .newscard__article {
   position: relative;
@@ -146,6 +146,7 @@ background-image: url(../../images/blckTrash.png);
   letter-spacing: 0.4px;
   text-transform: uppercase;
   color: #b6bcbf;
+  text-decoration: none;
 }
 
 .newscard__date {
@@ -175,6 +176,12 @@ background-image: url(../../images/blckTrash.png);
     max-width: 14em;
   }
   .newscard__bookmark {
+    right: 0.5em;
+    top: 0.5em;
+    height: 40px;
+    width: 40px;
+  }
+  .newscard__isBookmarked {
     right: 0.5em;
     top: 0.5em;
     height: 40px;
@@ -252,6 +259,9 @@ background-image: url(../../images/blckTrash.png);
   }
   .newscard__bookmark {
   top: 1.500em;
+  }
+  .newscard__isBookmarked {
+    top: 1.500em;
   }
 
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './NewsCard.css';
 
@@ -16,15 +16,18 @@ function NewsCard(props) {
     source,
     image,
     text,
+    link,
   } = oneArticle;
+
+  const [bookmarked, setBookmarked] = useState(props.isbookmarked);
 
   // logic for determining if newsArticle is bookmarked
 
-  let bookmark = props.isbookmarked ? 'newscard__button newscard__isBookmarked' : 'newscard__button newscard__bookmark';
+  const bookmark = bookmarked ? 'newscard__button newscard__isBookmarked' : 'newscard__button newscard__bookmark';
 
   const handleBookmarkClick = () => {
     // code for changing isbookmarked state
-    bookmark = props.isbookmarked ? 'newscard__button newscard__isBookmarked' : 'newscard__button newscard__bookmark';
+    setBookmarked(!bookmarked);
   };
 
   return (
@@ -60,7 +63,7 @@ function NewsCard(props) {
             {text}
           </p>
 
-          <h4 className="newscard__source">{source}</h4>
+          <h4 className="newscard__source"> <a target="_blank" rel="noreferrer" className="newscard__source" href={link}>{source} </a></h4>
         </div>
       </article>
     </li>

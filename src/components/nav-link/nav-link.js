@@ -15,7 +15,7 @@ function NavLink({
               <a href="/" className="navlink__home"> Home </a>
             </li>
             <li>
-              <a className="navlink__home" href="/"> Saved Articles </a>
+              <a className="navlink__home" href="/saved-news"> Saved Articles </a>
             </li>
             <li>
               <button className="navlink__button" type="button" onClick={handleLogout}>
