@@ -89,7 +89,7 @@
     height: 24px;
     width: 24px;
   }
-  .footer_listItem {
+  .footer__pro .footer__navilink{
     margin-left: 2em;
   }
 }
