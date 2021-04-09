@@ -22,7 +22,7 @@
 }
 
 .navbar-active {
-  width: 100vw;
+
   list-style: none;
   display: flex;
   flex-direction: column;

@@ -229,6 +229,7 @@ const App = () => {
         <Footer />
         {mobileMenu && (
           <MobileNav
+            handleSignin={handleLogin}
             isOpen={mobileMenu}
             toogleMobNav={toggleMobileMenu}
             isLoggedIn={Loggedin}

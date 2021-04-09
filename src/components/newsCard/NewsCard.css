@@ -158,7 +158,15 @@ background-image: url(../../images/blckTrash.png);
   line-height: 24px;
   color: #b6bcbf;
 }
+@media (max-width: 319px) {
+  .newscard {
+    max-width: 90vw;
+  }
+  .newscard__img {
+  max-width: 90vw;
+  }
 
+}
 @media (min-width: 449px) {
   .newscard__img {
     max-width: 14em;

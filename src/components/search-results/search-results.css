@@ -28,7 +28,7 @@
 }
 
 .searchpage__showmore {
-  width: 288px;
+ width: 90vw;
   height: 64px;
   border-radius: 80px;
   border: none;
@@ -60,6 +60,9 @@
   .searchpage {
     margin: 2em 2.5em;
     max-width: 90em;
+  }
+  .searchpage__showmore {
+    width: 288px;
   }
 }
 

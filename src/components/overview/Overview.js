@@ -13,7 +13,6 @@ function Overview() {
 
   const keywords = ['list', 'list', 'meyer', 'hello', 'french', 'react'];
   const ukeywords = keywords.sort().filter((x, i, a) => !i || x !== a[i - 1]);
-  console.log(ukeywords[1]);
 
   const keywordslist = () => {
     switch (ukeywords.length) {
