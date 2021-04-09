@@ -9,10 +9,12 @@ function Nav({
   toogleMobNav,
   handleLogout,
   isMain,
+  handleSignin,
 }) {
   return (
     isMobile ? (
       <MobileNav
+        handleSignin={handleSignin}
         handleLogout={handleLogout}
         isOpen={false}
         toogleMobNav={toogleMobNav}
@@ -20,7 +22,14 @@ function Nav({
         isMain={isMain}
       />
     )
-      : <Navigation isLoggedIn={isLoggedIn} handleLogout={handleLogout} isMain={isMain} />
+      : (
+        <Navigation
+          handleSignin={handleSignin}
+          isLoggedIn={isLoggedIn}
+          handleLogout={handleLogout}
+          isMain={isMain}
+        />
+      )
   );
 }
 

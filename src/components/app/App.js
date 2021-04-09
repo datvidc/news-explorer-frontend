@@ -120,8 +120,12 @@ const App = () => {
   const [Loggedin, SetLoggedIn] = useState(true); /* use for testing */
   const [UserWindow, SetUserWindow] = useState('');
   const [mobileMenu, SetMobileMenu] = useState(false);
-  const [signIn, setSigning] = useState(true);
+  const [signIn, setSigning] = useState(false);
   const [signUp, setSignUp] = useState(false);
+
+  const handleLogin = () => {
+    setSigning(true);
+  };
 
   const changePopupType = (e) => {
     e.preventDefault();
@@ -172,7 +176,6 @@ const App = () => {
     }
   }, []);
 
-  console.log(Articles.articles);
   return (
     <CurrentUserContext.Provider value={currentUser}>
 
@@ -203,6 +206,7 @@ const App = () => {
             <Route path="/saved-news">
               {/* This will be a protected route */}
               <Main
+                signmeup={handleLogin}
                 mainPage={false}
                 handleLogout={handleLogout}
                 device={UserWindow}
