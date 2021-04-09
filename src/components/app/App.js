@@ -17,6 +17,7 @@ import Signin from '../signin/Signin';
 import CurrentUserContext from '../../context/CurrentUserContext';
 
 const App = () => {
+  // for testing
   const [currentUser, SetCurrentUser] = useState({
     data: {
       id: '60540ceed1ccba35d1986789',
@@ -25,6 +26,7 @@ const App = () => {
     },
   });
 
+  // for testing functionality
   const articleList = {
     status: 'ok',
     totalResults: 2,
@@ -246,7 +248,7 @@ const App = () => {
           </Popup>
         )}
         {signUp && (
-          <Popup close={toggleSignUpPopup}>
+          <Popup closepop={toggleSignUpPopup}>
             <Signin
               signin={false}
               handlesignup={handlesignup}
