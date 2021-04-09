@@ -35,7 +35,8 @@
 /* largest possible screentype */
 @media (min-width: 1200px) {
   .about {
-
+    max-width: 90em;
+    margin: auto;
   }
 
   .about__img {

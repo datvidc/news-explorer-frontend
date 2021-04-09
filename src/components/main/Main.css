@@ -34,6 +34,8 @@
     background: url(../../images/georgia-de-lotz--bigScreen-unsplash.webp)
       no-repeat;
     background-size: 100%;
+    max-width: 90em;
+    margin: auto;
   }
   .main-saved {
     background-size: 100%;

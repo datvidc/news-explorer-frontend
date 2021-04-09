@@ -73,6 +73,7 @@
 
 @media (min-width: 800px) {
   .footer {
+    max-width: 90em;
     margin: 0 6.5em;
     display: flex;
     flex-direction: row;
@@ -87,4 +88,13 @@
     margin-left: 2em;
   }
 
+}
+@media (min-width: 1400px) {
+  .footer {
+    max-width: 90em;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
