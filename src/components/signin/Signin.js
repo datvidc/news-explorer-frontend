@@ -18,8 +18,10 @@ function Signin(props) {
   const [passwordWarn, setpasswordWarn] = useState('');
   const [usernameWarn, setusernameWarn] = useState('');
 
-  const title = type ? 'Sign in' : 'Sign up';
+  const title = props.signin ? 'Sign in' : 'Sign up';
+  const orgohere = props.signin ? 'Sign up' : 'Sign in';
   const submitBtn = emailValid && passwordValid ? 'signin__buttonValid' : 'signin__submit';
+  const signupBtn = emailValid && passwordValid && UsernameValid ? 'signin__buttonValid' : 'signin__signupBtn';
 
   const handleEmailChange = (event) => {
     event.preventDefault();
@@ -87,12 +89,16 @@ function Signin(props) {
           </>
         )}
         {!props.signin && (
-          <p className="signin__error signin__validationError">{validationerror}</p>
+          <>
+            <p className="signin__error signin__validationError">{validationerror}</p>
+            <button onClick={handleSigninClick} type={emailValid && passwordValid && UsernameValid ? 'submit' : 'button'} className={signupBtn}>Sign up</button>
+          </>
         )}
-        <button onClick={handleSigninClick} type={emailValid && passwordValid ? 'submit' : 'button'} className={submitBtn}>Sign in</button>
-
+        {props.signin && (
+          <button onClick={handleSigninClick} type={emailValid && passwordValid ? 'submit' : 'button'} className={submitBtn}>Sign in</button>
+        )}
       </form>
-      <p className="signin__changetype">or <button onClick={props.changeType} className="signin__changetype" type="button">Sign up</button></p>
+      <p className="signin__changetext signin__changetype">or<button onClick={props.changeType} className="signin__changetype" type="button">{orgohere}</button></p>
     </div>
   );
 }

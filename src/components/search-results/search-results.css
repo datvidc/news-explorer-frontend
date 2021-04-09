@@ -10,7 +10,6 @@
   display: flex;
   flex-wrap: wrap;
   max-width: none;
-  justify-content: center;
 }
 
 .search-results-saved {

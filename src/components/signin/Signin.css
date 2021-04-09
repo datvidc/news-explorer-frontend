@@ -48,6 +48,14 @@
   color: #ff0000;
   margin: 0em 0em 1em 0em;
 }
+
+.signin__buttonValid:hover {
+  cursor: pointer;
+}
+.signin__signupBtn {
+  color: #b6bcbf;
+  border: none;
+}
 .signin__submit {
   height: 64px;
   background: #e6e8eb;
@@ -110,16 +118,28 @@ input {
   font-family: "Inter", "Arial", sans-serif;
   font-size: 14px;
   line-height: 17px;
-  color: #000;
   text-decoration: none;
   text-align: center;
   margin: 16px 0 0;
   color: #2f71e5;
   border: none;
 }
+.signin__changetext {
+  color: #000;
+}
 .signin__validationError {
   margin: auto;
 }
+
+.signin__yes {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+
 .signin__username-warning {
   margin-bottom: 4em;
 }
@@ -132,14 +152,19 @@ input {
   border: none;
   align-self: baseline;
 }
+.signin__sucess:active:focus {
+  border:none;
+  background-color:transparent;
+  outline:none;
+}
 
 @media (min-width: 500px) {
-  .signin__submit{
+  .signin__submit {
     width: 358px;
   }
   .signin__close {
-    top: -1em;
-    right: -3em;
+    right: -2.5em;
+    top: -2.5em;
   }
   .signin {
     width: 430px;

@@ -119,7 +119,7 @@ const App = () => {
     ],
   };
   const [Articles, SetArticles] = useState(articleList);
-  const [Loggedin, SetLoggedIn] = useState(false); /* use for testing */
+  const [Loggedin, SetLoggedIn] = useState(true); /* use for testing */
   const [UserWindow, SetUserWindow] = useState('');
   const [mobileMenu, SetMobileMenu] = useState(false);
   const [signIn, setSigning] = useState(false);
@@ -133,6 +133,7 @@ const App = () => {
   const changePopupType = () => {
     setSigning(!signIn);
     setSignUp(!signUp);
+    setSuccess(false);
   };
   const toggleMobileMenu = () => {
     SetMobileMenu(!mobileMenu);
@@ -140,6 +141,7 @@ const App = () => {
 
   const toggleSigninPopup = () => {
     setSigning(!signIn);
+    setSuccess(false);
   };
 
   const toggleSignUpPopup = () => {
@@ -261,7 +263,7 @@ const App = () => {
           <Popup onclose={handleSuccessclose}>
             <div className="signin">
               <button type="button" aria-label="close" className="signin__close" onClick={handleSuccessclose} />
-              <h3>Registration successfully completed!</h3>
+              <h3 className="signin__yes">Registration successfully completed!</h3>
               <button onClick={toggleSigninPopup} className="signin__sucess" type="button">Sign in</button>
             </div>
           </Popup>

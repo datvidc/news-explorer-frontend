@@ -1,12 +1,11 @@
 .newscard {
   max-width: 288px;
-  height: 446px;
   list-style: none;
   border-radius: 16px;
   color: black;
   position: relative;
   margin: 0;
-  margin-bottom: 1.300em;
+  background-color: white;
   padding: 0;
 }
 .newscard__article {
@@ -182,9 +181,22 @@ background-image: url(../../images/blckTrash.png);
     width: 40px;
   }
 }
-@media (min-width: 1050px) {
+@media (min-width: 930px) {
+  .newscard {
+    max-width: 18.750em;
+    height: 576px
+  }
+
+  .newscard__img {
+    max-width: 18.750em;
+    max-height: 17em;
+  }
+}
+
+@media (min-width: 1250px) {
   .newscard {
     max-width: 25em;
+    height: 576px
   }
   .newscard__img {
     max-width: 25em;
