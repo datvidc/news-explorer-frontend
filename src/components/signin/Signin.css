@@ -106,3 +106,21 @@ input {
   text-align: center;
   margin: 8px 0 0;
 }
+
+.signin__changetype {
+  font-family: "Inter","Arial",sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+  margin: 16px 0 0;
+  color: #2f71e5;
+  border: none;
+}
+.signin__validationError {
+  margin:auto;
+}
+.signin__username-warning {
+  margin-bottom: 4em;
+}

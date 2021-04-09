@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useState } from 'react';
 
 import './Signin.css';
@@ -6,13 +5,14 @@ import './Signin.css';
 function Signin(props) {
   const type = props.signin ? 'signin' : 'signin__signup';
 
+  const [validationerror, SetValidationerror] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
 
   const [emailValid, setEmailValid] = useState(false);
   const [passwordValid, setpasswordValid] = useState(false);
-  const [usernameValid, setusernameValid] = useState(false);
+  const [UsernameValid, setusernameValid] = useState(false);
 
   const [emailWarn, setEmailWarn] = useState('');
   const [passwordWarn, setpasswordWarn] = useState('');
@@ -20,9 +20,8 @@ function Signin(props) {
 
   const title = type ? 'Sign in' : 'Sign up';
   const submitBtn = emailValid && passwordValid ? 'signin__buttonValid' : 'signin__submit';
-  const btnType = emailValid && passwordValid ? 'submit' : 'button';
 
-  const handleEmailChange = event => {
+  const handleEmailChange = (event) => {
     event.preventDefault();
     if (event.target.closest('form').checkValidity()) {
       setEmailWarn('');
@@ -32,9 +31,9 @@ function Signin(props) {
       setEmailWarn('Invalid email address');
       setEmail(event.target.value);
     }
-  }
+  };
 
-  const handlePassChange = event => {
+  const handlePassChange = (event) => {
     event.preventDefault();
     if (event.target.closest('form').checkValidity()) {
       setpasswordWarn('');
@@ -44,9 +43,9 @@ function Signin(props) {
       setpasswordWarn('invalid Password format');
       setPassword(event.target.value);
     }
-  }
+  };
 
-  const handleUserChange = event => {
+  const handleUserChange = (event) => {
     event.preventDefault();
     if (event.target.closest('form').checkValidity()) {
       setusernameWarn('');
@@ -54,19 +53,23 @@ function Signin(props) {
       setusernameValid(true);
     } else {
       setUsername(event.target.value);
-      setusernameWarn('UserName is invalid')
+      setusernameWarn('UserName is invalid');
     }
-  }
+  };
 
-  const handleSigninClick = event => {
+  const handleSigninClick = (event) => {
     event.preventDefault();
-    console.log("sneding");
-    close();
-  }
+    if (props.signin) {
+      props.handleSignIn(email, password);
+    } else {
+      props.handlesignup(email, password, username);
+    }
+    props.closepop();
+  };
 
   return (
     <div className={type}>
-      <button type="button" aria-label="close" className="signin__close" onClick={props.close} />
+      <button type="button" aria-label="close" className="signin__close" onClick={props.closepop} />
       <h3>{title}</h3>
       <form className="signin__form">
         <label htmlFor="email">Email </label>
@@ -83,10 +86,13 @@ function Signin(props) {
             <p className="signin__error signin__username-warning"> {usernameWarn} </p>
           </>
         )}
-        <button onClick={handleSigninClick} type={btnType} className={submitBtn}>Sign in</button>
+        {!props.signin && (
+          <p className="signin__error signin__validationError">{validationerror}</p>
+        )}
+        <button onClick={handleSigninClick} type={emailValid && passwordValid ? 'submit' : 'button'} className={submitBtn}>Sign in</button>
 
       </form>
-      <p className="signin__changetype">or <a href="/">Sign up</a></p>
+      <p className="signin__changetype">or <button onClick={props.changeType} className="signin__changetype" type="button">Sign up</button></p>
     </div>
   );
 }

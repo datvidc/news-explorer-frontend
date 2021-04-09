@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
@@ -124,16 +123,23 @@ const App = () => {
   const [signIn, setSigning] = useState(true);
   const [signUp, setSignUp] = useState(false);
 
+  const changePopupType = (e) => {
+    e.preventDefault();
+    setSigning(!signIn);
+    setSignUp(!signUp);
+  };
   const toggleMobileMenu = (e) => {
     e.preventDefault();
     SetMobileMenu(!mobileMenu);
   };
 
   const toggleSigninPopup = (e) => {
+    e.preventDefault();
     setSigning(!signIn);
   };
 
   const toggleSignUpPopup = (e) => {
+    e.preventDefault();
     setSignUp(!signUp);
   };
 
@@ -141,6 +147,16 @@ const App = () => {
     e.preventDefault();
     SetCurrentUser();
     SetLoggedIn(false);
+  };
+  const handleSignIn = (email, password) => {
+    // Magic
+    const userobject = { email, password };
+    SetArticles(userobject); // delete and replace with logic
+  };
+  const handlesignup = (email, pass, username) => {
+    // magic
+    const userobject = { email, pass, username };
+    SetArticles(userobject); // delete delete and replace with logic
   };
 
   useEffect(() => {
@@ -216,13 +232,23 @@ const App = () => {
           />
         )}
         {signIn && (
-          <Popup close={toggleSigninPopup}>
-            <Signin signin close={toggleSigninPopup} />
+          <Popup closepop={toggleSigninPopup}>
+            <Signin
+              signin
+              handleSignIn={handleSignIn}
+              changeType={changePopupType}
+              closepop={toggleSigninPopup}
+            />
           </Popup>
         )}
         {signUp && (
           <Popup close={toggleSignUpPopup}>
-            <Signin signin={false} close={toggleSignUpPopup} />
+            <Signin
+              signin={false}
+              handlesignup={handlesignup}
+              changeType={changePopupType}
+              closepop={toggleSignUpPopup}
+            />
           </Popup>
         )}
 

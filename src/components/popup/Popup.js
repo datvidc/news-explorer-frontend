@@ -3,12 +3,12 @@ import React, { useEffect } from 'react';
 import './Popup.css';
 
 function Popup(props) {
-  const { component, children, close } = props;
+  const { component, children, closepop } = props;
 
   useEffect(() => {
     const closeModal = (event) => {
       if (event.keyCode === 27) {
-        close();
+        closepop();
       }
     };
     window.addEventListener('keydown', closeModal);
