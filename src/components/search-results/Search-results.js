@@ -10,7 +10,6 @@ function SearchResults(props) {
     device,
     knownUser,
   } = props;
-  console.log(articles);
 
   const [next, Setnext] = useState(3);
   const [articlesShowing, setArticlesShowing] = useState([]);

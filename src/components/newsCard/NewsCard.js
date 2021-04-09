@@ -27,8 +27,6 @@ function NewsCard(props) {
     bookmark = props.isbookmarked ? 'newscard__button newscard__isBookmarked' : 'newscard__button newscard__bookmark';
   };
 
-  console.log(oneArticle);
-
   return (
     <li className="newscard">
       <article className="newscard__article">
