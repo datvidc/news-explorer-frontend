@@ -82,7 +82,7 @@ function Signin(props) {
         {!props.signin && (
           <>
             <label htmlFor="userName">Username</label>
-            <input onChange={handleUserChange} className="signing__username" name="username" type="text" placeholder="Enter your Username" minLength="2" required="" value="" />
+            <input onChange={handleUserChange} className="signing__username" name="username" type="text" placeholder="Enter your Username" minLength="2" required="" />
             <p className="signin__error signin__username-warning"> {usernameWarn} </p>
           </>
         )}

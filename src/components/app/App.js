@@ -127,28 +127,23 @@ const App = () => {
     setSigning(true);
   };
 
-  const changePopupType = (e) => {
-    e.preventDefault();
+  const changePopupType = () => {
     setSigning(!signIn);
     setSignUp(!signUp);
   };
-  const toggleMobileMenu = (e) => {
-    e.preventDefault();
+  const toggleMobileMenu = () => {
     SetMobileMenu(!mobileMenu);
   };
 
-  const toggleSigninPopup = (e) => {
-    e.preventDefault();
+  const toggleSigninPopup = () => {
     setSigning(!signIn);
   };
 
-  const toggleSignUpPopup = (e) => {
-    e.preventDefault();
+  const toggleSignUpPopup = () => {
     setSignUp(!signUp);
   };
 
-  const handleLogout = (e) => {
-    e.preventDefault();
+  const handleLogout = () => {
     SetCurrentUser();
     SetLoggedIn(false);
   };
@@ -184,6 +179,7 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               <Main
+                signmeup={handleLogin}
                 handleLogout={handleLogout}
                 device={UserWindow}
                 knownUser={Loggedin}
@@ -206,7 +202,6 @@ const App = () => {
             <Route path="/saved-news">
               {/* This will be a protected route */}
               <Main
-                signmeup={handleLogin}
                 mainPage={false}
                 handleLogout={handleLogout}
                 device={UserWindow}
