@@ -53,6 +53,7 @@
 .newscard__isBookmarked:hover {
   border: 2px solid #2f71e5;
   box-sizing: border-box;
+
 }
 
 .newscard__trash {

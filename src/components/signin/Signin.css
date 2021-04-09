@@ -124,3 +124,12 @@ input {
 .signin__username-warning {
   margin-bottom: 4em;
 }
+.signin__sucess {
+  font-family: "Inter","Arial",sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration: none;
+  color: #2f71e5;
+  border: none;
+  align-self: baseline;
+}
