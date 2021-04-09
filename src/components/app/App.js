@@ -122,6 +122,7 @@ const App = () => {
   const [mobileMenu, SetMobileMenu] = useState(false);
   const [signIn, setSigning] = useState(false);
   const [signUp, setSignUp] = useState(false);
+  const [sucesspop, setSuccess] = useState(false);
 
   const handleLogin = () => {
     setSigning(true);
@@ -156,6 +157,9 @@ const App = () => {
     // magic
     const userobject = { email, pass, username };
     SetArticles(userobject); // delete delete and replace with logic
+  };
+  const handleSuccessclose = () => {
+    setSuccess(false);
   };
 
   useEffect(() => {
@@ -250,7 +254,15 @@ const App = () => {
             />
           </Popup>
         )}
-
+        {sucesspop && (
+          <Popup onclose={handleSuccessclose}>
+            <div className="signin">
+              <button type="button" aria-label="close" className="signin__close" onClick={handleSuccessclose} />
+              <h3>Registration successfully completed!</h3>
+              <button onClick={toggleSigninPopup} className="signin__sucess" type="button">Sign in</button>
+            </div>
+          </Popup>
+        )}
       </main>
 
     </CurrentUserContext.Provider>
