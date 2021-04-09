@@ -7,7 +7,7 @@ import Overview from '../overview/Overview';
 
 function Main(props) {
   const {
-    toogleMobNav, device, knownUser, mainPage, handleLogout,
+    toogleMobNav, device, knownUser, mainPage, handleLogout, signmeup,
   } = props;
 
   let isMobile;
@@ -22,6 +22,7 @@ function Main(props) {
       {mainPage && (
         <div className="main">
           <Header
+            handleSignin={signmeup}
             handleLogout={handleLogout}
             mobile={isMobile}
             loggedIn={knownUser}
