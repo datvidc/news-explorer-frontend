@@ -70,10 +70,15 @@
   .search-results {
     gap: 1em;
     max-width: 1232px;
+    align-self: flex-start;
+
   }
   .searchpage {
     padding: 4em 6.5em;
     margin: auto;
     max-width: 90em;
+  }
+  .searchpage__heading {
+    align-self: end;
   }
 }

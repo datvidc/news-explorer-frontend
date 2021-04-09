@@ -29,13 +29,14 @@
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   .main {
     background: url(../../images/georgia-de-lotz--bigScreen-unsplash.webp)
       no-repeat;
     background-size: 100%;
     max-width: 90em;
     margin: auto;
+    height: 576px;
   }
   .main-saved {
     background-size: 100%;

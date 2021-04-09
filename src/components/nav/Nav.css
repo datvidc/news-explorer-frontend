@@ -45,7 +45,6 @@
   line-height: 24px;
   text-align: center;
   padding: 0.5em;
-  display: flex;
   border: 1px solid #fff;
   box-sizing: border-box;
   border-radius: 100px;
@@ -62,7 +61,6 @@
   line-height: 24px;
   text-align: center;
   padding: 0.5em;
-  display: flex;
   border: 1px solid#1A1B22;
   box-sizing: border-box;
   border-radius: 100px;
@@ -163,6 +161,14 @@
     position: relative;
     box-sizing: border-box;
     margin: 0;
+  }
+  .navbar__linkUser {
+    height: 48px;
+    width: 176px;
+  }
+  .navbar__linkUser-saved {
+    height: 48px;
+    width: 176px;
   }
 }
 

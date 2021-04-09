@@ -36,6 +36,7 @@ function SearchResults(props) {
         <section className="searchpage">
           <h1 className="searchpage__heading"> Search results</h1>
           <ul className="search-results">
+
             {
               articlesShowing.map((card) => (
                 <NewsCard
