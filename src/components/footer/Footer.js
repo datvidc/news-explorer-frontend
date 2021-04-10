@@ -14,17 +14,17 @@ function Footer() {
             <a href="/"> Home </a>
           </li>
           <li className="footer__navilink">
-            <a href="https://practicum.yandex.com/web/"> Practicum by Yandex </a>
+            <a target="_blank" rel="noreferrer" href="https://practicum.yandex.com/web/"> Practicum by Yandex </a>
           </li>
         </ul>
         <ul className="footer__linkspro">
           <li className="footer__pro">
-            <a href="https://github.com/datvidc">
+            <a target="_blank" rel="noreferrer" href="https://github.com/datvidc">
               <img className="footer__img" src={github} alt="github" />
             </a>
           </li>
           <li className="footer__pro">
-            <a href="https://www.linkedin.com/in/dacpo/">
+            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/dacpo/">
               <img className="footer__img" src={Linkedin} alt="LinkedIn" />
             </a>
           </li>

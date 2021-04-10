@@ -1,5 +1,6 @@
 .newscard {
   max-width: 288px;
+  height: 440px;
   list-style: none;
   border-radius: 16px;
   color: black;
@@ -147,6 +148,8 @@ background-image: url(../../images/blckTrash.png);
   text-transform: uppercase;
   color: #b6bcbf;
   text-decoration: none;
+  position: absolute;
+  bottom: 0em;
 }
 
 .newscard__date {
@@ -172,8 +175,13 @@ background-image: url(../../images/blckTrash.png);
     max-width: 14em;
     max-height: 9.375em;
   }
+  .newscard__source {
+    position: absolute;
+    bottom: 0em;
+  }
   .newscard {
     max-width: 14em;
+    height: 420px;
   }
   .newscard__bookmark {
     right: 0.5em;
