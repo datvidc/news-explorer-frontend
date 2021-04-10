@@ -26,6 +26,7 @@
   line-height: 46px;
   text-align: left;
   color: #1a1b22;
+  align-self: start;
 }
 
 .searchpage__showmore {
@@ -58,30 +59,37 @@
 @media (min-width: 449px) {
   .search-results {
     gap: 0.5em;
-    justify-content: space-between;
+
   }
   .searchpage {
     margin: 2em 2.5em;
     max-width: 90em;
+    justify-content: center;
   }
   .searchpage__showmore {
     width: 288px;
   }
 }
+@media (min-width: 531px) {
+  .search-results {
+    justify-content: space-between;
+  }
+}
 
-@media (min-width: 800px) {
+@media (min-width: 900px) {
   .search-results {
     gap: 1em;
-    max-width: 1232px;
+    max-width: 1250px;
     align-self: center;
 
   }
   .searchpage {
-    padding: 4em 6.5em;
+    padding: 4em 0em;
     margin: auto;
     max-width: 90em;
   }
   .searchpage__heading {
     align-self: end;
+    padding-left: 2.5em;
   }
 }

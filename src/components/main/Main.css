@@ -22,6 +22,7 @@
       no-repeat;
     height: 400px;
     overflow: hidden;
+    background-size: cover;
   }
   .main-saved {
     height: 400px;
@@ -36,9 +37,17 @@
     background-size: 100%;
     max-width: 90em;
     margin: auto;
-    height: 576px;
+    background-size: cover;
   }
   .main-saved {
     background-size: 100%;
   }
+}
+
+@media (min-width: 1400px) {
+  .main {
+    height: 576px;
+
+  }
+
 }
