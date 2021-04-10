@@ -72,7 +72,7 @@ function Signin(props) {
   return (
     <div className={type}>
       <button type="button" aria-label="close" className="signin__close" onClick={props.closepop} />
-      <h3>{title}</h3>
+      <h3 className="signin__heading">{title}</h3>
       <form className="signin__form">
         <label htmlFor="email">Email </label>
         <input onChange={handleEmailChange} className="signin__email" name="email" type="email" autoComplete="on" placeholder="Enter email" minLength="7" required="" />

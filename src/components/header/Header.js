@@ -1,5 +1,4 @@
 import React from 'react';
-import './Header.css';
 
 import Nav from '../nav/Nav';
 import SearchForm from '../searchForm/SearchForm';

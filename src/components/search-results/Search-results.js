@@ -35,7 +35,7 @@ function SearchResults(props) {
       {isMain && (
         <section className="searchpage">
           <h1 className="searchpage__heading"> Search results</h1>
-          <ul className="search-results">
+          <div className="search-results">
 
             {
               articlesShowing.map((card) => (
@@ -48,7 +48,7 @@ function SearchResults(props) {
                 />
               ))
             }
-          </ul>
+          </div>
           {showbutton && (
             <button className="searchpage__showmore" type="button" onClick={handleShowMoreArticles}> Show More</button>
           )}

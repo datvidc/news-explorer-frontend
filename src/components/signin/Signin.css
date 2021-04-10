@@ -34,10 +34,24 @@
   margin: auto;
   margin-top: 12.938em;
 }
+.signin__heading {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+
+  /* main/primary */
+
+  color: #1a1b22;
+}
 
 .signin__form {
   display: flex;
   flex-direction: column;
+}
+label {
+  margin-bottom: 9px;
 }
 .signin__error {
   font-family: Inter;
@@ -70,6 +84,7 @@
   text-align: center;
   color: #b6bcbf;
   margin: 8px 0 0;
+  border: none;
 }
 
 label {
@@ -93,6 +108,9 @@ input {
 .signin__changetype {
   margin: auto;
   padding-top: 1em;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .signin__buttonValid {
@@ -153,9 +171,9 @@ input {
   align-self: baseline;
 }
 .signin__sucess:active:focus {
-  border:none;
-  background-color:transparent;
-  outline:none;
+  border: none;
+  background-color: transparent;
+  outline: none;
 }
 
 @media (min-width: 500px) {

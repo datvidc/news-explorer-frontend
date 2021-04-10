@@ -119,7 +119,7 @@ const App = () => {
     ],
   };
   const [Articles, SetArticles] = useState(articleList);
-  const [Loggedin, SetLoggedIn] = useState(false); /* use for testing */
+  const [Loggedin, SetLoggedIn] = useState(true); /* use for testing */
   const [UserWindow, SetUserWindow] = useState('');
   const [mobileMenu, SetMobileMenu] = useState(false);
   const [signIn, setSigning] = useState(false);
