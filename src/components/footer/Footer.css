@@ -63,6 +63,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+
   }
 
   .footer__links {
@@ -78,8 +80,7 @@
 
 @media (min-width: 800px) {
   .footer {
-    max-width: 90em;
-    margin: 0 6.5em;
+    margin: 0px 21px 0px 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -95,6 +96,7 @@
 }
 @media (min-width: 1400px) {
   .footer {
+    margin: 0 6.5em;
     max-width: 90em;
     margin: auto;
     display: flex;

@@ -11,7 +11,7 @@
   display: flex;
   flex-wrap: wrap;
   max-width: none;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .search-results-saved {
