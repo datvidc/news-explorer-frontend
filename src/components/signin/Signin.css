@@ -35,7 +35,7 @@
   margin-top: 12.938em;
 }
 .signin__heading {
-  font-family: Roboto;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
@@ -54,7 +54,7 @@ label {
   margin-bottom: 9px;
 }
 .signin__error {
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -88,7 +88,7 @@ label {
 }
 
 label {
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -96,7 +96,7 @@ label {
   color: #2f71e5;
 }
 input {
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -150,7 +150,7 @@ input {
 }
 
 .signin__yes {
-  font-family: Roboto;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 900;
   font-size: 24px;

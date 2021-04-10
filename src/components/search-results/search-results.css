@@ -11,7 +11,7 @@
   display: flex;
   flex-wrap: wrap;
   max-width: none;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .search-results-saved {
@@ -33,7 +33,7 @@
   height: 64px;
   border-radius: 80px;
   border: none;
-  font-family: Roboto;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -58,6 +58,7 @@
 @media (min-width: 449px) {
   .search-results {
     gap: 0.5em;
+    justify-content: space-between;
   }
   .searchpage {
     margin: 2em 2.5em;

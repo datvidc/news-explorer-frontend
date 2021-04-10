@@ -21,6 +21,11 @@ Live API can be found at
 api.dave.students.nomoreparties.site https://api.dave.students.nomoreparties.site http://api.dave.students.nomoreparties.site
 
 
+# Learnings
+- never code a single font - always add system fonts
+- Code the most expensive option first. 
+- Aim for screensizes specified - do responsiveness in-between.
+ 
 
 # Getting Started with Create React App
 

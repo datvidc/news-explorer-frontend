@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './nav-link.css';
+import logoutImg from '../../images/logout.png';
 
 function NavLink({
   user, name, handleLogout, handleSignin,
@@ -19,7 +20,7 @@ function NavLink({
             </li>
             <li>
               <button className="navlink__button" type="button" onClick={handleLogout}>
-                {name}
+                {name} <img alt="logOut" src={logoutImg} />
               </button>
             </li>
           </>
