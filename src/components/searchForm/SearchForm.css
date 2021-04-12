@@ -6,7 +6,7 @@
   margin-left: auto;
   margin-right: auto;
 
-  max-width: 608px;
+
 }
 
 .search__heading {
@@ -14,18 +14,19 @@
 }
 
 .search__title {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Slab", serif;
   font-size: 2.25em;
   line-height: 40px;
   width: 90vw;
   font-weight: normal;
   margin: 30px 0 16px 16px;
+  text-align: left;
 }
 .search__sub {
   font-family: "Roboto", sans-serif;
   font-size: 1.125em;
   line-height: 24px;
-  margin: 0 16px 122px 16px;
+
 }
 
 .search__form {
@@ -78,10 +79,15 @@
   background-color: #2a65cc;
 }
 
-@media (min-width: 321px) {
+@media (min-width:300px) {
   .search__sub {
-    margin: 0 0 10px 16px;
-    margin: 10px;
+  margin: 0 16px 122px 16px;
+  }
+}
+@media (min-width: 319px) {
+  .search__sub {
+    margin: 10px 10px 48px 16px;
+
   }
 }
 
@@ -130,6 +136,18 @@
   }
   .search__heading {
     text-align: justify;
+  }
+
+  .search__title {
+    font-family: "Roboto Slab", serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 40px;
+    max-width: 452px;
+  }
+  .search__sub {
+    max-width: 452px;
   }
 }
 @media (min-width: 1400px) {

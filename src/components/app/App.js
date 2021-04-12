@@ -167,7 +167,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    const userDevice = window.innerWidth;
+    const userDevice = window.screen.width;
     if (userDevice) {
       if (userDevice <= 500) {
         SetUserWindow('mobile');

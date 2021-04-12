@@ -67,7 +67,19 @@ label {
   cursor: pointer;
 }
 .signin__signupBtn {
+  height: 64px;
+  background: #e6e8eb;
+  border-radius: 100px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   color: #b6bcbf;
+  margin: 8px 0 0;
   border: none;
 }
 .signin__submit {
@@ -169,6 +181,7 @@ input {
   color: #2f71e5;
   border: none;
   align-self: baseline;
+  background: none;
 }
 .signin__sucess:active:focus {
   border: none;

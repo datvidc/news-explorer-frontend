@@ -1,5 +1,5 @@
 .searchpage {
-  margin: 1.5em 1em;
+  padding: 1.5em 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@
 }
 
 .search-results-saved {
-  margin: auto;
+
 }
 
 .searchpage__heading {
@@ -62,7 +62,7 @@
 
   }
   .searchpage {
-    margin: 2em 2.5em;
+    padding: 2em 2.5em;
     max-width: 90em;
     justify-content: center;
   }
@@ -84,12 +84,18 @@
 
   }
   .searchpage {
-    padding: 4em 0em;
+    padding: 2em 2.5em;
     margin: auto;
     max-width: 90em;
   }
   .searchpage__heading {
     align-self: end;
-    padding-left: 2.5em;
+  }
+}
+
+
+@media (min-width: 1240px) {
+  .searchpage__heading {
+    padding-left: 64px;
   }
 }

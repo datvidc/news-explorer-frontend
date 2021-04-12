@@ -55,19 +55,21 @@ function SearchResults(props) {
         </section>
       )}
       {!isMain && (
-        <ul className="search-results search-results-saved">
-          {
-            articles.map((card) => (
-              <NewsCard
-                isLoggedIn={knownUser}
-                isDesktop={isDesktop}
-                mainpage={false}
-                oneArticle={card}
-                key={card.link}
-              />
-            ))
-          }
-        </ul>
+        <section className="searchpage">
+          <div className="search-results">
+            {
+              articles.map((card) => (
+                <NewsCard
+                  isLoggedIn={knownUser}
+                  isDesktop={isDesktop}
+                  mainpage={false}
+                  oneArticle={card}
+                  key={card.link}
+                />
+              ))
+            }
+          </div>
+        </section>
       )}
     </>
   );

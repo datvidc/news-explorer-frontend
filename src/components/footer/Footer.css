@@ -13,6 +13,7 @@
   list-style: none;
   padding: 0em;
   margin: 0em;
+  margin-left: 1em;
   line-height: 3em;
   font-weight: 400;
   font-size: 1.125em;
@@ -34,7 +35,7 @@
   justify-content: space-between;
 }
 .footer__copytext {
-  margin: 18px 0 0;
+  margin: 18px 0em 22px 1em;
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -67,7 +68,9 @@
 
 
   }
-
+.footer__copytext {
+  margin-left: 40px;
+}
   .footer__links {
     display: flex;
   }

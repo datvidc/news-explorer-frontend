@@ -1,6 +1,5 @@
 .main {
   width: 100vw;
-  overflow-x: hidden;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -20,14 +19,10 @@
   .main {
     background: url(../../images/georgia-de-lotz--Tablet-unsplash.webp)
       no-repeat;
-    height: 400px;
-    overflow: hidden;
+      height: 536px;
     background-size: cover;
   }
-  .main-saved {
-    height: 400px;
-    overflow: hidden;
-  }
+
 }
 
 @media (min-width: 700px) {
@@ -41,6 +36,8 @@
   }
   .main-saved {
     background-size: 100%;
+    max-width: 90em;
+    margin: auto;
   }
 }
 
