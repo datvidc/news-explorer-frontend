@@ -1,0 +1,66 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "next",
+        "varsIgnorePattern": "^[A-Z]"
+      }
+    ],
+    "no-var": [
+      "off"
+    ],
+    "one-var": [
+      "off"
+    ],
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": [
+          "_id"
+        ]
+      }
+    ],
+    "react/prop-types": "off",
+    "react/destructuring-assignment": "off",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "allowIndentationTabs": 0,
+    "no-tabs": 0,
+    "react/jsx-one-expression-per-line": "off",
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "labelComponents": ["CustomLabel"],
+      "labelAttributes": ["inputLabel"],
+      "controlComponents": ["CustomInput"],
+      "assert": "either",
+      "depth": 3
+    }],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ]
+  }
+}

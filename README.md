@@ -21,6 +21,15 @@ Live API can be found at
 api.dave.students.nomoreparties.site https://api.dave.students.nomoreparties.site http://api.dave.students.nomoreparties.site
 
 
+# Learnings
+- never code a single font - always add system fonts
+- Code the most expensive option first. 
+- Aim for screensizes specified - do responsiveness in-between.
+- check Figma on new screens. My old screens do not show ANY grey, but a whole section is grey
+- sometimes chrome misbehaves. Restart often. Also, window.innerWidth gives wrong pixel count...why ? 
+  Use window.screen.width for some reason this shows correct. 
+
+ 
 
 # Getting Started with Create React App
 
