@@ -25,6 +25,7 @@
         "varsIgnorePattern": "^[A-Z]"
       }
     ],
+    "react/jsx-props-no-spreading": "off",
     "no-var": [
       "off"
     ],

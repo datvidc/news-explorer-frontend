@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import Main from '../main/Main';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import SearchResults from '../search-results/Search-results';
 import About from '../about/About';
 import Footer from '../footer/Footer';
@@ -207,6 +208,8 @@ const App = () => {
               {/* The above will be search results */}
               <About />
             </Route>
+            <ProtectedRoute path="/" loggedIn={Loggedin}> </ProtectedRoute>
+
             <Route path="/saved-news">
               {/* This will be a protected route */}
               <Main
