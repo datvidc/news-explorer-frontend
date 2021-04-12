@@ -44,79 +44,6 @@ const App = () => {
         owner: '60540ceed1ccba35d1986789',
         createdAt: '2021-04-02T00:24:18.426Z',
       },
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yay',
-        title: 'Yay is no 2',
-        text: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://mondrian.mashable.com/2021%252F03%252F19%252F0a%252Ff6d61b7c5df64b469ff49ca039929631.49d2c.jpg%252F1200x630.jpg?signature=DQLKBlXpy-YTv1tQmTOlQTOaPgw=',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yaasdy',
-        title: 'yay is title 3',
-        text: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://mondrian.mashable.com/2021%252F03%252F19%252F0a%252Ff6d61b7c5df64b469ff49ca039929631.49d2c.jpg%252F1200x630.jpg?signature=DQLKBlXpy-YTv1tQmTOlQTOaPgw=',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'sadasdyay',
-        title: 'Yay is yay no 4',
-        text: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://mondrian.mashable.com/2021%252F03%252F19%252F0a%252Ff6d61b7c5df64b469ff49ca039929631.49d2c.jpg%252F1200x630.jpg?signature=DQLKBlXpy-YTv1tQmTOlQTOaPgw=',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yasday',
-        title: 'Yay is yay no 5',
-        text: 'yay is text',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://mondrian.mashable.com/2021%252F03%252F19%252F0a%252Ff6d61b7c5df64b469ff49ca039929631.49d2c.jpg%252F1200x630.jpg?signature=DQLKBlXpy-YTv1tQmTOlQTOaPgw=',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yaqwy',
-        title: 'Yay is yay no 6',
-        text: 'yay is text',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://techcrunch.com/wp-content/uploads/2021/03/Remix-Press.jpg?w=764',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yay',
-        title: 'Yay is yay no 7',
-        text: 'yay is text',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://techcrunch.com/wp-content/uploads/2021/03/Remix-Press.jpg?w=764',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-
     ],
   };
   const [Articles, SetArticles] = useState(articleList);
@@ -126,6 +53,8 @@ const App = () => {
   const [signIn, setSigning] = useState(false);
   const [signUp, setSignUp] = useState(false);
   const [sucesspop, setSuccess] = useState(false);
+  const [apiError, setapiError] = useState(false);
+  const [apiErrMsg, setApiErrMsg] = useState('');
 
   const handleLogin = () => {
     setSigning(true);
@@ -165,6 +94,13 @@ const App = () => {
   };
   const handleSuccessclose = () => {
     setSuccess(false);
+  };
+  const HandleErrorClose = () => {
+    setapiError(false);
+  };
+  const HandleApiError = (errMsg) => {
+    setapiError(true);
+    setApiErrMsg(errMsg);
   };
 
   useEffect(() => {
@@ -271,6 +207,16 @@ const App = () => {
             </div>
           </Popup>
         )}
+        {apiError && (
+          <Popup onclose={HandleErrorClose}>
+            <div className="signin">
+              <button type="button" aria-label="close" className="signin__close" onClick={handleSuccessclose} />
+              <h3 className="signin__yes"> Houston, We have a problem</h3>
+              <p> {apiErrMsg} </p>
+            </div>
+          </Popup>
+        )}
+
       </main>
 
     </CurrentUserContext.Provider>
