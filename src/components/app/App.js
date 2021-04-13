@@ -41,6 +41,7 @@ const App = () => {
   const handleLogout = () => {
     SetLoggedIn(false);
     setCurrentUser({});
+    setToken('');
   };
 
   const changePopupType = () => {
@@ -63,14 +64,15 @@ const App = () => {
 
   const HandleApiError = (errMsg) => {
     console.log(errMsg);
-    /* setapiError(true);
-    setApiErrMsg(errMsg); */
+    setapiError(true);
+    setApiErrMsg(errMsg);
   };
 
   const HandleToken = (token) => {
     api.getCurrentUser(token)
       .then((res) => {
-        if (res.data) {
+        if (res.token) {
+          console.log(res);
           setCurrentUser(res);
           setToken(token);
           handleLogin();
@@ -86,10 +88,12 @@ const App = () => {
     api.signIn(email, password)
       .then((res) => {
         console.log(res);
-        HandleToken(res.token)
-          .catch((err) => {
-            HandleApiError(err);
-          });
+        if (res.message) {
+          throw new Error(res.message);
+        }
+        if (res.token) {
+          HandleToken(res.token);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -232,7 +236,7 @@ const App = () => {
             <div className="signin">
               <button type="button" aria-label="close" className="signin__close" onClick={HandleErrorClose} />
               <h3 className="signin__yes"> Oops, something went wrong, please try again later</h3>
-              <p> {apiErrMsg} </p>
+              <p> {apiErrMsg.message} </p>
             </div>
           </Popup>
         )}

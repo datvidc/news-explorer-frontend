@@ -14,8 +14,6 @@ class Api {
   }
 
   signIn(email, password) {
-    console.log(email);
-    console.log(password);
     const userUrl = this._MainUrl.concat('/signin');
     return fetch(userUrl, {
       method: 'POST',
@@ -29,19 +27,12 @@ class Api {
       }),
     })
       .then((res) => {
-        console.log(res);
-        res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        if (!data.message) {
-          localStorage.setItem('jwt', data.token);
+        if (res.ok) {
+          console.log(res);
+          return res.json();
         }
-        return data;
-      })
-      .catch((res) => {
-        console.log(res);
-      });
+        return Promise.reject(new Error(`${res.status} : ${res.message}`));
+      }).catch((res) => Promise.reject(new Error(`${res.status} : ${res.message}`)));
   }
 
   getCurrentUser(token) {
@@ -61,6 +52,7 @@ class Api {
         return Promise.reject(new Error(`${res.status} : ${res.message}`));
       }).catch((res) => {
         console.log(res);
+        return Promise.reject(new Error(`${res.status} : ${res.message}`));
       });
   }
 
