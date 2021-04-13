@@ -14,6 +14,8 @@ class Api {
   }
 
   signIn(email, password) {
+    console.log(email);
+    console.log(password);
     const userUrl = this._MainUrl.concat('/signin');
     return fetch(userUrl, {
       method: 'POST',
@@ -21,14 +23,24 @@ class Api {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({
+        email,
+        password,
+      }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        res.json();
+      })
       .then((data) => {
+        console.log(data);
         if (!data.message) {
           localStorage.setItem('jwt', data.token);
         }
         return data;
+      })
+      .catch((res) => {
+        console.log(res);
       });
   }
 
