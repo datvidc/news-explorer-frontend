@@ -14,18 +14,14 @@ import Footer from '../footer/Footer';
 import { MobileNav } from '../navbars/Navbars';
 import Popup from '../popup/Popup';
 import Signin from '../signin/Signin';
+import api from '../../utils/MainApi';
 
 import CurrentUserContext from '../../context/CurrentUserContext';
 
 const App = () => {
   // for testing
-  const [currentUser, SetCurrentUser] = useState({
-    data: {
-      id: '60540ceed1ccba35d1986789',
-      name: 'me',
-      email: 'd@vidc.dk',
-    },
-  });
+  const [currentUser, setCurrentUser] = useState({});
+  const [apiToken, setToken] = useState('');
 
   // for testing functionality
   const articleList = {
@@ -46,8 +42,8 @@ const App = () => {
       },
     ],
   };
-  const [Articles, SetArticles] = useState(articleList);
-  const [Loggedin, SetLoggedIn] = useState(true); /* use for testing */
+  const [Articles, SetArticles] = useState({});
+  const [Loggedin, SetLoggedIn] = useState(false); /* use for testing */
   const [UserWindow, SetUserWindow] = useState('');
   const [mobileMenu, SetMobileMenu] = useState(false);
   const [signIn, setSigning] = useState(false);
@@ -56,8 +52,13 @@ const App = () => {
   const [apiError, setapiError] = useState(false);
   const [apiErrMsg, setApiErrMsg] = useState('');
 
-  const handleLogin = () => {
-    setSigning(true);
+  const handleLogin = (bool) => {
+    SetLoggedIn(bool);
+    if (bool === true) {
+      history.push('/');
+    } else {
+      setCurrentUser({});
+    }
   };
 
   const changePopupType = () => {
@@ -78,15 +79,6 @@ const App = () => {
     setSignUp(!signUp);
   };
 
-  const handleLogout = () => {
-    SetCurrentUser();
-    SetLoggedIn(false);
-  };
-  const handleSignIn = (email, password) => {
-    // Magic
-    const userobject = { email, password };
-    SetArticles(userobject); // delete and replace with logic
-  };
   const handlesignup = (email, pass, username) => {
     // magic
     const userobject = { email, pass, username };
@@ -97,10 +89,23 @@ const App = () => {
   };
   const HandleErrorClose = () => {
     setapiError(false);
+    setApiErrMsg('');
   };
   const HandleApiError = (errMsg) => {
     setapiError(true);
     setApiErrMsg(errMsg);
+  };
+  const HandleToken = (token) => {
+    api.getCurrentUser(token)
+      .then((res) => {
+        if (res.data) {
+          handleLogin(true);
+          setCurrentUser(res);
+        }
+      })
+      .catch((err) => {
+        HandleApiError(err);
+      });
   };
 
   useEffect(() => {
@@ -114,7 +119,31 @@ const App = () => {
         SetUserWindow('desktop');
       }
     }
+    const token = localStorage.getItem('jwt');
+    if (token) {
+      HandleToken(token);
+    }
+
+    const news = localStorage.getItem('news');
+
+    if (news) {
+      SetArticles(news); // delete after review. Dont like this functionality
+    }
   }, []);
+
+  const handleSignIn = (email, password) => {
+    api.signIn(email, password)
+      .then((res) => {
+        console.log(res);
+        HandleToken(res.token)
+          .catch((err) => {
+            HandleApiError(err);
+          });
+      })
+      .catch((err) => {
+        HandleApiError(err);
+      });
+  };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -210,8 +239,8 @@ const App = () => {
         {apiError && (
           <Popup onclose={HandleErrorClose}>
             <div className="signin">
-              <button type="button" aria-label="close" className="signin__close" onClick={handleSuccessclose} />
-              <h3 className="signin__yes"> Houston, We have a problem</h3>
+              <button type="button" aria-label="close" className="signin__close" onClick={HandleErrorClose} />
+              <h3 className="signin__yes"> Oops, something went wrong, please try again later</h3>
               <p> {apiErrMsg} </p>
             </div>
           </Popup>
