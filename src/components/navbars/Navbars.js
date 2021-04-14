@@ -36,7 +36,6 @@ function OpenNav(props) {
         </div>
         <NavLink
           handleSignin={handleSignin}
-          name={currentUser.data.name}
           handleLogout={logUserOut}
           user={isLoggedIn}
         />
