@@ -3,7 +3,6 @@ import React from 'react';
 import './nav-link.css';
 import logoutImg from '../../images/logout.png';
 import currentUserContext from '../../context/CurrentUserContext';
-import { isEmpty } from '../../utils/helpers';
 
 function NavLink({
   user, handleLogout, handleSignin,
@@ -11,11 +10,6 @@ function NavLink({
   const { currentUser } = React.useContext(currentUserContext);
   console.log(currentUser);
   console.log(user);
-
-  let usrName;
-  if (currentUser) {
-    usrName = currentUser.data.name || 'User';
-  }
 
   return (
 
@@ -31,7 +25,7 @@ function NavLink({
             </li>
             <li>
               <button className="navlink__button" type="button" onClick={handleLogout}>
-                {usrName} <img alt="logOut" src={logoutImg} />
+                {currentUser.data.name} <img alt="logOut" src={logoutImg} />
               </button>
             </li>
           </>

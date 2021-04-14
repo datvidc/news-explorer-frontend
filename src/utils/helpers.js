@@ -1,3 +1,1 @@
-export default function isEmpty(obj) {
-  return Object.keys(obj).length === 0;
-}
+module.exports.isEmpty = (obj) => Object.keys(obj).length === 0;
