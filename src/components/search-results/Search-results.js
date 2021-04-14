@@ -27,6 +27,7 @@ function SearchResults(props) {
   };
 
   useEffect(() => {
+    console.log(articles);
     setArticlesShowing(articles.slice(0, 3));
   }, []);
 
@@ -57,7 +58,7 @@ function SearchResults(props) {
       {!isMain && (
         <section className="searchpage">
           <div className="search-results">
-            {
+            { articles && (
               articles.map((card) => (
                 <NewsCard
                   isLoggedIn={knownUser}
@@ -66,8 +67,10 @@ function SearchResults(props) {
                   oneArticle={card}
                   key={card.link}
                 />
-              ))
-            }
+              )))}
+            {!articles && (
+              <h3 className="searchpage__heading"> Nothing saved</h3>
+            )}
           </div>
         </section>
       )}

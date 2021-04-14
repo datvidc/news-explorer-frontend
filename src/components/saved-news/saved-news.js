@@ -15,6 +15,7 @@ function savedNews(props) {
     articles,
     isMain,
   } = props;
+  console.log(articles);
   return (
     <>
       <Main
@@ -25,13 +26,16 @@ function savedNews(props) {
         articleResults={articleResults}
         userInfo={userInfo}
         toogleMobNav={toogleMobNav}
-      />
-      <SearchResults
         articles={articles}
-        isMain={isMain}
-        device={device}
-        knownUser={knownUser}
       />
+      { articles.length > 0 && (
+        <SearchResults
+          articles={articles}
+          isMain={isMain}
+          device={device}
+          knownUser={knownUser}
+        />
+      )}
     </>
   );
 }

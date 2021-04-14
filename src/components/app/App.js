@@ -22,7 +22,7 @@ import CurrentUserContext from '../../context/CurrentUserContext';
 const App = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [ApiToken, setToken] = useState('');
-  const [Articles, SetArticles] = useState();
+  const [Articles, SetArticles] = useState([]);
   const [Loggedin, SetLoggedIn] = useState(false); /* use for testing */
   const [UserWindow, SetUserWindow] = useState('');
   const [mobileMenu, SetMobileMenu] = useState(false);
@@ -138,6 +138,8 @@ const App = () => {
     }
   }, []);
 
+  // articles code
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
 
@@ -155,7 +157,7 @@ const App = () => {
                 userInfo={currentUser}
                 toogleMobNav={toggleMobileMenu}
               />
-              {Articles && (
+              {Articles.length > 0 && (
                 <SearchResults
                   articles={Articles}
                   isMain
