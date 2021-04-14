@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -31,6 +31,9 @@ const App = () => {
   const [sucesspop, setSuccess] = useState(false);
   const [apiError, setapiError] = useState(false);
   const [apiErrMsg, setApiErrMsg] = useState('');
+
+  const ProviderValue = useMemo(() => (
+    { currentUser, setCurrentUser }), [currentUser, setCurrentUser]);
 
   const handleLogin = () => {
     SetLoggedIn(true);
@@ -140,9 +143,8 @@ const App = () => {
   }, []);
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-
-      <main className="app">
+    <main className="app">
+      <CurrentUserContext.Provider value={ProviderValue}>
         <Router>
           <Switch>
             <Route exact path="/">
@@ -236,11 +238,8 @@ const App = () => {
             </div>
           </Popup>
         )}
-
-      </main>
-
-    </CurrentUserContext.Provider>
-
+      </CurrentUserContext.Provider>
+    </main>
   );
 };
 export default App;

@@ -18,8 +18,8 @@ function OpenNav(props) {
     handleLog,
     handleSignin,
   } = props;
-  const user = React.useContext(currentUserContext);
-  console.log(user);
+  const { currentUser } = React.useContext(currentUserContext);
+  console.log(currentUser);
   const logUserOut = (e) => {
     e.preventDefault();
     handleLog();
@@ -36,7 +36,7 @@ function OpenNav(props) {
         </div>
         <NavLink
           handleSignin={handleSignin}
-          name={user.data.name}
+          name={currentUser.data.name}
           handleLogout={logUserOut}
           user={isLoggedIn}
         />
@@ -105,9 +105,9 @@ function Navigation(props) {
     handleSignin,
   } = props;
 
-  const user = React.useContext(currentUserContext);
+  const { currentUser } = React.useContext(currentUserContext);
 
-  const btntext = isLoggedIn ? user.data.name : 'Sign in';
+  const btntext = isLoggedIn ? currentUser.data.name : 'Sign in';
   const clickHandler = isLoggedIn ? handleLogout : handleSignin;
 
   return (
