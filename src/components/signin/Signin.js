@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router';
 
 import './Signin.css';
 
@@ -103,4 +102,4 @@ function Signin(props) {
     </div>
   );
 }
-export default withRouter(Signin);
+export default Signin;
