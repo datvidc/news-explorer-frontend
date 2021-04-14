@@ -20,7 +20,6 @@ import api from '../../utils/MainApi';
 import CurrentUserContext from '../../context/CurrentUserContext';
 
 const App = () => {
-  const history = useHistory();
   const [currentUser, setCurrentUser] = useState({});
   const [ApiToken, setToken] = useState('');
   const [Articles, SetArticles] = useState();
@@ -32,6 +31,8 @@ const App = () => {
   const [sucesspop, setSuccess] = useState(false);
   const [apiError, setapiError] = useState(false);
   const [apiErrMsg, setApiErrMsg] = useState('');
+
+  const history = useHistory();
 
   const handleLogin = () => {
     SetLoggedIn(true);
@@ -71,7 +72,8 @@ const App = () => {
   const HandleToken = (token) => {
     api.getCurrentUser(token)
       .then((res) => {
-        if (res.token) {
+        console.log(res);
+        if (res.data) {
           console.log(res);
           setCurrentUser(res);
           setToken(token);
@@ -92,6 +94,7 @@ const App = () => {
           throw new Error(res.message);
         }
         if (res.token) {
+          console.log('token');
           HandleToken(res.token);
         }
       })
