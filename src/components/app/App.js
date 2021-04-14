@@ -38,7 +38,7 @@ const App = () => {
 
   const handleLogout = () => {
     SetLoggedIn(false);
-    setCurrentUser({});
+    setCurrentUser(null);
     setToken('');
     localStorage.removeItem('jwt');
   };
@@ -189,6 +189,7 @@ const App = () => {
         <Footer />
         {mobileMenu && (
           <MobileNav
+            handleLogout={handleLogout}
             handleSignin={toggleSigninPopup}
             isOpen={mobileMenu}
             toogleMobNav={toggleMobileMenu}

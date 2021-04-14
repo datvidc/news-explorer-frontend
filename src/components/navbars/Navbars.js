@@ -15,10 +15,15 @@ function OpenNav(props) {
     toogleMobNav,
     menuBtn,
     isLoggedIn,
-    handleLogout,
+    handleLog,
     handleSignin,
   } = props;
   const user = React.useContext(currentUserContext);
+  console.log(user);
+  const logUserOut = (e) => {
+    e.preventDefault();
+    handleLog();
+  };
 
   return (
     <Popup>
@@ -32,7 +37,7 @@ function OpenNav(props) {
         <NavLink
           handleSignin={handleSignin}
           name={user.data.name}
-          handleLogout={handleLogout}
+          handleLogout={logUserOut}
           user={isLoggedIn}
         />
       </nav>
@@ -66,7 +71,6 @@ function MobileNav(props) {
     handleSignin,
     isMain,
   } = props;
-  const user = React.useContext(currentUserContext);
   const menuBtn = isOpen ? closebtn : openbtn;
   return (
     <>
@@ -75,9 +79,8 @@ function MobileNav(props) {
           <OpenNav
             handleSignin={handleSignin}
             isMain={isMain}
-            handleLogout={handleLogout}
+            handleLog={handleLogout}
             isLoggedIn={isLoggedIn}
-            user={user}
             toogleMobNav={toogleMobNav}
             menuBtn={menuBtn}
           />
