@@ -76,7 +76,8 @@ const App = () => {
           setCurrentUser(res);
           setToken(token);
           handleLogin();
-          localStorage.setItem('jwt', res.token);
+          console.log(token);
+          localStorage.setItem('jwt', token);
         }
       })
       .catch((err) => {
@@ -93,7 +94,7 @@ const App = () => {
           throw new Error(res.message);
         }
         if (res.token) {
-          console.log('token');
+          console.log(res.token);
           HandleToken(res.token);
         }
       })
@@ -126,20 +127,17 @@ const App = () => {
         SetUserWindow('desktop');
       }
     }
-
+    // tokens
     const token = localStorage.getItem('jwt');
     if (token) {
       HandleToken(token);
     }
-
+    // saved news searches
     const news = localStorage.getItem('news');
-
     if (news) {
       SetArticles(news); // delete after review. Dont like this functionality
     }
   }, []);
-
-  // articles code
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
