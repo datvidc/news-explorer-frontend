@@ -76,6 +76,7 @@ const App = () => {
           setCurrentUser(res);
           setToken(token);
           handleLogin();
+          localStorage.setItem('jwt', res.token);
         }
       })
       .catch((err) => {

@@ -14,7 +14,6 @@ function Main(props) {
     handleLogout,
     signmeup,
     articles,
-    userInfo,
   } = props;
 
   let isMobile;
