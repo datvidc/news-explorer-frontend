@@ -4,7 +4,6 @@ import {
   Route,
   Switch,
   Redirect,
-  useHistory,
 } from 'react-router-dom';
 import './App.css';
 import Main from '../main/Main';
@@ -16,6 +15,7 @@ import { MobileNav } from '../navbars/Navbars';
 import Popup from '../popup/Popup';
 import Signin from '../signin/Signin';
 import api from '../../utils/MainApi';
+import savedNews from '../saved-news/saved-news';
 
 import CurrentUserContext from '../../context/CurrentUserContext';
 
@@ -32,17 +32,15 @@ const App = () => {
   const [apiError, setapiError] = useState(false);
   const [apiErrMsg, setApiErrMsg] = useState('');
 
-  const history = useHistory();
-
   const handleLogin = () => {
     SetLoggedIn(true);
-    history.push('/');
   };
 
   const handleLogout = () => {
     SetLoggedIn(false);
     setCurrentUser({});
     setToken('');
+    localStorage.removeItem('jwt');
   };
 
   const changePopupType = () => {
@@ -117,7 +115,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    handleSignIn('d@vidc.dk', '1111');
     const userDevice = window.screen.width;
     if (userDevice) {
       if (userDevice <= 500) {
@@ -169,26 +166,20 @@ const App = () => {
               {/* The above will be search results */}
               <About />
             </Route>
-            <ProtectedRoute path="/" loggedIn={Loggedin}> </ProtectedRoute>
-
-            <Route path="/saved-news">
-              {/* This will be a protected route */}
-              <Main
-                mainPage={false}
-                handleLogout={handleLogout}
-                device={UserWindow}
-                knownUser={Loggedin}
-                articleResults={Articles}
-                userInfo={currentUser}
-                toogleMobNav={toggleMobileMenu}
-              />
-              <SearchResults
-                articles={Articles}
-                isMain={false}
-                device={UserWindow}
-                knownUser={Loggedin}
-              />
-            </Route>
+            <ProtectedRoute
+              path="/saved-news"
+              loggedIn={Loggedin}
+              component={savedNews}
+              mainPage={false}
+              handleLogout={handleLogout}
+              device={UserWindow}
+              knownUser={Loggedin}
+              articleResults={Articles}
+              userInfo={currentUser}
+              toogleMobNav={toggleMobileMenu}
+              articles={Articles}
+              isMain={false}
+            />
             <Route path="*">
               <Redirect to="/" />
             </Route>
