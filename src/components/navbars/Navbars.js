@@ -18,7 +18,7 @@ function OpenNav(props) {
     handleLog,
     handleSignin,
   } = props;
-  const { currentUser } = React.useContext(currentUserContext);
+  const currentUser = React.useContext(currentUserContext);
   console.log(currentUser);
   const logUserOut = (e) => {
     e.preventDefault();
@@ -104,7 +104,7 @@ function Navigation(props) {
     handleSignin,
   } = props;
 
-  const { currentUser } = React.useContext(currentUserContext);
+  const currentUser = React.useContext(currentUserContext);
 
   const btntext = isLoggedIn ? currentUser.data.name : 'Sign in';
   const clickHandler = isLoggedIn ? handleLogout : handleSignin;

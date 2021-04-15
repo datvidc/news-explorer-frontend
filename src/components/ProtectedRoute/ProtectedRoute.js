@@ -1,20 +1,32 @@
-import React, { useContext } from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import CurrentUserContext from '../../context/CurrentUserContext';
-
 // this component can take a component as a prop
 // it can also recieve an infinite number of props to pass down
-function ProtectedRoute({ component: Component, ...props }) {
-  const user = useContext(CurrentUserContext);
-  console.log('props');
-  console.log(props.userInfo);
-  console.log('context');
-  console.log(user);
-  const whatToDo = props.userInfo ? <Component {...props} /> : <Redirect to="/" />;
+/* function ProtectedRoute({ children, ...rest }) {
+  const currentUser = useContext(CurrentUserContext);
+  console.log(currentUser);
+  return (
+    <Route
+      {
+      ...rest
+      }
+      render={() => (currentUser.data.name === true
+        ? children
+        : <Redirect to="./signin" />)}
+    />
+  );
+}
+export default ProtectedRoute;
+*/
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
+function ProtectedRoute({ component: Component, ...props }) {
   return (
     <Route>
-      { whatToDo}
+      {() => (props.loggedIn ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="/" />
+      ))}
     </Route>
   );
 }

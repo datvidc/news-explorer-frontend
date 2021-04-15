@@ -7,9 +7,7 @@ import currentUserContext from '../../context/CurrentUserContext';
 function NavLink({
   user, handleLogout, handleSignin,
 }) {
-  const { currentUser } = React.useContext(currentUserContext);
-  console.log(currentUser);
-  console.log(user);
+  const currentUser = React.useContext(currentUserContext);
 
   return (
 

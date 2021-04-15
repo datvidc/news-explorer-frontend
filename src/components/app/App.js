@@ -20,7 +20,7 @@ import savedNews from '../saved-news/saved-news';
 import CurrentUserContext from '../../context/CurrentUserContext';
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState(null);
   const [ApiToken, setToken] = useState('');
   const [Articles, SetArticles] = useState([]);
   const [Loggedin, SetLoggedIn] = useState(false); /* use for testing */
@@ -33,7 +33,7 @@ const App = () => {
   const [apiErrMsg, setApiErrMsg] = useState('');
 
   const ProviderValue = useMemo(() => (
-    { currentUser, setCurrentUser }), [currentUser, setCurrentUser]);
+    { currentUser }), [currentUser, setCurrentUser]);
 
   const handleLogin = () => {
     SetLoggedIn(true);
@@ -76,7 +76,10 @@ const App = () => {
         console.log(res);
         if (res.data) {
           console.log(res);
-          setCurrentUser(res);
+          setCurrentUser({
+            data:
+              { email: res.data.email, name: res.data.name, _id: res.data._id },
+          });
           setToken(token);
           handleLogin();
           console.log(token);
@@ -144,7 +147,7 @@ const App = () => {
 
   return (
     <main className="app">
-      <CurrentUserContext.Provider value={ProviderValue}>
+      <CurrentUserContext.Provider value={currentUser}>
         <Router>
           <Switch>
             <Route exact path="/">
@@ -169,10 +172,9 @@ const App = () => {
               {/* The above will be search results */}
               <About />
             </Route>
-            <ProtectedRoute
-              path="/saved-news"
-              loggedIn={Loggedin}
+            <ProtectedRoute path="/saved-news"
               component={savedNews}
+              loggedIn={Loggedin}
               mainPage={false}
               handleLogout={handleLogout}
               device={UserWindow}
