@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 import './NewsCard.css';
-import defaultImg from '../../images/loading.png';
+import defaultImg from '../../images/undefined.jpg';
+import api from '../../utils/MainApi';
 
 function NewsCard(props) {
   const {
@@ -9,25 +10,23 @@ function NewsCard(props) {
     mainpage,
     isLoggedIn,
     signmeup,
+    token,
+    keyword,
   } = props;
 
   const {
-    keyword,
     title,
-    date,
     source,
     urlToImage,
     text,
+    publishedAt,
     link,
+    image,
   } = oneArticle;
 
   const [bookmarked, setBookmarked] = useState(props.isbookmarked);
-  const [imgSrc, setImgSrc] = useState(urlToImage);
+  const [imgSrc, setImgSrc] = useState(urlToImage || image);
   const [imgErr, setImgErr] = useState(false);
-
-  const bookmarkNews = () => {
-
-  };
 
   const onError = () => {
     console.log('img error');
@@ -40,12 +39,18 @@ function NewsCard(props) {
   // logic for determining if newsArticle is bookmarked
 
   const bookmark = bookmarked ? 'newscard__button newscard__isBookmarked' : 'newscard__button newscard__bookmark';
-
+  console.log(keyword);
   const handleBookmarkClick = () => {
     if (!isLoggedIn) {
       signmeup();
     } else {
-      // code for sending to my API
+      api.saveAnArticle(token, oneArticle, keyword)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       setBookmarked(!bookmarked);
     }
   };
@@ -70,10 +75,10 @@ function NewsCard(props) {
           <p className="newscard__rusure"> Remove from saved </p>
         </div>
       )}
-      <img className="newscard__img" alt={keyword} src={imgSrc} onError={onError} />
+      <img className="newscard__img" alt={keyword} src={imgSrc || 'https://images.app.goo.gl/EmMqXXPaKWpcTCgP7'} onError={onError} />
       <div className="newscard__articlebottom">
         <p className="newscard__date">
-          {date}
+          {publishedAt}
         </p>
         <h4 className="newscard__heading">
           {title}

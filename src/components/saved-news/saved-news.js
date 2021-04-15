@@ -13,6 +13,8 @@ function SavedNews(props) {
     toogleMobNav,
     articles,
     isMain,
+    token,
+    keyword,
   } = props;
 
   console.log(articles);
@@ -30,6 +32,8 @@ function SavedNews(props) {
       />
       { articles.length > 0 && (
         <SearchResults
+          token={token}
+          keyword={keyword}
           articles={articles}
           isMain={isMain}
           device={device}

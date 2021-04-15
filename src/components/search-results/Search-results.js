@@ -10,6 +10,8 @@ function SearchResults(props) {
     device,
     knownUser,
     signmeup,
+    token,
+    keyword,
   } = props;
 
   const [next, Setnext] = useState(3);
@@ -45,6 +47,8 @@ function SearchResults(props) {
 
               articlesShowing.map((card) => (
                 <NewsCard
+                  keyword={keyword}
+                  token={token}
                   signmeup={signmeup}
                   isLoggedIn={knownUser}
                   isDesktop={isDesktop}
@@ -66,6 +70,7 @@ function SearchResults(props) {
             { articles && (
               articles.map((card) => (
                 <NewsCard
+                  token={token}
                   isLoggedIn={knownUser}
                   isDesktop={isDesktop}
                   mainpage={false}

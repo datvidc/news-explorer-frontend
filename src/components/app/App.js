@@ -34,19 +34,26 @@ const App = () => {
   const [apiErrMsg, setApiErrMsg] = useState('');
   const [loading, setLoading] = useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
+  const [newsSearch, setnewsSearch] = useState('');
 
   const handleLogin = () => {
     SetLoggedIn(true);
   };
   const handleSearch = (input) => {
+    setLoading(true);
+    setnewsSearch(input);
+    localStorage.setItem('keyword', input);
     newsapi.getArticles(input)
       .then((res) => {
         SetArticles(res.articles);
         localStorage.setItem('news', JSON.stringify(res.articles));
         console.log(res);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        // add throw api error
+        setLoading(false);
       });
   };
 
@@ -201,6 +208,8 @@ const App = () => {
             />
             {Articles.length > 0 && (
               <SearchResults
+                keyword={newsSearch}
+                token={ApiToken}
                 isLoading={loading}
                 setLoading={handleLoading}
                 articles={Articles}
@@ -226,6 +235,8 @@ const App = () => {
                 toogleMobNav={toggleMobileMenu}
                 articles={savedArticles}
                 isMain={false}
+                token={ApiToken}
+                keyword={newsSearch}
               />
             </ProtectedRoute>
           </CurrentUserContext.Provider>
