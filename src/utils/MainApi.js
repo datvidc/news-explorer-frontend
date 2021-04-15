@@ -65,7 +65,38 @@ class Api {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password, name }),
-    });
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+          // { data: { email, name, _id }}
+        }
+        throw new Error(`${res.status} : ${res.message}`);
+      })
+      .catch((err) => {
+        throw new Error(`${err.status} : ${err.message}`);
+      });
+  }
+
+  getSavedArticles(token) {
+    const userUrl = this._MainUrl.concat('/articles');
+    return fetch(userUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error(`${res.status} : ${res.message}`);
+      })
+      .catch((err) => {
+        throw new Error(`${err.status} : ${err.message}`);
+      });
   }
 }
 

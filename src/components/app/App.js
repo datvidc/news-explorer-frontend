@@ -50,6 +50,75 @@ const App = () => {
       });
   };
 
+  const handleSavedArticles = (token) => {
+    api.getSavedArticles(token)
+      .then((res) => {
+        console.log(res);
+      });
+  };
+
+  const setUser = (info, token) => {
+    setCurrentUser({
+      data:
+        { email: info.data.email, name: info.data.name, _id: info.data._id },
+    });
+    setToken(token);
+    handleLogin();
+    console.log(token);
+    localStorage.setItem('jwt', token);
+    handleSavedArticles(token);
+  };
+
+  const HandleApiError = (errMsg) => {
+    console.log(errMsg);
+    setapiError(true);
+    setApiErrMsg(errMsg);
+  };
+
+  const HandleToken = (token) => {
+    api.getCurrentUser(token)
+      .then((res) => {
+        console.log(res);
+        if (res.data) {
+          console.log(res);
+          setUser(res, token);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        HandleApiError(err);
+      });
+  };
+
+  const handleSignIn = (email, password) => {
+    api.signIn(email, password)
+      .then((res) => {
+        console.log(res);
+        if (res.message) {
+          throw new Error(res.message);
+        }
+        if (res.token) {
+          console.log(res.token);
+          HandleToken(res.token);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        HandleApiError(err);
+      });
+  };
+
+  const handlesignup = (email, pass, username) => {
+    // magic
+    api.signup(email, pass, username)
+      .then(() => {
+        handleSignIn(email, pass);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const handleLoading = () => {
     setLoading(!loading);
   };
@@ -79,56 +148,6 @@ const App = () => {
     setSignUp(!signUp);
   };
 
-  const HandleApiError = (errMsg) => {
-    console.log(errMsg);
-    setapiError(true);
-    setApiErrMsg(errMsg);
-  };
-
-  const HandleToken = (token) => {
-    api.getCurrentUser(token)
-      .then((res) => {
-        console.log(res);
-        if (res.data) {
-          console.log(res);
-          setCurrentUser({
-            data:
-              { email: res.data.email, name: res.data.name, _id: res.data._id },
-          });
-          setToken(token);
-          handleLogin();
-          console.log(token);
-          localStorage.setItem('jwt', token);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        HandleApiError(err);
-      });
-  };
-
-  const handleSignIn = (email, password) => {
-    api.signIn(email, password)
-      .then((res) => {
-        console.log(res);
-        if (res.message) {
-          throw new Error(res.message);
-        }
-        if (res.token) {
-          console.log(res.token);
-          HandleToken(res.token);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        HandleApiError(err);
-      });
-  };
-
-  const handlesignup = (email, pass, username) => {
-    // magic
-    api.signup(email, pass, username);
-  };
   const handleSuccessclose = () => {
     setSuccess(false);
   };

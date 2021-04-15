@@ -28,8 +28,9 @@ api.dave.students.nomoreparties.site https://api.dave.students.nomoreparties.sit
 - check Figma on new screens. My old screens do not show ANY grey, but a whole section is grey
 - sometimes chrome misbehaves. Restart often. Also, window.innerWidth gives wrong pixel count...why ? 
   Use window.screen.width for some reason this shows correct. 
+- Take the time- document your API in/Out - this helps always. 
+- When in doubt - control formats excessively. Third Parties change formats all the time... 
 
- 
 
 # Getting Started with Create React App
 

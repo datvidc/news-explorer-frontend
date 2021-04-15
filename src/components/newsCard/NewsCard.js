@@ -7,6 +7,7 @@ function NewsCard(props) {
     oneArticle,
     mainpage,
     isLoggedIn,
+    signmeup,
   } = props;
 
   const {
@@ -26,8 +27,12 @@ function NewsCard(props) {
   const bookmark = bookmarked ? 'newscard__button newscard__isBookmarked' : 'newscard__button newscard__bookmark';
 
   const handleBookmarkClick = () => {
-    // code for changing isbookmarked state
-    setBookmarked(!bookmarked);
+    if (!isLoggedIn) {
+      signmeup();
+    } else {
+      // code for sending to my API
+      setBookmarked(!bookmarked);
+    }
   };
 
   return (
