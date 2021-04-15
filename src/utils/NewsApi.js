@@ -33,17 +33,16 @@ class NewsApi {
 
   getArticles(term) {
     const searchUrl = this._newsApi;
-    fetch(searchUrl + this._makeUrl(term))
-      .then((res) => res.json())
+    return fetch(searchUrl + this._makeUrl(term))
       .then((res) => {
-        if (res.articles) {
-          console.log(res);
-          return res;
+        if (res.ok) {
+          return res.json();
         }
+        return Promise.reject(new Error(`${res.status} : ${res.message}`));
+      }).catch((res) => {
         console.log(res);
         return Promise.reject(new Error(`${res.status} : ${res.message}`));
-      })
-      .catch((res) => Promise.reject(new Error(`${res.status} : ${res.message}`)));
+      });
   }
 }
 const newsapi = new NewsApi();
