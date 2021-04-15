@@ -42,7 +42,7 @@ const App = () => {
     newsapi.getArticles(input)
       .then((res) => {
         SetArticles(res.articles);
-        localStorage.setItem('news', res.articles);
+        localStorage.setItem('news', JSON.stringify(res.articles));
         console.log(res);
       })
       .catch((err) => {
@@ -154,7 +154,8 @@ const App = () => {
       HandleToken(token);
     }
     // saved news searches
-    const news = localStorage.getItem('news');
+    const news = JSON.parse(localStorage.getItem('news'));
+    console.log(news);
     if (news) {
       SetArticles(news); // delete after review. Dont like this functionality
     }
@@ -187,6 +188,7 @@ const App = () => {
                   isMain
                   device={UserWindow}
                   knownUser={Loggedin}
+                  signmeup={toggleSigninPopup}
                 />
               )}
               {/* The above will be search results */}

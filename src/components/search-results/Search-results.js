@@ -9,6 +9,7 @@ function SearchResults(props) {
     isMain,
     device,
     knownUser,
+    signmeup,
   } = props;
 
   const [next, Setnext] = useState(3);
@@ -29,6 +30,8 @@ function SearchResults(props) {
   useEffect(() => {
     console.log(articles);
     setArticlesShowing(articles.slice(0, 3));
+    console.log(typeof articlesShowing);
+    console.log(articlesShowing);
   }, [articles]);
 
   return (
@@ -39,8 +42,10 @@ function SearchResults(props) {
           <div className="search-results">
 
             {
+
               articlesShowing.map((card) => (
                 <NewsCard
+                  signmeup={signmeup}
                   isLoggedIn={knownUser}
                   isDesktop={isDesktop}
                   mainpage
