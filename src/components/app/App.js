@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {
-  BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
@@ -17,7 +16,7 @@ import Signin from '../signin/Signin';
 import api from '../../utils/MainApi';
 import newsapi from '../../utils/NewsApi';
 
-import savedNews from '../saved-news/saved-news';
+import SavedNews from '../saved-news/saved-news';
 
 import CurrentUserContext from '../../context/CurrentUserContext';
 
@@ -185,55 +184,56 @@ const App = () => {
   return (
     <main className="app">
       <CurrentUserContext.Provider value={currentUser}>
-        <Router>
-          <Switch>
-            <Route exact path="/">
-              <Main
-                handleSearch={handleSearch}
-                setLoading={handleLoading}
-                signmeup={toggleSigninPopup}
-                handleLogout={handleLogout}
-                device={UserWindow}
-                knownUser={Loggedin}
-                mainPage
-                articleResults={Articles}
-                userInfo={currentUser}
-                toogleMobNav={toggleMobileMenu}
-                searchInput={handleSearch}
-              />
-              {Articles.length > 0 && (
-                <SearchResults
-                  isLoading={loading}
-                  setLoading={handleLoading}
-                  articles={Articles}
-                  isMain
-                  device={UserWindow}
-                  knownUser={Loggedin}
-                  signmeup={toggleSigninPopup}
-                />
-              )}
-              {/* The above will be search results */}
-              <About />
-            </Route>
-            <ProtectedRoute
-              path="/saved-news"
-              Component={savedNews}
-              loggedIn={Loggedin}
-              mainPage={false}
+        <Switch>
+          <Route exact path="/">
+            <Main
+              handleSearch={handleSearch}
+              setLoading={handleLoading}
+              signmeup={toggleSigninPopup}
               handleLogout={handleLogout}
               device={UserWindow}
               knownUser={Loggedin}
-              articleResults={savedArticles}
+              mainPage
+              articleResults={Articles}
               userInfo={currentUser}
               toogleMobNav={toggleMobileMenu}
-              articles={savedArticles}
-              isMain={false}
+              searchInput={handleSearch}
             />
-            <Route path="*">
-              <Redirect to="/" />
-            </Route>
-          </Switch>
-        </Router>
+            {Articles.length > 0 && (
+              <SearchResults
+                isLoading={loading}
+                setLoading={handleLoading}
+                articles={Articles}
+                isMain
+                device={UserWindow}
+                knownUser={Loggedin}
+                signmeup={toggleSigninPopup}
+              />
+            )}
+            {/* The above will be search results */}
+            <About />
+          </Route>
+          <CurrentUserContext.Provider value={currentUser}>
+            <ProtectedRoute exact path="/saved-news">
+              <SavedNews
+                loggedIn={Loggedin}
+                mainPage={false}
+                handleLogout={handleLogout}
+                device={UserWindow}
+                knownUser={Loggedin}
+                articleResults={savedArticles}
+                userInfo={currentUser}
+                toogleMobNav={toggleMobileMenu}
+                articles={savedArticles}
+                isMain={false}
+              />
+            </ProtectedRoute>
+          </CurrentUserContext.Provider>
+
+          <Route path="*">
+            <Redirect to="/" />
+          </Route>
+        </Switch>
         <Footer />
         {mobileMenu && (
           <MobileNav

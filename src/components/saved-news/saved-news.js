@@ -1,9 +1,8 @@
 import React from 'react';
-
 import Main from '../main/Main';
 import SearchResults from '../search-results/Search-results';
 
-function savedNews(props) {
+function SavedNews(props) {
   const {
     mainPage,
     handleLogout,
@@ -15,6 +14,7 @@ function savedNews(props) {
     articles,
     isMain,
   } = props;
+
   console.log(articles);
   return (
     <>
@@ -40,4 +40,4 @@ function savedNews(props) {
   );
 }
 
-export default savedNews;
+export default SavedNews;

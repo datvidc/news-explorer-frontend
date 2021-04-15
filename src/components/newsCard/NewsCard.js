@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import './NewsCard.css';
+import defaultImg from '../../images/loading.png';
 
 function NewsCard(props) {
   const {
@@ -21,6 +22,16 @@ function NewsCard(props) {
   } = oneArticle;
 
   const [bookmarked, setBookmarked] = useState(props.isbookmarked);
+  const [imgSrc, setImgSrc] = useState(urlToImage);
+  const [imgErr, setImgErr] = useState(false);
+
+  const onError = () => {
+    console.log('img error');
+    if (!imgErr) {
+      setImgErr(true);
+      setImgSrc(defaultImg);
+    }
+  };
 
   // logic for determining if newsArticle is bookmarked
 
@@ -55,7 +66,7 @@ function NewsCard(props) {
           <p className="newscard__rusure"> Remove from saved </p>
         </div>
       )}
-      <img className="newscard__img" alt={keyword} src={urlToImage} />
+      <img className="newscard__img" alt={keyword} src={imgSrc} onError={onError} />
       <div className="newscard__articlebottom">
         <p className="newscard__date">
           {date}

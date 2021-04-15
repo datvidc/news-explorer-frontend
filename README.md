@@ -31,7 +31,6 @@ api.dave.students.nomoreparties.site https://api.dave.students.nomoreparties.sit
 - Take the time- document your API in/Out - this helps always. 
 - When in doubt - control formats excessively. Third Parties change formats all the time... 
 
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
