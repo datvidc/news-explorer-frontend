@@ -42,6 +42,7 @@ const App = () => {
     newsapi.getArticles(input)
       .then((res) => {
         SetArticles(res.articles);
+        localStorage.setItem('news', res.articles);
         console.log(res);
       })
       .catch((err) => {
