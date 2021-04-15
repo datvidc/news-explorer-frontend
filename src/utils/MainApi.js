@@ -112,7 +112,7 @@ class Api {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        keyword, title, text, date, source, link, image
+        keyword, title, text, date, source, link, image,
       }),
     })
       .then((res) => {
@@ -120,6 +120,10 @@ class Api {
         if (res.ok) {
           return res.json();
         }
+        throw new Error(`${res.status} : ${res.message}`);
+      })
+      .catch((err) => {
+        throw new Error(`${err.status} : ${err.message}`);
       });
   }
 }
