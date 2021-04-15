@@ -25,6 +25,10 @@ function NewsCard(props) {
   const [imgSrc, setImgSrc] = useState(urlToImage);
   const [imgErr, setImgErr] = useState(false);
 
+  const bookmarkNews = () => {
+
+  };
+
   const onError = () => {
     console.log('img error');
     if (!imgErr) {
