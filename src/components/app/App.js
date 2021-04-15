@@ -34,6 +34,7 @@ const App = () => {
   const [apiError, setapiError] = useState(false);
   const [apiErrMsg, setApiErrMsg] = useState('');
   const [loading, setLoading] = useState(false);
+  const [savedArticles, setSavedArticles] = useState([]);
 
   const handleLogin = () => {
     SetLoggedIn(true);
@@ -54,6 +55,7 @@ const App = () => {
     api.getSavedArticles(token)
       .then((res) => {
         console.log(res);
+        setSavedArticles(res);
       });
   };
 
@@ -221,10 +223,10 @@ const App = () => {
               handleLogout={handleLogout}
               device={UserWindow}
               knownUser={Loggedin}
-              articleResults={Articles}
+              articleResults={savedArticles}
               userInfo={currentUser}
               toogleMobNav={toggleMobileMenu}
-              articles={Articles}
+              articles={savedArticles}
               isMain={false}
             />
             <Route path="*">
