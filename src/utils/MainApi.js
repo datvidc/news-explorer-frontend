@@ -98,6 +98,30 @@ class Api {
         throw new Error(`${err.status} : ${err.message}`);
       });
   }
+
+  saveAnArticle(token, news) {
+    const userUrl = this._MainUrl.concat('/articles');
+    const {
+      keyword, title, text, date, source, link, image
+    } = news;
+
+    return fetch(userUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        keyword, title, text, date, source, link, image
+      }),
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.ok) {
+          return res.json();
+        }
+      });
+  }
 }
 
 const api = new Api('http://api.nomad.students.nomoreparties.site');
