@@ -29,7 +29,7 @@ function SearchResults(props) {
   useEffect(() => {
     console.log(articles);
     setArticlesShowing(articles.slice(0, 3));
-  }, []);
+  }, [articles]);
 
   return (
     <>
@@ -45,7 +45,7 @@ function SearchResults(props) {
                   isDesktop={isDesktop}
                   mainpage
                   oneArticle={card}
-                  key={card.link}
+                  key={card.url}
                 />
               ))
             }
@@ -65,7 +65,7 @@ function SearchResults(props) {
                   isDesktop={isDesktop}
                   mainpage={false}
                   oneArticle={card}
-                  key={card.link}
+                  key={card.url}
                 />
               )))}
             {!articles && (

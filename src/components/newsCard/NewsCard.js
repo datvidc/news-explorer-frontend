@@ -14,7 +14,7 @@ function NewsCard(props) {
     title,
     date,
     source,
-    image,
+    urlToImage,
     text,
     link,
   } = oneArticle;
@@ -50,7 +50,7 @@ function NewsCard(props) {
           <p className="newscard__rusure"> Remove from saved </p>
         </div>
       )}
-      <img className="newscard__img" alt={keyword} src={image} />
+      <img className="newscard__img" alt={keyword} src={urlToImage} />
       <div className="newscard__articlebottom">
         <p className="newscard__date">
           {date}
@@ -62,7 +62,7 @@ function NewsCard(props) {
           {text}
         </p>
 
-        <h4 className="newscard__source"> <a target="_blank" rel="noreferrer" className="newscard__source" href={link}>{source} </a></h4>
+        <h4 className="newscard__source"> <a target="_blank" rel="noreferrer" className="newscard__source" href={link}>{source.name} </a></h4>
       </div>
     </article>
   );

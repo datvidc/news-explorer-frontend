@@ -41,6 +41,7 @@ const App = () => {
   const handleSearch = (input) => {
     newsapi.getArticles(input)
       .then((res) => {
+        SetArticles(res.articles);
         console.log(res);
       })
       .catch((err) => {
