@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -31,12 +31,18 @@ const App = () => {
   const [sucesspop, setSuccess] = useState(false);
   const [apiError, setapiError] = useState(false);
   const [apiErrMsg, setApiErrMsg] = useState('');
-
-  const ProviderValue = useMemo(() => (
-    { currentUser }), [currentUser, setCurrentUser]);
+  const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState(false);
 
   const handleLogin = () => {
     SetLoggedIn(true);
+  };
+  const handleSearch = (input) => {
+    setSearchTerm(input);
+  };
+
+  const handleLoading = () => {
+    setLoading(!loading);
   };
 
   const handleLogout = () => {
@@ -160,9 +166,12 @@ const App = () => {
                 articleResults={Articles}
                 userInfo={currentUser}
                 toogleMobNav={toggleMobileMenu}
+                searchInput={handleSearch}
               />
               {Articles.length > 0 && (
                 <SearchResults
+                  isLoading={loading}
+                  setLoading={handleLoading}
                   articles={Articles}
                   isMain
                   device={UserWindow}
@@ -172,8 +181,9 @@ const App = () => {
               {/* The above will be search results */}
               <About />
             </Route>
-            <ProtectedRoute path="/saved-news"
-              component={savedNews}
+            <ProtectedRoute
+              path="/saved-news"
+              Component={savedNews}
               loggedIn={Loggedin}
               mainPage={false}
               handleLogout={handleLogout}
