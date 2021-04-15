@@ -14,6 +14,8 @@ function Main(props) {
     handleLogout,
     signmeup,
     articles,
+    handleSearch,
+    setLoading,
   } = props;
 
   let isMobile;
@@ -34,6 +36,8 @@ function Main(props) {
             loggedIn={knownUser}
             toogleMobNav={toogleMobNav}
             isMain={mainPage}
+            handleSearch={handleSearch}
+            setLoading={setLoading}
           />
         </div>
       )}

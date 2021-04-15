@@ -5,7 +5,7 @@ import SearchForm from '../searchForm/SearchForm';
 
 function Header(props) {
   const {
-    mobile, loggedIn, toogleMobNav, isMain, handleLogout, handleSignin,
+    mobile, loggedIn, toogleMobNav, isMain, handleLogout, handleSignin, handleSearch, setLoading,
   } = props;
 
   return (
@@ -23,7 +23,7 @@ function Header(props) {
                 isMain={isMain}
               />
             </header>
-            <SearchForm />
+            <SearchForm handleSearch={handleSearch} setLoading={setLoading} />
           </>
         ) : (
           <>

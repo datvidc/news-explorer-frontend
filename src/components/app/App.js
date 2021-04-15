@@ -15,6 +15,8 @@ import { MobileNav } from '../navbars/Navbars';
 import Popup from '../popup/Popup';
 import Signin from '../signin/Signin';
 import api from '../../utils/MainApi';
+import newsapi from '../../utils/NewsApi';
+
 import savedNews from '../saved-news/saved-news';
 
 import CurrentUserContext from '../../context/CurrentUserContext';
@@ -32,13 +34,18 @@ const App = () => {
   const [apiError, setapiError] = useState(false);
   const [apiErrMsg, setApiErrMsg] = useState('');
   const [loading, setLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState(false);
 
   const handleLogin = () => {
     SetLoggedIn(true);
   };
   const handleSearch = (input) => {
-    setSearchTerm(input);
+    newsapi.getArticles(input)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleLoading = () => {
@@ -158,6 +165,8 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               <Main
+                handleSearch={handleSearch}
+                setLoading={handleLoading}
                 signmeup={toggleSigninPopup}
                 handleLogout={handleLogout}
                 device={UserWindow}
