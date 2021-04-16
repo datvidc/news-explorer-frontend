@@ -46,7 +46,6 @@ function SearchResults(props) {
             {
 
               articlesShowing.map((card) => (
-                if card.url
                 <NewsCard
                   kword={kword}
                   token={token}

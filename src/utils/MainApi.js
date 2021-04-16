@@ -118,6 +118,7 @@ class Api {
     link = link || 'http://www.nomad.students.nomoreparties.site';
     source = link;
     image = image || 'https://images.app.goo.gl/wFJrvsj5yrYAAtMZA';
+    keyword = keyword || 'keyword';
 
     return fetch(userUrl, {
       method: 'POST',
