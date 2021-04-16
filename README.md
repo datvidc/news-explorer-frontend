@@ -33,47 +33,7 @@ api.dave.students.nomoreparties.site https://api.dave.students.nomoreparties.sit
 - never work with crappy dataformats. Always FORCE THEM TO BEND TO YOUR WILL. First time you touch them, change them. 
   this will save time...wish I had done it here.
 - micro-code. Rather repeated useEffect with only 1 concern each, then one massive. 
-
-
-
-
-{
-    "_id": "60666432161cbb48f32c2d1c",
-    "keyword": "yay",
-    "title": "Yay is yay",
-    "text": "yay is text",
-    "date": "Monday",
-    "source": "http://www.website.is",
-    "link": "http://www.website.com",
-    "image": "http://photo.website.is",
-    "owner": "60540ceed1ccba35d1986789",
-    "createdAt": "2021-04-02T00:24:18.426Z",
-    "__v": 0
-}
-{
-    "source": {
-        "id": null,
-        "name": "New York Times"
-    },
-    "author": "Dave Philipps and John Ismay",
-    "title": "Veterans React to Biden's Afghanistan Troop Pullout Announcement",
-    "description": "President Biden’s decision to withdraw American troops from Afghanistan by Sept. 11 is met with relief and anguish, frustration and regret among those who served there.",
-    "url": "https://www.nytimes.com/2021/04/14/us/afghanistan-veterans-biden.html",
-    "urlToImage": "https://static01.nyt.com/images/2021/04/14/us/politics/14veterans-afghanistan1/14veterans-afghanistan1-facebookJumbo.jpg",
-    "publishedAt": "2021-04-14T22:57:04Z",
-    "content": "Ms. Byrnes now works for Disabled American Veterans, and sees people every day who were wounded in war. She said she thought pulling out was a hard choice, but the right choice.\r\nIts tough to not get… [+1265 chars]"
-}
-
-
-title
-keyword = keyword
-text = description
-date =publishedAt 
-source = source.name
-link = url
-image = urlToImage
-
-
+- Link over a href to avoid a lot of re-rendering
 
 # Getting Started with Create React App
 
