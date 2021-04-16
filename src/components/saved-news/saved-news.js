@@ -18,7 +18,6 @@ function SavedNews(props) {
     bookmarked,
   } = props;
 
-  console.log(bookmarked);
   return (
     <>
       <Main

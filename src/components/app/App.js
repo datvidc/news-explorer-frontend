@@ -66,7 +66,6 @@ const App = () => {
   const saveBookmarkedArticles = (obj) => {
     const newObj = obj.map((element) => element.link);
     setbookmarked(newObj);
-    console.log(newObj);
   };
 
   const handleSavedArticles = (token) => {

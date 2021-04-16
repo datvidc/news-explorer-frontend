@@ -14,7 +14,7 @@ function SearchResults(props) {
     keyword: kword,
     isbookmarked,
   } = props;
-  console.log(isbookmarked);
+
   const [next, Setnext] = useState(3);
   const [articlesShowing, setArticlesShowing] = useState([]);
   const [showbutton, setshowbutton] = useState(true);
@@ -31,10 +31,7 @@ function SearchResults(props) {
   };
 
   useEffect(() => {
-    console.log(articles);
     setArticlesShowing(articles.slice(0, 3));
-    console.log(typeof articlesShowing);
-    console.log(articlesShowing);
   }, [articles]);
 
   return (

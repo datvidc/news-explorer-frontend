@@ -39,10 +39,7 @@ class NewsApi {
           return res.json();
         }
         return Promise.reject(new Error(`${res.status} : ${res.message}`));
-      }).catch((res) => {
-        console.log(res);
-        return Promise.reject(new Error(`${res.status} : ${res.message}`));
-      });
+      }).catch((res) => Promise.reject(new Error(`${res.status} : ${res.message}`)));
   }
 }
 const newsapi = new NewsApi();

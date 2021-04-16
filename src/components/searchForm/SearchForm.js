@@ -11,7 +11,6 @@ function SearchForm(props) {
   };
   const handleSearchClick = (e) => {
     e.preventDefault();
-    console.log(search);
     props.handleSearch(search);
   /*   props.setLoading(); */
   };

@@ -19,8 +19,7 @@ function OpenNav(props) {
     handleLog,
     handleSignin,
   } = props;
-  const currentUser = React.useContext(currentUserContext);
-  console.log(currentUser);
+
   const logUserOut = (e) => {
     e.preventDefault();
     handleLog();
