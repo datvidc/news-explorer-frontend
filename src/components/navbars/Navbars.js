@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import NavLink from '../nav-link/nav-link';
 import Popup from '../popup/Popup';
@@ -15,24 +16,27 @@ function OpenNav(props) {
     toogleMobNav,
     menuBtn,
     isLoggedIn,
-    handleLogout,
+    handleLog,
     handleSignin,
   } = props;
-  const user = React.useContext(currentUserContext);
+
+  const logUserOut = (e) => {
+    e.preventDefault();
+    handleLog();
+  };
 
   return (
     <Popup>
       <nav className="navbar navbar-active">
         <div className="navbar__top">
-          <a href="/" className="navbar__title">NewsExplorer</a>
+          <Link to="/" className="navbar__title">NewsExplorer</Link>
           <button type="button" onClick={toogleMobNav} className="navbar__button">
             <img alt="menu" src={menuBtn} />
           </button>
         </div>
         <NavLink
           handleSignin={handleSignin}
-          name={user.data.name}
-          handleLogout={handleLogout}
+          handleLogout={logUserOut}
           user={isLoggedIn}
         />
       </nav>
@@ -48,7 +52,7 @@ function ClosedNav(props) {
   return (
     <nav className="navbar">
       <div className="navbar__top">
-        <a href="/" className={titleClass}>NewsExplorer</a>
+        <Link to="/" className={titleClass}>NewsExplorer</Link>
         <button type="button" onClick={toogleMobNav} className="navbar__button">
           <img alt="menu" src={MenuButton} />
         </button>
@@ -66,7 +70,6 @@ function MobileNav(props) {
     handleSignin,
     isMain,
   } = props;
-  const user = React.useContext(currentUserContext);
   const menuBtn = isOpen ? closebtn : openbtn;
   return (
     <>
@@ -75,9 +78,8 @@ function MobileNav(props) {
           <OpenNav
             handleSignin={handleSignin}
             isMain={isMain}
-            handleLogout={handleLogout}
+            handleLog={handleLogout}
             isLoggedIn={isLoggedIn}
-            user={user}
             toogleMobNav={toogleMobNav}
             menuBtn={menuBtn}
           />
@@ -102,9 +104,9 @@ function Navigation(props) {
     handleSignin,
   } = props;
 
-  const user = React.useContext(currentUserContext);
+  const currentUser = React.useContext(currentUserContext);
 
-  const btntext = isLoggedIn ? user.data.name : 'Sign in';
+  const btntext = isLoggedIn ? currentUser.data.name : 'Sign in';
   const clickHandler = isLoggedIn ? handleLogout : handleSignin;
 
   return (
@@ -112,15 +114,15 @@ function Navigation(props) {
       {isMain && (
         <nav className="navbar">
           <div className="navbar__top">
-            <a href="/" className="navbar__title">NewsExplorer</a>
+            <Link to="/" className="navbar__title">NewsExplorer</Link>
             <ul className="navbar__links-container">
               <li className="navbar-border-bottom navbar__linkItem">
-                <a href="/" className="navbar__linkhome">Home </a>
+                <Link to="/" className="navbar__linkhome">Home </Link>
               </li>
               {isLoggedIn && (
                 <>
                   <li className="navbar__linkItem">
-                    <a className="navbar__linkSaved navbar__linkhome" href="/saved-news">Saved Articles</a>
+                    <Link className="navbar__linkSaved navbar__linkhome" to="/saved-news">Saved Articles</Link>
                   </li>
                 </>
               )}
@@ -138,15 +140,15 @@ function Navigation(props) {
       {!isMain && (
         <nav className="navbar">
           <div className="navbar__top-saved">
-            <a href="/" className="navbar__title-saved">NewsExplorer</a>
+            <Link to="/" className="navbar__title-saved">NewsExplorer</Link>
             <ul className="navbar__links-container">
               <li className="navbar__linkItem">
-                <a href="/" className="navbar__linkhome-saved">Home </a>
+                <Link to="/" className="navbar__linkhome-saved">Home </Link>
               </li>
               {isLoggedIn && (
                 <>
                   <li className="navbar-border-bottom-saved navbar__linkItem-saved">
-                    <a className="navbar__linkSaved navbar__linkhome-saved" href="/saved-news">Saved Articles</a>
+                    <Link className="navbar__linkSaved navbar__linkhome-saved" to="/saved-news">Saved Articles</Link>
                   </li>
                 </>
               )}

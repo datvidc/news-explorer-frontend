@@ -95,7 +95,7 @@ background-image: url(../../images/blckTrash.png);
 }
 
 .newscard__img {
-  max-width: 18em;
+  width: 18em;
   max-height: 12.25em;
   border-radius: 16px 16px 0px 0px;
 }
@@ -176,8 +176,8 @@ background-image: url(../../images/blckTrash.png);
     max-height: 9.375em;
   }
   .newscard__source {
-    position: absolute;
-    bottom: 0em;
+    position: static;
+
   }
   .newscard {
     max-width: 14em;
@@ -210,12 +210,16 @@ background-image: url(../../images/blckTrash.png);
 
 @media (min-width: 1320px) {
   .newscard {
-    max-width: 25em;
-    height: 576px
+    max-width: 400px;
+    height: 576px;
+    min-width: 400px;
+    min-height: 576px;
   }
   .newscard__img {
-    max-width: 25em;
-    max-height: 17em;
+    width: 400px;
+    height: 272px;
+    min-width: 400px;
+    min-height: 272px;
   }
   .newscard__isShown {
     display:block;

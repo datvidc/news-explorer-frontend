@@ -12,6 +12,10 @@
 /build
 
 # misc
+*.env
+# not super secure
+/src/utils/secret
+/src/utils/secret/secret.json
 .DS_Store
 .env.local
 .env.development.local

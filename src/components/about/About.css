@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 1rem;
+  padding: 5em 1em 1em 1em;
 }
 .about__text {
   padding-bottom: 8em;

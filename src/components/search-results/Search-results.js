@@ -9,6 +9,10 @@ function SearchResults(props) {
     isMain,
     device,
     knownUser,
+    signmeup,
+    token,
+    keyword: kword,
+    isbookmarked,
   } = props;
 
   const [next, Setnext] = useState(3);
@@ -28,7 +32,7 @@ function SearchResults(props) {
 
   useEffect(() => {
     setArticlesShowing(articles.slice(0, 3));
-  }, []);
+  }, [articles]);
 
   return (
     <>
@@ -36,15 +40,19 @@ function SearchResults(props) {
         <section className="searchpage">
           <h1 className="searchpage__heading"> Search results</h1>
           <div className="search-results">
-
             {
               articlesShowing.map((card) => (
                 <NewsCard
+                  savedList={isbookmarked}
+                  isSaved
+                  kword={kword}
+                  token={token}
+                  signmeup={signmeup}
                   isLoggedIn={knownUser}
                   isDesktop={isDesktop}
                   mainpage
                   oneArticle={card}
-                  key={card.link}
+                  key={card.url}
                 />
               ))
             }
@@ -57,17 +65,23 @@ function SearchResults(props) {
       {!isMain && (
         <section className="searchpage">
           <div className="search-results">
-            {
+            {articles && (
               articles.map((card) => (
                 <NewsCard
+                  articles={articles}
+                  token={token}
                   isLoggedIn={knownUser}
                   isDesktop={isDesktop}
                   mainpage={false}
                   oneArticle={card}
-                  key={card.link}
+                  key={card.url}
+                  kword={kword}
+                  savedList={isbookmarked}
                 />
-              ))
-            }
+              )))}
+            {!articles && (
+              <h3 className="searchpage__heading"> Nothing saved</h3>
+            )}
           </div>
         </section>
       )}

@@ -1,133 +1,140 @@
 import React, { useEffect, useState } from 'react';
 import {
-  BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
 } from 'react-router-dom';
 import './App.css';
 import Main from '../main/Main';
+import Preloader from '../preloader/preloader';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import SearchResults from '../search-results/Search-results';
 import About from '../about/About';
 import Footer from '../footer/Footer';
 import { MobileNav } from '../navbars/Navbars';
 import Popup from '../popup/Popup';
 import Signin from '../signin/Signin';
+import api from '../../utils/MainApi';
+import newsapi from '../../utils/NewsApi';
+
+import SavedNews from '../saved-news/saved-news';
 
 import CurrentUserContext from '../../context/CurrentUserContext';
 
 const App = () => {
-  // for testing
-  const [currentUser, SetCurrentUser] = useState({
-    data: {
-      id: '60540ceed1ccba35d1986789',
-      name: 'me',
-      email: 'd@vidc.dk',
-    },
-  });
-
-  // for testing functionality
-  const articleList = {
-    status: 'ok',
-    totalResults: 2,
-    articles: [
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'ok',
-        title: 'Yay is yay no1',
-        text: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://mondrian.mashable.com/2021%252F03%252F19%252F0a%252Ff6d61b7c5df64b469ff49ca039929631.49d2c.jpg%252F1200x630.jpg?signature=DQLKBlXpy-YTv1tQmTOlQTOaPgw=',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yay',
-        title: 'Yay is no 2',
-        text: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://mondrian.mashable.com/2021%252F03%252F19%252F0a%252Ff6d61b7c5df64b469ff49ca039929631.49d2c.jpg%252F1200x630.jpg?signature=DQLKBlXpy-YTv1tQmTOlQTOaPgw=',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yaasdy',
-        title: 'yay is title 3',
-        text: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://mondrian.mashable.com/2021%252F03%252F19%252F0a%252Ff6d61b7c5df64b469ff49ca039929631.49d2c.jpg%252F1200x630.jpg?signature=DQLKBlXpy-YTv1tQmTOlQTOaPgw=',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'sadasdyay',
-        title: 'Yay is yay no 4',
-        text: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://mondrian.mashable.com/2021%252F03%252F19%252F0a%252Ff6d61b7c5df64b469ff49ca039929631.49d2c.jpg%252F1200x630.jpg?signature=DQLKBlXpy-YTv1tQmTOlQTOaPgw=',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yasday',
-        title: 'Yay is yay no 5',
-        text: 'yay is text',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://mondrian.mashable.com/2021%252F03%252F19%252F0a%252Ff6d61b7c5df64b469ff49ca039929631.49d2c.jpg%252F1200x630.jpg?signature=DQLKBlXpy-YTv1tQmTOlQTOaPgw=',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yaqwy',
-        title: 'Yay is yay no 6',
-        text: 'yay is text',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://techcrunch.com/wp-content/uploads/2021/03/Remix-Press.jpg?w=764',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-      {
-        _id: '60666432161cbb48f32c2d1c',
-        keyword: 'yay',
-        title: 'Yay is yay no 7',
-        text: 'yay is text',
-        date: 'Monday',
-        source: 'http://www.website.is',
-        link: 'http://www.website.com',
-        image: 'https://techcrunch.com/wp-content/uploads/2021/03/Remix-Press.jpg?w=764',
-        owner: '60540ceed1ccba35d1986789',
-        createdAt: '2021-04-02T00:24:18.426Z',
-      },
-
-    ],
-  };
-  const [Articles, SetArticles] = useState(articleList);
-  const [Loggedin, SetLoggedIn] = useState(true); /* use for testing */
+  const [currentUser, setCurrentUser] = useState(null);
+  const [ApiToken, setToken] = useState('');
+  const [Articles, SetArticles] = useState([]);
+  const [Loggedin, SetLoggedIn] = useState(false); /* use for testing */
   const [UserWindow, SetUserWindow] = useState('');
   const [mobileMenu, SetMobileMenu] = useState(false);
   const [signIn, setSigning] = useState(false);
   const [signUp, setSignUp] = useState(false);
   const [sucesspop, setSuccess] = useState(false);
+  const [apiError, setapiError] = useState(false);
+  const [apiErrMsg, setApiErrMsg] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [newsSearch, setnewsSearch] = useState('');
+  const [bookmarked, setbookmarked] = useState([]);
 
   const handleLogin = () => {
-    setSigning(true);
+    SetLoggedIn(true);
+  };
+
+  const HandleApiError = (errMsg) => {
+    setapiError(true);
+    setApiErrMsg(errMsg);
+  };
+
+  const handleSearch = (input) => {
+    setLoading(true);
+    setnewsSearch(input);
+    localStorage.setItem('keyword', input);
+    newsapi.getArticles(input)
+      .then((res) => {
+        SetArticles(res.articles);
+        localStorage.setItem('news', JSON.stringify(res.articles));
+        setLoading(false);
+      })
+      .catch((err) => {
+        HandleApiError(err);
+        setLoading(false);
+      });
+  };
+
+  const saveBookmarkedArticles = (obj) => {
+    const newObj = obj.map((element) => element.link);
+    setbookmarked(newObj);
+  };
+
+  const handleSavedArticles = (token) => {
+    api.getSavedArticles(token)
+      .then((res) => {
+        setSavedArticles(res);
+        saveBookmarkedArticles(res);
+      });
+  };
+
+  const setUser = (info, token) => {
+    setCurrentUser({
+      data:
+        { email: info.data.email, name: info.data.name, _id: info.data._id },
+    });
+    setToken(token);
+    handleLogin();
+    localStorage.setItem('jwt', token);
+    handleSavedArticles(token);
+  };
+
+  const HandleToken = (token) => {
+    api.getCurrentUser(token)
+      .then((res) => {
+        if (res.data) {
+          setUser(res, token);
+        }
+      })
+      .catch((err) => {
+        HandleApiError(err);
+      });
+  };
+
+  const handleSignIn = (email, password) => {
+    api.signIn(email, password)
+      .then((res) => {
+        if (res.message) {
+          throw new Error(res.message);
+        }
+        if (res.token) {
+          HandleToken(res.token);
+        }
+      })
+      .catch((err) => {
+        HandleApiError(err);
+      });
+  };
+
+  const handlesignup = (email, pass, username) => {
+    // magic
+    api.signup(email, pass, username)
+      .then(() => {
+        handleSignIn(email, pass);
+      })
+      .catch((err) => {
+        HandleApiError(err);
+      });
+  };
+
+  const handleLoading = () => {
+    setLoading(!loading);
+  };
+
+  const handleLogout = () => {
+    SetLoggedIn(false);
+    setCurrentUser(null);
+    setToken('');
+    localStorage.removeItem('jwt');
+    setbookmarked([]);
   };
 
   const changePopupType = () => {
@@ -148,22 +155,12 @@ const App = () => {
     setSignUp(!signUp);
   };
 
-  const handleLogout = () => {
-    SetCurrentUser();
-    SetLoggedIn(false);
-  };
-  const handleSignIn = (email, password) => {
-    // Magic
-    const userobject = { email, password };
-    SetArticles(userobject); // delete and replace with logic
-  };
-  const handlesignup = (email, pass, username) => {
-    // magic
-    const userobject = { email, pass, username };
-    SetArticles(userobject); // delete delete and replace with logic
-  };
   const handleSuccessclose = () => {
     setSuccess(false);
+  };
+  const HandleErrorClose = () => {
+    setapiError(false);
+    setApiErrMsg('');
   };
 
   useEffect(() => {
@@ -177,63 +174,90 @@ const App = () => {
         SetUserWindow('desktop');
       }
     }
+    // tokens
+    const token = localStorage.getItem('jwt');
+    if (token) {
+      HandleToken(token);
+    }
+    // saved news searches
+    const news = JSON.parse(localStorage.getItem('news'));
+    if (news) {
+      SetArticles(news); // delete after review. Dont like this functionality
+    }
+    // keyword saved
+    const kword = localStorage.getItem('keyword');
+    if (kword) {
+      setnewsSearch(kword);
+    }
   }, []);
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-
-      <main className="app">
-        <Router>
-          <Switch>
-            <Route exact path="/">
-              <Main
-                signmeup={handleLogin}
-                handleLogout={handleLogout}
+    <main className="app">
+      <CurrentUserContext.Provider value={currentUser}>
+        <Switch>
+          <Route exact path="/">
+            <Main
+              handleSearch={handleSearch}
+              setLoading={handleLoading}
+              signmeup={toggleSigninPopup}
+              handleLogout={handleLogout}
+              device={UserWindow}
+              knownUser={Loggedin}
+              mainPage
+              articleResults={Articles}
+              userInfo={currentUser}
+              toogleMobNav={toggleMobileMenu}
+              searchInput={handleSearch}
+            />
+            { loading && (
+              <Preloader />
+            )}
+            {Articles.length > 0 && (
+              <SearchResults
+                isbookmarked={bookmarked}
+                keyword={newsSearch}
+                token={ApiToken}
+                isLoading={loading}
+                setLoading={handleLoading}
+                articles={Articles}
+                isMain
                 device={UserWindow}
                 knownUser={Loggedin}
-                mainPage
-                articleResults={Articles}
-                userInfo={currentUser}
-                toogleMobNav={toggleMobileMenu}
+                signmeup={toggleSigninPopup}
               />
-              {Articles && (
-                <SearchResults
-                  articles={articleList.articles}
-                  isMain
-                  device={UserWindow}
-                  knownUser={Loggedin}
-                />
-              )}
-              {/* The above will be search results */}
-              <About />
-            </Route>
-            <Route path="/saved-news">
-              {/* This will be a protected route */}
-              <Main
+            )}
+            {/* The above will be search results */}
+            <About />
+          </Route>
+          <CurrentUserContext.Provider value={currentUser}>
+            <ProtectedRoute exact path="/saved-news">
+              <SavedNews
+                bookmarked={bookmarked}
+                loggedIn={Loggedin}
                 mainPage={false}
                 handleLogout={handleLogout}
                 device={UserWindow}
                 knownUser={Loggedin}
-                articleResults={Articles}
+                articleResults={savedArticles}
                 userInfo={currentUser}
                 toogleMobNav={toggleMobileMenu}
-              />
-              <SearchResults
-                articles={articleList.articles}
+                articles={Articles}
                 isMain={false}
-                device={UserWindow}
-                knownUser={Loggedin}
+                token={ApiToken}
+                keyword={newsSearch}
               />
-            </Route>
-            <Route path="*">
-              <Redirect to="/" />
-            </Route>
-          </Switch>
-        </Router>
+            </ProtectedRoute>
+          </CurrentUserContext.Provider>
+
+          <Route path="*">
+            <Redirect to="/" />
+          </Route>
+        </Switch>
         <Footer />
         {mobileMenu && (
           <MobileNav
-            handleSignin={handleLogin}
+            handleLogout={handleLogout}
+            handleSignin={toggleSigninPopup}
             isOpen={mobileMenu}
             toogleMobNav={toggleMobileMenu}
             isLoggedIn={Loggedin}
@@ -244,6 +268,7 @@ const App = () => {
             <Signin
               signin
               handleSignIn={handleSignIn}
+              handlesignup={handlesignup}
               changeType={changePopupType}
               closepop={toggleSigninPopup}
             />
@@ -254,6 +279,7 @@ const App = () => {
             <Signin
               signin={false}
               handlesignup={handlesignup}
+              handleSignIn={handleSignIn}
               changeType={changePopupType}
               closepop={toggleSignUpPopup}
             />
@@ -268,10 +294,17 @@ const App = () => {
             </div>
           </Popup>
         )}
-      </main>
-
-    </CurrentUserContext.Provider>
-
+        {apiError && (
+          <Popup onclose={HandleErrorClose}>
+            <div className="signin">
+              <button type="button" aria-label="close" className="signin__close" onClick={HandleErrorClose} />
+              <h3 className="signin__yes"> Oops, something went wrong, please try again later</h3>
+              <p> {apiErrMsg.message} </p>
+            </div>
+          </Popup>
+        )}
+      </CurrentUserContext.Provider>
+    </main>
   );
 };
 export default App;

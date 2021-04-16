@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './Overview.css';
-import currentUserContext from '../../context/CurrentUserContext';
+import CurrentUserContext from '../../context/CurrentUserContext';
 
-function Overview() {
-  const user = React.useContext(currentUserContext);
+function Overview(props) {
+  const user = useContext(CurrentUserContext);
 
-  // usecontext with saved articles
-  const artikelnums = 5;
+  const { articles } = props;
 
   // Logic for saving keywords here
 
-  const keywords = ['list', 'list', 'meyer', 'hello', 'french', 'react'];
-  const ukeywords = keywords.sort().filter((x, i, a) => !i || x !== a[i - 1]);
+  let wordsOfKey = [];
+  if (articles) {
+    articles.forEach((news) => {
+      wordsOfKey.push(news.keyword);
+    });
+  } else if (!articles) {
+    wordsOfKey = false;
+  }
+
+  const ukeywords = articles.length > 0
+    ? (wordsOfKey.sort().filter((x, i, a) => !i || x !== a[i - 1])) : (false);
 
   const keywordslist = () => {
     switch (ukeywords.length) {
@@ -26,17 +34,24 @@ function Overview() {
         return `${ukeywords[0]}, ${ukeywords[1]}, and ${ukeywords.length - 2} more`;
     }
   };
+  const ListOfKeywords = articles ? keywordslist() : false;
 
   return (
     <section className="overview">
 
-      { artikelnums && (
+      { articles.length > 0 && (
         <>
           <p className="overview__title">Saved articles </p>
           <h1 className="overview__heading">
-            Hello {user.data.name}, you have {artikelnums} saved articles
+            Hello {user.data.name}, you have {articles.length} saved articles
           </h1>
-          <p className="overview__text">By Keywords <span className="overview__keywords"> {keywordslist()} </span> </p>
+          <p className="overview__text">By Keywords <span className="overview__keywords"> {ListOfKeywords} </span> </p>
+        </>
+      )}
+      { articles.length <= 0 && (
+        <>
+          <p className="overview__title">Saved articles </p>
+          <h1 className="overview__heading"> You have no saved Articles</h1>
         </>
       )}
 

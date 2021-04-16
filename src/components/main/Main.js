@@ -7,7 +7,15 @@ import Overview from '../overview/Overview';
 
 function Main(props) {
   const {
-    toogleMobNav, device, knownUser, mainPage, handleLogout, signmeup,
+    toogleMobNav,
+    device,
+    knownUser,
+    mainPage,
+    handleLogout,
+    signmeup,
+    articles,
+    handleSearch,
+    setLoading,
   } = props;
 
   let isMobile;
@@ -28,6 +36,8 @@ function Main(props) {
             loggedIn={knownUser}
             toogleMobNav={toogleMobNav}
             isMain={mainPage}
+            handleSearch={handleSearch}
+            setLoading={setLoading}
           />
         </div>
       )}
@@ -40,7 +50,7 @@ function Main(props) {
             toogleMobNav={toogleMobNav}
             isMain={false}
           />
-          <Overview />
+          <Overview articles={articles} />
         </div>
 
       )}

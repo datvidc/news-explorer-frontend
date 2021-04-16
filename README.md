@@ -28,8 +28,12 @@ api.dave.students.nomoreparties.site https://api.dave.students.nomoreparties.sit
 - check Figma on new screens. My old screens do not show ANY grey, but a whole section is grey
 - sometimes chrome misbehaves. Restart often. Also, window.innerWidth gives wrong pixel count...why ? 
   Use window.screen.width for some reason this shows correct. 
-
- 
+- Take the time- document your API in/Out - this helps always. 
+- When in doubt - control formats excessively. Third Parties change formats all the time... 
+- never work with crappy dataformats. Always FORCE THEM TO BEND TO YOUR WILL. First time you touch them, change them. 
+  this will save time...wish I had done it here.
+- micro-code. Rather repeated useEffect with only 1 concern each, then one massive. 
+- Link over a href to avoid a lot of re-rendering
 
 # Getting Started with Create React App
 
