@@ -48,9 +48,7 @@ function NewsCard(props) {
   const [imgSrc, setImgSrc] = useState(image);
   const [imgErr, setImgErr] = useState(false);
 
-  console.log(isSaved);
   const onError = () => {
-    console.log('img error');
     if (!imgErr) {
       setImgErr(true);
       setImgSrc(defaultImg);
@@ -66,11 +64,10 @@ function NewsCard(props) {
       signmeup();
     } else {
       api.saveAnArticle(token, newArticle)
-        .then((res) => {
-          console.log(res);
+        .then(() => {
         })
         .catch((err) => {
-          console.log(err);
+          throw new Error(`${err.status} : ${err.message}`);
         });
       setBookmarked(!bookmarked);
     }
@@ -78,11 +75,10 @@ function NewsCard(props) {
   const handleDeleteClick = () => {
     api.deleteAnArticle(token, oneArticle._id)
       .then((res) => {
-        console.log(res);
         savedList = savedList.filter((article) => article._id !== res._id);
       })
       .catch((err) => {
-        console.log(err);
+        throw new Error(`${err.status} : ${err.message}`);
       });
   };
 

@@ -4,7 +4,7 @@ import CurrentUserContext from '../../context/CurrentUserContext';
 
 const ProtectedRoute = (props) => {
   const user = useContext(CurrentUserContext);
-
+  console.log(user);
   const redirectAction = () => {
     if (user) {
       return <>{props.children}</>;

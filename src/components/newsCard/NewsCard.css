@@ -210,12 +210,16 @@ background-image: url(../../images/blckTrash.png);
 
 @media (min-width: 1320px) {
   .newscard {
-    max-width: 25em;
-    height: 576px
+    max-width: 400px;
+    height: 576px;
+    min-width: 400px;
+    min-height: 576px;
   }
   .newscard__img {
-    max-width: 25em;
-    max-height: 17em;
+    width: 400px;
+    height: 272px;
+    min-width: 400px;
+    min-height: 272px;
   }
   .newscard__isShown {
     display:block;

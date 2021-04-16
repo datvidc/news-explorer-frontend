@@ -28,7 +28,6 @@ class Api {
     })
       .then((res) => {
         if (res.ok) {
-          console.log(res);
           return res.json();
         }
         return Promise.reject(new Error(`${res.status} : ${res.message}`));
@@ -50,10 +49,7 @@ class Api {
           return res.json();
         }
         return Promise.reject(new Error(`${res.status} : ${res.message}`));
-      }).catch((res) => {
-        console.log(res);
-        return Promise.reject(new Error(`${res.status} : ${res.message}`));
-      });
+      }).catch((res) => Promise.reject(new Error(`${res.status} : ${res.message}`)));
   }
 
   signup(email, password, name) {
@@ -87,7 +83,6 @@ class Api {
       },
     })
       .then((res) => {
-        console.log(res);
         if (res.ok) {
           return res.json();
         }
@@ -130,7 +125,6 @@ class Api {
       }),
     })
       .then((res) => {
-        console.log(res);
         if (res.ok) {
           return res.json();
         }

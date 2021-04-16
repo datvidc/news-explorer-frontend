@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import Main from '../main/Main';
+import Preloader from '../preloader/preloader';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import SearchResults from '../search-results/Search-results';
 import About from '../about/About';
@@ -40,6 +41,12 @@ const App = () => {
   const handleLogin = () => {
     SetLoggedIn(true);
   };
+
+  const HandleApiError = (errMsg) => {
+    setapiError(true);
+    setApiErrMsg(errMsg);
+  };
+
   const handleSearch = (input) => {
     setLoading(true);
     setnewsSearch(input);
@@ -48,27 +55,22 @@ const App = () => {
       .then((res) => {
         SetArticles(res.articles);
         localStorage.setItem('news', JSON.stringify(res.articles));
-        console.log(res);
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
-        // add throw api error
+        HandleApiError(err);
         setLoading(false);
       });
   };
 
   const saveBookmarkedArticles = (obj) => {
     const newObj = obj.map((element) => element.link);
-    console.log(newObj);
     setbookmarked(newObj);
-    console.log(bookmarked);
   };
 
   const handleSavedArticles = (token) => {
     api.getSavedArticles(token)
       .then((res) => {
-        console.log(res);
         setSavedArticles(res);
         saveBookmarkedArticles(res);
       });
@@ -81,28 +83,18 @@ const App = () => {
     });
     setToken(token);
     handleLogin();
-    console.log(token);
     localStorage.setItem('jwt', token);
     handleSavedArticles(token);
-  };
-
-  const HandleApiError = (errMsg) => {
-    console.log(errMsg);
-    setapiError(true);
-    setApiErrMsg(errMsg);
   };
 
   const HandleToken = (token) => {
     api.getCurrentUser(token)
       .then((res) => {
-        console.log(res);
         if (res.data) {
-          console.log(res);
           setUser(res, token);
         }
       })
       .catch((err) => {
-        console.log(err);
         HandleApiError(err);
       });
   };
@@ -110,17 +102,14 @@ const App = () => {
   const handleSignIn = (email, password) => {
     api.signIn(email, password)
       .then((res) => {
-        console.log(res);
         if (res.message) {
           throw new Error(res.message);
         }
         if (res.token) {
-          console.log(res.token);
           HandleToken(res.token);
         }
       })
       .catch((err) => {
-        console.log(err);
         HandleApiError(err);
       });
   };
@@ -132,7 +121,7 @@ const App = () => {
         handleSignIn(email, pass);
       })
       .catch((err) => {
-        console.log(err);
+        HandleApiError(err);
       });
   };
 
@@ -145,6 +134,7 @@ const App = () => {
     setCurrentUser(null);
     setToken('');
     localStorage.removeItem('jwt');
+    setbookmarked([]);
   };
 
   const changePopupType = () => {
@@ -191,7 +181,6 @@ const App = () => {
     }
     // saved news searches
     const news = JSON.parse(localStorage.getItem('news'));
-    console.log(news);
     if (news) {
       SetArticles(news); // delete after review. Dont like this functionality
     }
@@ -220,6 +209,9 @@ const App = () => {
               toogleMobNav={toggleMobileMenu}
               searchInput={handleSearch}
             />
+            { loading && (
+              <Preloader />
+            )}
             {Articles.length > 0 && (
               <SearchResults
                 isbookmarked={bookmarked}

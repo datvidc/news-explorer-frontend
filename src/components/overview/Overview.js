@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './Overview.css';
-import currentUserContext from '../../context/CurrentUserContext';
+import CurrentUserContext from '../../context/CurrentUserContext';
 
 function Overview(props) {
-  const user = React.useContext(currentUserContext);
-  console.log(user);
+  const user = useContext(CurrentUserContext);
 
   const { articles } = props;
 
