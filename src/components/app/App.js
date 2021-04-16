@@ -35,6 +35,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
   const [newsSearch, setnewsSearch] = useState('');
+  const [bookmarked, setbookmarked] = useState([]);
 
   const handleLogin = () => {
     SetLoggedIn(true);
@@ -57,11 +58,19 @@ const App = () => {
       });
   };
 
+  const saveBookmarkedArticles = (obj) => {
+    const newObj = obj.map((element) => element.link);
+    console.log(newObj);
+    setbookmarked(newObj);
+    console.log(bookmarked);
+  };
+
   const handleSavedArticles = (token) => {
     api.getSavedArticles(token)
       .then((res) => {
         console.log(res);
         setSavedArticles(res);
+        saveBookmarkedArticles(res);
       });
   };
 
@@ -185,6 +194,11 @@ const App = () => {
     console.log(news);
     if (news) {
       SetArticles(news); // delete after review. Dont like this functionality
+    }
+    // keyword saved
+    const kword = localStorage.getItem('keyword');
+    if (kword) {
+      setnewsSearch(kword);
     }
   }, []);
 

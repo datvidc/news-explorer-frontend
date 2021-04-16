@@ -14,7 +14,7 @@ function NewsCard(props) {
     kword,
   } = props;
 
-  const newArticle = mainpage ? ({
+  const newArticle = !mainpage ? ({
     keyword: oneArticle.keyword,
     title: oneArticle.title,
     text: oneArticle.text,
@@ -57,12 +57,12 @@ function NewsCard(props) {
   // logic for determining if newsArticle is bookmarked
 
   const bookmark = bookmarked ? 'newscard__button newscard__isBookmarked' : 'newscard__button newscard__bookmark';
-  console.log(newKeyword);
+
   const handleBookmarkClick = () => {
     if (!isLoggedIn) {
       signmeup();
     } else {
-      api.saveAnArticle(token, oneArticle, newKeyword)
+      api.saveAnArticle(token, newArticle)
         .then((res) => {
           console.log(res);
         })
@@ -105,7 +105,7 @@ function NewsCard(props) {
           {text}
         </p>
 
-        <h4 className="newscard__source"> <a target="_blank" rel="noreferrer" className="newscard__source" href={link}>{source.name} </a></h4>
+        <h4 className="newscard__source"> <a target="_blank" rel="noreferrer" className="newscard__source" href={link}>{source} </a></h4>
       </div>
     </article>
   );

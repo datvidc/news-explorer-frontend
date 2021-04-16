@@ -30,6 +30,9 @@ api.dave.students.nomoreparties.site https://api.dave.students.nomoreparties.sit
   Use window.screen.width for some reason this shows correct. 
 - Take the time- document your API in/Out - this helps always. 
 - When in doubt - control formats excessively. Third Parties change formats all the time... 
+- never work with crappy dataformats. Always FORCE THEM TO BEND TO YOUR WILL. First time you touch them, change them. 
+  this will save time...wish I had done it here.
+
 
 
 {

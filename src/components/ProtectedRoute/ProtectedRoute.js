@@ -7,10 +7,8 @@ const ProtectedRoute = (props) => {
 
   const redirectAction = () => {
     if (user) {
-      console.log(user);
       return <>{props.children}</>;
     }
-    console.log(user);
     return <>{props.children}</>;
   };
 

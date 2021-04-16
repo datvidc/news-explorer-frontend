@@ -99,18 +99,24 @@ class Api {
       });
   }
 
-  saveAnArticle(token, news, keyword) {
+  saveAnArticle(token, news) {
     const userUrl = this._MainUrl.concat('/articles');
 
     let {
-      title, text, publishedAt, source, link, image,
+      keyword,
+      title,
+      text,
+      date,
+      source,
+      link,
+      image,
     } = news;
+
     title = title || 'missing Title';
     text = text || title;
-    publishedAt = new Date(publishedAt);
-    const date = publishedAt;
+    date = date || Date.now();
     link = link || 'http://www.nomad.students.nomoreparties.site';
-    source = news.url;
+    source = link;
     image = image || 'https://images.app.goo.gl/wFJrvsj5yrYAAtMZA';
 
     return fetch(userUrl, {

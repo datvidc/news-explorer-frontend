@@ -176,8 +176,8 @@ background-image: url(../../images/blckTrash.png);
     max-height: 9.375em;
   }
   .newscard__source {
-    position: absolute;
-    bottom: 0em;
+    position: static;
+
   }
   .newscard {
     max-width: 14em;
