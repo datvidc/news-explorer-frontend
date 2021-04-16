@@ -95,7 +95,7 @@ background-image: url(../../images/blckTrash.png);
 }
 
 .newscard__img {
-  max-width: 18em;
+  width: 18em;
   max-height: 12.25em;
   border-radius: 16px 16px 0px 0px;
 }

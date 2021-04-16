@@ -47,7 +47,7 @@ function SearchResults(props) {
 
               articlesShowing.map((card) => (
                 <NewsCard
-                  keyword={keyword}
+                  kword={keyword}
                   token={token}
                   signmeup={signmeup}
                   isLoggedIn={knownUser}
@@ -76,6 +76,7 @@ function SearchResults(props) {
                   mainpage={false}
                   oneArticle={card}
                   key={card.url}
+                  kword={keyword}
                 />
               )))}
             {!articles && (

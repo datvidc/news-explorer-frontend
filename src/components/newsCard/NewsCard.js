@@ -11,21 +11,39 @@ function NewsCard(props) {
     isLoggedIn,
     signmeup,
     token,
-    keyword,
+    kword,
   } = props;
 
+  const newArticle = mainpage ? ({
+    keyword: oneArticle.keyword,
+    title: oneArticle.title,
+    text: oneArticle.text,
+    date: new Date(oneArticle.date).toLocaleDateString('en-US', { dateStyle: 'long' }),
+    source: oneArticle.source,
+    link: oneArticle.link,
+    image: oneArticle.image,
+  }) : ({
+    keyword: kword,
+    title: oneArticle.title,
+    text: oneArticle.description,
+    date: new Date(oneArticle.publishedAt).toLocaleDateString('en-US', { dateStyle: 'long' }),
+    source: oneArticle.source.name,
+    link: oneArticle.url,
+    image: oneArticle.urlToImage,
+  });
+
   const {
+    keyword: newKeyword,
     title,
-    source,
-    urlToImage,
     text,
-    publishedAt,
+    date,
+    source,
     link,
     image,
-  } = oneArticle;
+  } = newArticle;
 
   const [bookmarked, setBookmarked] = useState(props.isbookmarked);
-  const [imgSrc, setImgSrc] = useState(urlToImage || image);
+  const [imgSrc, setImgSrc] = useState(image);
   const [imgErr, setImgErr] = useState(false);
 
   const onError = () => {
@@ -39,12 +57,12 @@ function NewsCard(props) {
   // logic for determining if newsArticle is bookmarked
 
   const bookmark = bookmarked ? 'newscard__button newscard__isBookmarked' : 'newscard__button newscard__bookmark';
-  console.log(keyword);
+  console.log(newKeyword);
   const handleBookmarkClick = () => {
     if (!isLoggedIn) {
       signmeup();
     } else {
-      api.saveAnArticle(token, oneArticle, keyword)
+      api.saveAnArticle(token, oneArticle, newKeyword)
         .then((res) => {
           console.log(res);
         })
@@ -69,16 +87,16 @@ function NewsCard(props) {
       {!mainpage && (
         <div className="newscard__buttons">
           <p className="newscard__keyword">
-            {keyword}
+            {newKeyword}
           </p>
           <button type="button" aria-label="remove" className="newscard__button newscard__trash" />
           <p className="newscard__rusure"> Remove from saved </p>
         </div>
       )}
-      <img className="newscard__img" alt={keyword} src={imgSrc || 'https://images.app.goo.gl/EmMqXXPaKWpcTCgP7'} onError={onError} />
+      <img className="newscard__img" alt={newKeyword} src={imgSrc} onError={onError} />
       <div className="newscard__articlebottom">
         <p className="newscard__date">
-          {publishedAt}
+          {date}
         </p>
         <h4 className="newscard__heading">
           {title}
