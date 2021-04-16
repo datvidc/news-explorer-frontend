@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 
 import './NewsCard.css';
@@ -20,7 +21,7 @@ function NewsCard(props) {
     title: oneArticle.title,
     text: oneArticle.text,
     date: new Date(oneArticle.date).toLocaleDateString('en-US', { dateStyle: 'long' }),
-    source: oneArticle.source,
+    source: oneArticle.source.name,
     link: oneArticle.link,
     image: oneArticle.image,
   }) : ({
@@ -43,7 +44,10 @@ function NewsCard(props) {
     image,
   } = newArticle;
 
-  const isSaved = savedList.includes(link);
+  console.log(newArticle);
+  console.log(savedList);
+  console.log(newArticle.link);
+  const isSaved = savedList.includes(newArticle.link);
   const [bookmarked, setBookmarked] = useState(isSaved);
   const [imgSrc, setImgSrc] = useState(image);
   const [imgErr, setImgErr] = useState(false);
@@ -102,7 +106,7 @@ function NewsCard(props) {
           <p className="newscard__rusure"> Remove from saved </p>
         </div>
       )}
-      <img className="newscard__img" alt={newKeyword} src={imgSrc} onError={onError} />
+      <img className="newscard__img" alt={newKeyword} src={image} onError={onError} />
       <div className="newscard__articlebottom">
         <p className="newscard__date">
           {date}

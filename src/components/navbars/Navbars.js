@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import NavLink from '../nav-link/nav-link';
 import Popup from '../popup/Popup';
@@ -29,7 +30,7 @@ function OpenNav(props) {
     <Popup>
       <nav className="navbar navbar-active">
         <div className="navbar__top">
-          <a href="/" className="navbar__title">NewsExplorer</a>
+          <Link to="/" className="navbar__title">NewsExplorer</Link>
           <button type="button" onClick={toogleMobNav} className="navbar__button">
             <img alt="menu" src={menuBtn} />
           </button>
@@ -52,7 +53,7 @@ function ClosedNav(props) {
   return (
     <nav className="navbar">
       <div className="navbar__top">
-        <a href="/" className={titleClass}>NewsExplorer</a>
+        <Link to="/" className={titleClass}>NewsExplorer</Link>
         <button type="button" onClick={toogleMobNav} className="navbar__button">
           <img alt="menu" src={MenuButton} />
         </button>
@@ -114,15 +115,15 @@ function Navigation(props) {
       {isMain && (
         <nav className="navbar">
           <div className="navbar__top">
-            <a href="/" className="navbar__title">NewsExplorer</a>
+            <Link to="/" className="navbar__title">NewsExplorer</Link>
             <ul className="navbar__links-container">
               <li className="navbar-border-bottom navbar__linkItem">
-                <a href="/" className="navbar__linkhome">Home </a>
+                <Link to="/" className="navbar__linkhome">Home </Link>
               </li>
               {isLoggedIn && (
                 <>
                   <li className="navbar__linkItem">
-                    <a className="navbar__linkSaved navbar__linkhome" href="/saved-news">Saved Articles</a>
+                    <Link className="navbar__linkSaved navbar__linkhome" to="/saved-news">Saved Articles</Link>
                   </li>
                 </>
               )}
@@ -140,15 +141,15 @@ function Navigation(props) {
       {!isMain && (
         <nav className="navbar">
           <div className="navbar__top-saved">
-            <a href="/" className="navbar__title-saved">NewsExplorer</a>
+            <Link to="/" className="navbar__title-saved">NewsExplorer</Link>
             <ul className="navbar__links-container">
               <li className="navbar__linkItem">
-                <a href="/" className="navbar__linkhome-saved">Home </a>
+                <Link to="/" className="navbar__linkhome-saved">Home </Link>
               </li>
               {isLoggedIn && (
                 <>
                   <li className="navbar-border-bottom-saved navbar__linkItem-saved">
-                    <a className="navbar__linkSaved navbar__linkhome-saved" href="/saved-news">Saved Articles</a>
+                    <Link className="navbar__linkSaved navbar__linkhome-saved" to="/saved-news">Saved Articles</Link>
                   </li>
                 </>
               )}

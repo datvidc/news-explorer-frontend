@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './nav-link.css';
 import logoutImg from '../../images/logout.png';
@@ -19,7 +20,7 @@ function NavLink({
               <a href="/" className="navlink__home"> Home </a>
             </li>
             <li>
-              <a className="navlink__home" href="/saved-news"> Saved Articles </a>
+              <Link className="navlink__home" to="/saved-news"> Saved Articles </Link>
             </li>
             <li>
               <button className="navlink__button" type="button" onClick={handleLogout}>

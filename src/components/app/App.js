@@ -66,6 +66,7 @@ const App = () => {
   const saveBookmarkedArticles = (obj) => {
     const newObj = obj.map((element) => element.link);
     setbookmarked(newObj);
+    console.log(newObj);
   };
 
   const handleSavedArticles = (token) => {
@@ -232,7 +233,7 @@ const App = () => {
           <CurrentUserContext.Provider value={currentUser}>
             <ProtectedRoute exact path="/saved-news">
               <SavedNews
-                isbookmarked={bookmarked}
+                bookmarked={bookmarked}
                 loggedIn={Loggedin}
                 mainPage={false}
                 handleLogout={handleLogout}

@@ -32,6 +32,8 @@ api.dave.students.nomoreparties.site https://api.dave.students.nomoreparties.sit
 - When in doubt - control formats excessively. Third Parties change formats all the time... 
 - never work with crappy dataformats. Always FORCE THEM TO BEND TO YOUR WILL. First time you touch them, change them. 
   this will save time...wish I had done it here.
+- micro-code. Rather repeated useEffect with only 1 concern each, then one massive. 
+
 
 
 

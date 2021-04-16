@@ -15,10 +15,10 @@ function SavedNews(props) {
     isMain,
     token,
     keyword,
-    isbookmarked,
+    bookmarked,
   } = props;
 
-  console.log(articles);
+  console.log(bookmarked);
   return (
     <>
       <Main
@@ -33,10 +33,10 @@ function SavedNews(props) {
       />
       { articles.length > 0 && (
         <SearchResults
-          isbookmarked={isbookmarked}
+          isbookmarked={bookmarked}
           token={token}
           keyword={keyword}
-          articles={articles}
+          articles={articleResults}
           isMain={isMain}
           device={device}
           knownUser={knownUser}
