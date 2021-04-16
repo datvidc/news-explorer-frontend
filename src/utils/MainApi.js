@@ -69,7 +69,6 @@ class Api {
       .then((res) => {
         if (res.ok) {
           return res.json();
-          // { data: { email, name, _id }}
         }
         throw new Error(`${res.status} : ${res.message}`);
       })
@@ -116,7 +115,7 @@ class Api {
     text = text || title;
     date = date || Date.now();
     link = link || 'http://www.nomad.students.nomoreparties.site';
-    source = link;
+    source = source || 'source missing';
     image = image || 'https://images.app.goo.gl/wFJrvsj5yrYAAtMZA';
     keyword = keyword || 'keyword';
 
@@ -141,8 +140,27 @@ class Api {
         throw new Error(`${err.status} : ${err.message}`);
       });
   }
-}
 
+  deleteAnArticle(token, id) {
+    const userUrl = this._MainUrl.concat('/articles/');
+    return fetch(`${userUrl}${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error(`${res.status} : ${res.message}`);
+      })
+      .catch((err) => {
+        throw new Error(`${err.status} : ${err.message}`);
+      });
+  }
+}
 const api = new Api('http://api.nomad.students.nomoreparties.site');
 
 export default api;

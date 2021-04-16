@@ -12,12 +12,14 @@ function SearchResults(props) {
     signmeup,
     token,
     keyword: kword,
+    isbookmarked,
   } = props;
 
   const [next, Setnext] = useState(3);
   const [articlesShowing, setArticlesShowing] = useState([]);
   const [showbutton, setshowbutton] = useState(true);
   const isDesktop = device === 'desktop';
+  const [BookmarkList, setBookmarkList] = useState([]);
 
   const handleShowMoreArticles = () => {
     if (next >= articles.length) {
@@ -36,17 +38,22 @@ function SearchResults(props) {
     console.log(articlesShowing);
   }, [articles]);
 
+  useEffect(() => {
+    setBookmarkList(isbookmarked);
+    console.log(typeof isbookmarked);
+  }, [isbookmarked]);
+
   return (
     <>
       {isMain && (
         <section className="searchpage">
           <h1 className="searchpage__heading"> Search results</h1>
           <div className="search-results">
-
             {
-
               articlesShowing.map((card) => (
                 <NewsCard
+                  savedList={BookmarkList}
+                  isSaved
                   kword={kword}
                   token={token}
                   signmeup={signmeup}
@@ -67,9 +74,10 @@ function SearchResults(props) {
       {!isMain && (
         <section className="searchpage">
           <div className="search-results">
-            { articles && (
+            {articles && (
               articles.map((card) => (
                 <NewsCard
+                  articles={articles}
                   token={token}
                   isLoggedIn={knownUser}
                   isDesktop={isDesktop}
@@ -77,6 +85,7 @@ function SearchResults(props) {
                   oneArticle={card}
                   key={card.url}
                   kword={kword}
+                  savedList={isbookmarked}
                 />
               )))}
             {!articles && (
