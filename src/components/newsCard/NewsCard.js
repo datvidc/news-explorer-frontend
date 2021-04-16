@@ -12,9 +12,8 @@ function NewsCard(props) {
     signmeup,
     token,
     kword,
-    savedList,
   } = props;
-  let { articles } = props;
+  let { savedList } = props;
 
   const newArticle = !mainpage ? ({
     keyword: oneArticle.keyword,
@@ -80,7 +79,7 @@ function NewsCard(props) {
     api.deleteAnArticle(token, oneArticle._id)
       .then((res) => {
         console.log(res);
-        articles = articles.filter((article) => article._id !== res._id);
+        savedList = savedList.filter((article) => article._id !== res._id);
       })
       .catch((err) => {
         console.log(err);
