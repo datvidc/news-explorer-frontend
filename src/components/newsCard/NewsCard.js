@@ -12,7 +12,9 @@ function NewsCard(props) {
     signmeup,
     token,
     kword,
+    savedList,
   } = props;
+  let { articles } = props;
 
   const newArticle = !mainpage ? ({
     keyword: oneArticle.keyword,
@@ -42,10 +44,12 @@ function NewsCard(props) {
     image,
   } = newArticle;
 
-  const [bookmarked, setBookmarked] = useState(props.isbookmarked);
+  const isSaved = savedList.includes(link);
+  const [bookmarked, setBookmarked] = useState(isSaved);
   const [imgSrc, setImgSrc] = useState(image);
   const [imgErr, setImgErr] = useState(false);
 
+  console.log(isSaved);
   const onError = () => {
     console.log('img error');
     if (!imgErr) {
@@ -56,7 +60,7 @@ function NewsCard(props) {
 
   // logic for determining if newsArticle is bookmarked
 
-  const bookmark = bookmarked ? 'newscard__button newscard__isBookmarked' : 'newscard__button newscard__bookmark';
+  const bookmark = isSaved ? 'newscard__button newscard__isBookmarked' : 'newscard__button newscard__bookmark';
 
   const handleBookmarkClick = () => {
     if (!isLoggedIn) {
@@ -71,6 +75,16 @@ function NewsCard(props) {
         });
       setBookmarked(!bookmarked);
     }
+  };
+  const handleDeleteClick = () => {
+    api.deleteAnArticle(token, oneArticle._id)
+      .then((res) => {
+        console.log(res);
+        articles = articles.filter((article) => article._id !== res._id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -89,7 +103,7 @@ function NewsCard(props) {
           <p className="newscard__keyword">
             {newKeyword}
           </p>
-          <button type="button" aria-label="remove" className="newscard__button newscard__trash" />
+          <button onClick={handleDeleteClick} type="button" aria-label="remove" className="newscard__button newscard__trash" />
           <p className="newscard__rusure"> Remove from saved </p>
         </div>
       )}

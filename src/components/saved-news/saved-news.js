@@ -15,6 +15,7 @@ function SavedNews(props) {
     isMain,
     token,
     keyword,
+    isbookmarked,
   } = props;
 
   console.log(articles);
@@ -32,6 +33,7 @@ function SavedNews(props) {
       />
       { articles.length > 0 && (
         <SearchResults
+          isbookmarked={isbookmarked}
           token={token}
           keyword={keyword}
           articles={articles}

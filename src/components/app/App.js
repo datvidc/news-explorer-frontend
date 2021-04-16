@@ -222,6 +222,7 @@ const App = () => {
             />
             {Articles.length > 0 && (
               <SearchResults
+                isbookmarked={bookmarked}
                 keyword={newsSearch}
                 token={ApiToken}
                 isLoading={loading}
@@ -239,6 +240,7 @@ const App = () => {
           <CurrentUserContext.Provider value={currentUser}>
             <ProtectedRoute exact path="/saved-news">
               <SavedNews
+                isbookmarked={bookmarked}
                 loggedIn={Loggedin}
                 mainPage={false}
                 handleLogout={handleLogout}
@@ -247,7 +249,7 @@ const App = () => {
                 articleResults={savedArticles}
                 userInfo={currentUser}
                 toogleMobNav={toggleMobileMenu}
-                articles={savedArticles}
+                articles={Articles}
                 isMain={false}
                 token={ApiToken}
                 keyword={newsSearch}
