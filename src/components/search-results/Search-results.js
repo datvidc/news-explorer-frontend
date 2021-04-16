@@ -11,7 +11,7 @@ function SearchResults(props) {
     knownUser,
     signmeup,
     token,
-    keyword,
+    keyword: kword,
   } = props;
 
   const [next, Setnext] = useState(3);
@@ -46,8 +46,9 @@ function SearchResults(props) {
             {
 
               articlesShowing.map((card) => (
+                if card.url
                 <NewsCard
-                  kword={keyword}
+                  kword={kword}
                   token={token}
                   signmeup={signmeup}
                   isLoggedIn={knownUser}
@@ -76,7 +77,7 @@ function SearchResults(props) {
                   mainpage={false}
                   oneArticle={card}
                   key={card.url}
-                  kword={keyword}
+                  kword={kword}
                 />
               )))}
             {!articles && (
