@@ -76,6 +76,29 @@ const App = () => {
       });
   };
 
+  const SaveAnArticle = (token, article2Save) => {
+    api.saveAnArticle(token, article2Save)
+      .then(() => {
+        const newSavedArticles = savedArticles.concat(article2Save);
+        setSavedArticles(newSavedArticles);
+      })
+      .catch((err) => {
+        throw new Error(`${err.status} : ${err.message}`);
+      });
+  };
+
+  const deleteAnArticle = (token, id) => {
+    api.deleteAnArticle(token, id)
+      .then((res) => {
+        const newSavedArticles = savedArticles.filter
+        const newSavedArticles = 
+        savedList = savedList.filter((article) => article._id !== res._id);
+      })
+      .catch((err) => {
+        throw new Error(`${err.status} : ${err.message}`);
+      });
+  }
+
   const setUser = (info, token) => {
     setCurrentUser({
       data:
@@ -209,11 +232,12 @@ const App = () => {
               toogleMobNav={toggleMobileMenu}
               searchInput={handleSearch}
             />
-            { loading && (
+            {loading && (
               <Preloader />
             )}
             {Articles.length > 0 && (
               <SearchResults
+                saveArticle={SaveAnArticle}
                 isbookmarked={bookmarked}
                 keyword={newsSearch}
                 token={ApiToken}
@@ -232,6 +256,7 @@ const App = () => {
           <CurrentUserContext.Provider value={currentUser}>
             <ProtectedRoute exact path="/saved-news">
               <SavedNews
+                saveArticle={SaveAnArticle}
                 bookmarked={bookmarked}
                 loggedIn={Loggedin}
                 mainPage={false}

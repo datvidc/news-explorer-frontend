@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './NewsCard.css';
 import defaultImg from '../../images/undefined.jpg';
@@ -13,6 +13,7 @@ function NewsCard(props) {
     signmeup,
     token,
     kword,
+    saveArticle,
   } = props;
   let { savedList } = props;
 
@@ -44,13 +45,19 @@ function NewsCard(props) {
     image,
   } = newArticle;
 
-  console.log(newArticle);
-  console.log(savedList);
-  console.log(newArticle.link);
-  const isSaved = savedList.includes(newArticle.link);
-  const [bookmarked, setBookmarked] = useState(isSaved);
+
+  const [isbookMarked, setIsBookMarked] = useState('newscard__button newscard__bookmark')
   const [imgSrc, setImgSrc] = useState(image);
   const [imgErr, setImgErr] = useState(false);
+
+  useEffect(() => {
+    const isSaved = savedList.includes(newArticle.link);
+    if (isSaved) {
+      setIsBookMarked('newscard__button newscard__isBookmarked');
+    } else {
+      setIsBookMarked('newscard__button newscard__bookmark');
+    }
+  }, []);
 
   const onError = () => {
     if (!imgErr) {
@@ -59,21 +66,22 @@ function NewsCard(props) {
     }
   };
 
-  // logic for determining if newsArticle is bookmarked
-
-  const bookmark = isSaved ? 'newscard__button newscard__isBookmarked' : 'newscard__button newscard__bookmark';
-
   const handleBookmarkClick = () => {
     if (!isLoggedIn) {
       signmeup();
     } else {
-      api.saveAnArticle(token, newArticle)
-        .then(() => {
-        })
-        .catch((err) => {
-          throw new Error(`${err.status} : ${err.message}`);
-        });
-      setBookmarked(!bookmarked);
+      if (isbookMarked === 'newscard__button newscard__bookmark') {
+        // if newscard is NOT already bookmarked
+        // compare and check its unique arr.some(item => item.a === 'b')
+        saveArticle(token, newArticle);
+        setIsBookMarked('newscard__button newscard__isBookmarked');
+        console.log(isbookMarked)
+      } else {
+        console.log(isbookMarked);
+        // HANDLEdELETE ARTICLE
+        setIsBookMarked('newscard__button newscard__bookmark');
+      }
+
     }
   };
   const handleDeleteClick = () => {
@@ -91,7 +99,7 @@ function NewsCard(props) {
 
       {mainpage && (
 
-        <button type="button" aria-label="Bookmark this newsarticle" onClick={handleBookmarkClick} className={bookmark} />
+        <button type="button" aria-label="Bookmark this newsarticle" onClick={handleBookmarkClick} className={isbookMarked} />
       )}
       {!isLoggedIn && mainpage && (
         <p className="newscard__prompt"> Sign in to save articles </p>
