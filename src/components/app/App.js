@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import Main from '../main/Main';
-import Preloader from '../preloader/preloader';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import SearchResults from '../search-results/Search-results';
 import About from '../about/About';
@@ -16,6 +15,7 @@ import Popup from '../popup/Popup';
 import Signin from '../signin/Signin';
 import api from '../../utils/MainApi';
 import newsapi from '../../utils/NewsApi';
+import Preloader from '../preloader/preloader';
 
 import SavedNews from '../saved-news/saved-news';
 
@@ -37,6 +37,7 @@ const App = () => {
   const [savedArticles, setSavedArticles] = useState([]);
   const [newsSearch, setnewsSearch] = useState('');
   const [bookmarked, setbookmarked] = useState([]);
+  const [emptySearch, setEmptySearch] = useState(false);
 
   const handleLogin = () => {
     SetLoggedIn(true);
@@ -53,12 +54,21 @@ const App = () => {
     localStorage.setItem('keyword', input);
     newsapi.getArticles(input)
       .then((res) => {
-        SetArticles(res.articles);
-        localStorage.setItem('news', JSON.stringify(res.articles));
-        setLoading(false);
+        if (res.articles.length > 0) {
+          setEmptySearch(false);
+          setLoading(false);
+          SetArticles(res.articles);
+          localStorage.setItem('news', JSON.stringify(res.articles));
+        } else {
+          SetArticles([]);
+          setLoading(false);
+          setEmptySearch(true);
+        }
       })
       .catch((err) => {
         HandleApiError(err);
+      })
+      .finally(() => {
         setLoading(false);
       });
   };
@@ -159,6 +169,7 @@ const App = () => {
     setToken('');
     localStorage.removeItem('jwt');
     setbookmarked([]);
+    setSavedArticles([]);
   };
 
   const changePopupType = () => {
@@ -232,10 +243,17 @@ const App = () => {
               userInfo={currentUser}
               toogleMobNav={toggleMobileMenu}
               searchInput={handleSearch}
+              savedArticleList={savedArticles}
             />
-            {loading && (
-              <Preloader />
-            )}
+            {/* Loading is true, this shows untill a search with results is made */}
+            {
+              (loading || emptySearch) && (
+                <Preloader
+                  isEmpty={emptySearch}
+                  isLoading={loading}
+                />
+              )
+            }
             {Articles.length > 0 && (
               <SearchResults
                 savedArticleList={savedArticles}
@@ -253,7 +271,6 @@ const App = () => {
                 signmeup={toggleSigninPopup}
               />
             )}
-            {/* The above will be search results */}
             <About />
           </Route>
           <CurrentUserContext.Provider value={currentUser}>

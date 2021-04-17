@@ -7,7 +7,6 @@ function Overview(props) {
   const user = useContext(CurrentUserContext);
 
   const { articles } = props;
-
   // Logic for saving keywords here
 
   let wordsOfKey = [];

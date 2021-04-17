@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import CurrentUserContext from '../../context/CurrentUserContext';
 
 const ProtectedRoute = (props) => {
@@ -8,7 +8,7 @@ const ProtectedRoute = (props) => {
     if (user) {
       return <>{props.children}</>;
     }
-    return <>{props.children}</>;
+    return <Redirect to="/" />;
   };
 
   return (

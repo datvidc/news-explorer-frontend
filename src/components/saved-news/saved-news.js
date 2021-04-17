@@ -32,6 +32,7 @@ function SavedNews(props) {
         userInfo={userInfo}
         toogleMobNav={toogleMobNav}
         articles={articles}
+        savedArticleList={articleResults}
       />
       { articles.length > 0 && (
         <SearchResults

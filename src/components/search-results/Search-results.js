@@ -39,6 +39,7 @@ function SearchResults(props) {
 
   return (
     <>
+
       {isMain && (
         <section className="searchpage">
           <h1 className="searchpage__heading"> Search results</h1>

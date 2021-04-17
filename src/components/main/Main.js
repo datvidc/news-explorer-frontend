@@ -13,9 +13,9 @@ function Main(props) {
     mainPage,
     handleLogout,
     signmeup,
-    articles,
     handleSearch,
     setLoading,
+    savedArticleList,
   } = props;
 
   let isMobile;
@@ -50,9 +50,11 @@ function Main(props) {
             toogleMobNav={toogleMobNav}
             isMain={false}
           />
-          <Overview articles={articles} />
+          <Overview
+            articles={savedArticleList}
+            savedArticleList={savedArticleList}
+          />
         </div>
-
       )}
     </>
   );
