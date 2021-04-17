@@ -274,7 +274,7 @@ const App = () => {
             <About />
           </Route>
           <CurrentUserContext.Provider value={currentUser}>
-            <ProtectedRoute exact path="/saved-news">
+            <ProtectedRoute exact path="/saved-news" signmeup={toggleSigninPopup}>
               <SavedNews
                 deleteArticle={deleteAnArticle}
                 saveArticle={SaveAnArticle}
