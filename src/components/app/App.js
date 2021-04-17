@@ -90,7 +90,6 @@ const App = () => {
   const deleteAnArticle = (token, id) => {
     api.deleteAnArticle(token, id)
       .then((res) => {
-        console.log(res);
         if (res) {
           const newSavedArticles = savedArticles.filter((article) => article._id !== res._id);
           setSavedArticles(newSavedArticles);

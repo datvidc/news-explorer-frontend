@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 
 import './NewsCard.css';
@@ -15,8 +14,8 @@ function NewsCard(props) {
     saveArticle,
     deleteArticle,
     savedArticleList,
+    savedList,
   } = props;
-  let { savedList } = props;
 
   const newArticle = !mainpage ? ({
     keyword: oneArticle.keyword,
@@ -46,15 +45,12 @@ function NewsCard(props) {
     image,
   } = newArticle;
 
-
   const [isbookMarked, setIsBookMarked] = useState('');
-  const [imgSrc, setImgSrc] = useState(image);
+  const [ImgSrc, setImgSrc] = useState(image);
   const [imgErr, setImgErr] = useState(false);
 
-
-
   useEffect(() => {
-    const isSaved = savedList.some(url => url === newArticle.link);
+    const isSaved = savedList.some((url) => url === newArticle.link);
     if (isSaved) {
       setIsBookMarked('newscard__button newscard__isBookmarked');
     } else {
@@ -69,6 +65,19 @@ function NewsCard(props) {
     }
   };
 
+  const handleDeleteClick = () => {
+    /*  */
+    if (!mainpage) {
+      setIsBookMarked('newscard__button newscard__bookmark');
+      deleteArticle(token, oneArticle._id);
+    } else {
+      const matchingArticle = savedArticleList
+        .filter((article) => article.link === newArticle.link);
+      const id = matchingArticle[0]._id;
+      deleteArticle(token, id);
+    }
+  };
+
   const handleBookmarkClick = () => {
     if (!isLoggedIn) {
       signmeup();
@@ -78,34 +87,16 @@ function NewsCard(props) {
     if (isbookMarked === 'newscard__button newscard__bookmark') {
       // if newscard is NOT already bookmarked
       // compare and check its unique arr.some(item => item.a === 'b')
-      console.log(savedList);
-      if (savedList.some(item => item === oneArticle._id)) {
+      if (savedList.some((item) => item === oneArticle._id)) {
         setIsBookMarked('newscard__button newscard__isBookmarked');
       } else {
         saveArticle(token, newArticle);
         setIsBookMarked('newscard__button newscard__isBookmarked');
-        console.log(isbookMarked)
       }
     } else {
-      console.log(isbookMarked);
       handleDeleteClick();
       setIsBookMarked('newscard__button newscard__bookmark');
     }
-
-  };
-
-  const handleDeleteClick = () => {
-    /*  */
-    if (!mainpage) {
-      setIsBookMarked('newscard__button newscard__bookmark');
-      console.log(oneArticle);
-      deleteArticle(token, oneArticle._id);
-    } else {
-      const matchingArticle = savedArticleList.filter((article) => article.link === newArticle.link);
-      const id = matchingArticle[0]._id;
-      deleteArticle(token, id);
-    }
-
   };
 
   return (
