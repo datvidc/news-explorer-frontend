@@ -4,6 +4,7 @@ import SearchResults from '../search-results/Search-results';
 
 function SavedNews(props) {
   const {
+    saveArticle,
     mainPage,
     handleLogout,
     device,
@@ -32,6 +33,7 @@ function SavedNews(props) {
       />
       { articles.length > 0 && (
         <SearchResults
+          saveArticle={saveArticle}
           isbookmarked={bookmarked}
           token={token}
           keyword={keyword}

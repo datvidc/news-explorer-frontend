@@ -13,6 +13,7 @@ function SearchResults(props) {
     token,
     keyword: kword,
     isbookmarked,
+    saveArticle,
   } = props;
 
   const [next, Setnext] = useState(3);
@@ -43,6 +44,7 @@ function SearchResults(props) {
             {
               articlesShowing.map((card) => (
                 <NewsCard
+                  saveArticle={saveArticle}
                   savedList={isbookmarked}
                   isSaved
                   kword={kword}
