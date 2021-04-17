@@ -14,6 +14,8 @@ function SearchResults(props) {
     keyword: kword,
     isbookmarked,
     saveArticle,
+    deleteArticle,
+    savedArticleList,
   } = props;
 
   const [next, Setnext] = useState(3);
@@ -44,9 +46,10 @@ function SearchResults(props) {
             {
               articlesShowing.map((card) => (
                 <NewsCard
+                  savedArticleList={savedArticleList}
+                  deleteArticle={deleteArticle}
                   saveArticle={saveArticle}
                   savedList={isbookmarked}
-                  isSaved
                   kword={kword}
                   token={token}
                   signmeup={signmeup}
@@ -70,13 +73,16 @@ function SearchResults(props) {
             {articles && (
               articles.map((card) => (
                 <NewsCard
+                  savedArticleList={savedArticleList}
+                  deleteArticle={deleteArticle}
+                  saveArticle={saveArticle}
                   articles={articles}
                   token={token}
                   isLoggedIn={knownUser}
                   isDesktop={isDesktop}
                   mainpage={false}
                   oneArticle={card}
-                  key={card.url}
+                  key={card.link}
                   kword={kword}
                   savedList={isbookmarked}
                 />

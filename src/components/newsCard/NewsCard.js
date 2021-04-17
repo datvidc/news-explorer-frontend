@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 
 import './NewsCard.css';
 import defaultImg from '../../images/undefined.jpg';
-import api from '../../utils/MainApi';
 
 function NewsCard(props) {
   const {
@@ -14,6 +13,8 @@ function NewsCard(props) {
     token,
     kword,
     saveArticle,
+    deleteArticle,
+    savedArticleList,
   } = props;
   let { savedList } = props;
 
@@ -46,18 +47,20 @@ function NewsCard(props) {
   } = newArticle;
 
 
-  const [isbookMarked, setIsBookMarked] = useState('newscard__button newscard__bookmark')
+  const [isbookMarked, setIsBookMarked] = useState('');
   const [imgSrc, setImgSrc] = useState(image);
   const [imgErr, setImgErr] = useState(false);
 
+
+
   useEffect(() => {
-    const isSaved = savedList.includes(newArticle.link);
+    const isSaved = savedList.some(url => url === newArticle.link);
     if (isSaved) {
       setIsBookMarked('newscard__button newscard__isBookmarked');
     } else {
       setIsBookMarked('newscard__button newscard__bookmark');
     }
-  }, []);
+  }, [savedList]);
 
   const onError = () => {
     if (!imgErr) {
@@ -69,29 +72,40 @@ function NewsCard(props) {
   const handleBookmarkClick = () => {
     if (!isLoggedIn) {
       signmeup();
-    } else {
-      if (isbookMarked === 'newscard__button newscard__bookmark') {
-        // if newscard is NOT already bookmarked
-        // compare and check its unique arr.some(item => item.a === 'b')
+      return;
+    }
+
+    if (isbookMarked === 'newscard__button newscard__bookmark') {
+      // if newscard is NOT already bookmarked
+      // compare and check its unique arr.some(item => item.a === 'b')
+      console.log(savedList);
+      if (savedList.some(item => item === oneArticle._id)) {
+        setIsBookMarked('newscard__button newscard__isBookmarked');
+      } else {
         saveArticle(token, newArticle);
         setIsBookMarked('newscard__button newscard__isBookmarked');
         console.log(isbookMarked)
-      } else {
-        console.log(isbookMarked);
-        // HANDLEdELETE ARTICLE
-        setIsBookMarked('newscard__button newscard__bookmark');
       }
-
+    } else {
+      console.log(isbookMarked);
+      handleDeleteClick();
+      setIsBookMarked('newscard__button newscard__bookmark');
     }
+
   };
+
   const handleDeleteClick = () => {
-    api.deleteAnArticle(token, oneArticle._id)
-      .then((res) => {
-        savedList = savedList.filter((article) => article._id !== res._id);
-      })
-      .catch((err) => {
-        throw new Error(`${err.status} : ${err.message}`);
-      });
+    /*  */
+    if (!mainpage) {
+      setIsBookMarked('newscard__button newscard__bookmark');
+      console.log(oneArticle);
+      deleteArticle(token, oneArticle._id);
+    } else {
+      const matchingArticle = savedArticleList.filter((article) => article.link === newArticle.link);
+      const id = matchingArticle[0]._id;
+      deleteArticle(token, id);
+    }
+
   };
 
   return (

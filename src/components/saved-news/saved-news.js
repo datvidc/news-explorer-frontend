@@ -17,6 +17,8 @@ function SavedNews(props) {
     token,
     keyword,
     bookmarked,
+    deleteArticle,
+    savedArticles,
   } = props;
 
   return (
@@ -33,6 +35,8 @@ function SavedNews(props) {
       />
       { articles.length > 0 && (
         <SearchResults
+          savedArticleList={savedArticles}
+          deleteArticle={deleteArticle}
           saveArticle={saveArticle}
           isbookmarked={bookmarked}
           token={token}

@@ -90,14 +90,16 @@ const App = () => {
   const deleteAnArticle = (token, id) => {
     api.deleteAnArticle(token, id)
       .then((res) => {
-        const newSavedArticles = savedArticles.filter
-        const newSavedArticles = 
-        savedList = savedList.filter((article) => article._id !== res._id);
+        console.log(res);
+        if (res) {
+          const newSavedArticles = savedArticles.filter((article) => article._id !== res._id);
+          setSavedArticles(newSavedArticles);
+        }
       })
       .catch((err) => {
-        throw new Error(`${err.status} : ${err.message}`);
+        HandleApiError(err);
       });
-  }
+  };
 
   const setUser = (info, token) => {
     setCurrentUser({
@@ -237,6 +239,8 @@ const App = () => {
             )}
             {Articles.length > 0 && (
               <SearchResults
+                savedArticleList={savedArticles}
+                deleteArticle={deleteAnArticle}
                 saveArticle={SaveAnArticle}
                 isbookmarked={bookmarked}
                 keyword={newsSearch}
@@ -256,6 +260,7 @@ const App = () => {
           <CurrentUserContext.Provider value={currentUser}>
             <ProtectedRoute exact path="/saved-news">
               <SavedNews
+                deleteArticle={deleteAnArticle}
                 saveArticle={SaveAnArticle}
                 bookmarked={bookmarked}
                 loggedIn={Loggedin}
