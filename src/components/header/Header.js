@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import Nav from '../nav/Nav';
 import SearchForm from '../searchForm/SearchForm';
+import CurrentUserContext from '../../context/CurrentUserContext';
 
 function Header(props) {
   const {
-    mobile, loggedIn, toogleMobNav, isMain, handleLogout, handleSignin, handleSearch, setLoading,
+    mobile, toogleMobNav, isMain, handleLogout, handleSignin, handleSearch, setLoading,
   } = props;
+
+  const user = useContext(CurrentUserContext);
+  const userLoggedIn = !!user;
 
   return (
     <>
@@ -17,7 +21,7 @@ function Header(props) {
               <Nav
                 handleSignin={handleSignin}
                 isMobile={mobile}
-                isLoggedIn={loggedIn}
+                isLoggedIn={userLoggedIn}
                 toogleMobNav={toogleMobNav}
                 handleLogout={handleLogout}
                 isMain={isMain}
@@ -30,7 +34,7 @@ function Header(props) {
             <header className="header-savednews">
               <Nav
                 isMobile={mobile}
-                isLoggedIn={loggedIn}
+                isLoggedIn={userLoggedIn}
                 toogleMobNav={toogleMobNav}
                 handleLogout={handleLogout}
                 isMain={isMain}
