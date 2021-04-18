@@ -14,6 +14,7 @@ function Nav({
 }) {
   const user = useContext(CurrentUserContext);
   const userLoggedIn = !!user;
+
   return (
     isMobile ? (
       <MobileNav
