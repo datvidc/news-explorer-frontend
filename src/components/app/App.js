@@ -281,27 +281,25 @@ const App = () => {
             )}
             <About />
           </Route>
-          <CurrentUserContext.Provider value={currentUser}>
-            <ProtectedRoute exact path="/saved-news" signmeup={toggleSigninPopup}>
-              <SavedNews
-                deleteArticle={deleteAnArticle}
-                saveArticle={SaveAnArticle}
-                bookmarked={bookmarked}
-                loggedIn={loggedin}
-                mainPage={false}
-                handleLogout={handleLogout}
-                device={UserWindow}
-                knownUser={loggedin}
-                articleResults={savedArticles}
-                userInfo={currentUser}
-                toogleMobNav={toggleMobileMenu}
-                articles={Articles}
-                isMain={false}
-                token={ApiToken}
-                keyword={newsSearch}
-              />
-            </ProtectedRoute>
-          </CurrentUserContext.Provider>
+          <ProtectedRoute exact path="/saved-news" signmeup={toggleSigninPopup}>
+            <SavedNews
+              deleteArticle={deleteAnArticle}
+              saveArticle={SaveAnArticle}
+              bookmarked={bookmarked}
+              loggedIn={loggedin}
+              mainPage={false}
+              handleLogout={handleLogout}
+              device={UserWindow}
+              knownUser={loggedin}
+              articleResults={savedArticles}
+              userInfo={currentUser}
+              toogleMobNav={toggleMobileMenu}
+              articles={Articles}
+              isMain={false}
+              token={ApiToken}
+              keyword={newsSearch}
+            />
+          </ProtectedRoute>
 
           <Route path="*">
             <Redirect to="/" />
