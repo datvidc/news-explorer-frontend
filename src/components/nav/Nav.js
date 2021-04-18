@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './Nav.css';
 import { MobileNav, Navigation } from '../navbars/Navbars';
+import CurrentUserContext from '../../context/CurrentUserContext';
 
 function Nav({
   isMobile,
-  isLoggedIn,
+
   toogleMobNav,
   handleLogout,
   isMain,
   handleSignin,
 }) {
+  const user = useContext(CurrentUserContext);
+  const userLoggedIn = !!user;
   return (
     isMobile ? (
       <MobileNav
@@ -18,14 +21,14 @@ function Nav({
         handleLogout={handleLogout}
         isOpen={false}
         toogleMobNav={toogleMobNav}
-        isLoggedIn={isLoggedIn}
+        isLoggedIn={userLoggedIn}
         isMain={isMain}
       />
     )
       : (
         <Navigation
           handleSignin={handleSignin}
-          isLoggedIn={isLoggedIn}
+          isLoggedIn={userLoggedIn}
           handleLogout={handleLogout}
           isMain={isMain}
         />
