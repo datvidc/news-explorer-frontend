@@ -20,8 +20,6 @@ class NewsApi {
     const now = new Date();
     const past = new Date();
     past.setDate(past.getDate() - this._newsDays);
-    /*     const now = moment().format('YYYY-MM-DD');
-        const past = moment().subtract(5, 'days').format('YYYY-MM-DD'); */
 
     const uri = [
       `q=${keyword}`,
