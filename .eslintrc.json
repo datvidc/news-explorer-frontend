@@ -40,6 +40,7 @@
     "allowIndentationTabs": 0,
     "no-tabs": 0,
     "react/jsx-one-expression-per-line": "off",
+    "camelcase": [2, {"properties": "always"}],
     "jsx-a11y/label-has-associated-control": [ 2, {
       "labelComponents": ["CustomLabel"],
       "labelAttributes": ["inputLabel"],
