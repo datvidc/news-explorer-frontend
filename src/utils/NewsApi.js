@@ -1,10 +1,9 @@
-import moment from 'moment';
-
 import {
   API_MAIN,
   API_KEY,
   API_YANDEX,
   API_NEWS,
+  NEWS_SEARCH_DAYS,
 } from './secret/secret.json';
 
 class NewsApi {
@@ -13,12 +12,16 @@ class NewsApi {
     this._apiKey = API_KEY;
     this._yandexApi = API_YANDEX;
     this._newsApi = API_NEWS;
+    this._newsDays = NEWS_SEARCH_DAYS;
   }
 
   _makeUrl(kWord) {
     const keyword = encodeURI(kWord);
-    const now = moment().format('YYYY-MM-DD');
-    const past = moment().subtract(5, 'days').format('YYYY-MM-DD');
+    const now = new Date();
+    const past = new Date();
+    past.setDate(past.getDate() - this._newsDays);
+    /*     const now = moment().format('YYYY-MM-DD');
+        const past = moment().subtract(5, 'days').format('YYYY-MM-DD'); */
 
     const uri = [
       `q=${keyword}`,
