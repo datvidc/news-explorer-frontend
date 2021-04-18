@@ -153,9 +153,13 @@ const App = () => {
     api.signup(email, pass, username)
       .then(() => {
         handleSignIn(email, pass);
+        setSuccess(true);
       })
       .catch((err) => {
         HandleApiError(err);
+      })
+      .finally(() => {
+        setSuccess(false);
       });
   };
 
