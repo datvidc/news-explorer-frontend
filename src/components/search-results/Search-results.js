@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './search-results.css';
 
+import { RESULTNUM } from '../../utils/secret/secret.json';
 import NewsCard from '../newsCard/NewsCard';
 
 function SearchResults(props) {
@@ -18,23 +19,24 @@ function SearchResults(props) {
     savedArticleList,
   } = props;
 
-  const [next, Setnext] = useState(3);
+  const [next, Setnext] = useState(RESULTNUM);
   const [articlesShowing, setArticlesShowing] = useState([]);
   const [showbutton, setshowbutton] = useState(true);
   const isDesktop = device === 'desktop';
+  const start = 0;
 
   const handleShowMoreArticles = () => {
     if (next >= articles.length) {
       Setnext(articles.length);
       setshowbutton(false);
     } else {
-      Setnext(next + 3);
+      Setnext(next + RESULTNUM);
     }
-    setArticlesShowing(articles.slice(0, next));
+    setArticlesShowing(articles.slice(start, next));
   };
 
   useEffect(() => {
-    setArticlesShowing(articles.slice(0, 3));
+    setArticlesShowing(articles.slice(start, RESULTNUM));
   }, [articles]);
 
   return (
