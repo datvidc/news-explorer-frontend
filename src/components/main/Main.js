@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './Main.css';
 
 import Header from '../header/Header';
 import Overview from '../overview/Overview';
+import CurrentUserContext from '../../context/CurrentUserContext';
 
 function Main(props) {
   const {
     toogleMobNav,
     device,
-    knownUser,
+
     mainPage,
     handleLogout,
     signmeup,
@@ -18,12 +19,15 @@ function Main(props) {
     savedArticleList,
   } = props;
 
+  const user = useContext(CurrentUserContext);
+
   let isMobile;
   if (device === 'mobile') {
     isMobile = true;
   } else {
     isMobile = false;
   }
+  const userLoggedIn = !!user;
 
   return (
     <>
@@ -33,7 +37,7 @@ function Main(props) {
             handleSignin={signmeup}
             handleLogout={handleLogout}
             mobile={isMobile}
-            loggedIn={knownUser}
+            loggedIn={userLoggedIn}
             toogleMobNav={toogleMobNav}
             isMain={mainPage}
             handleSearch={handleSearch}
@@ -46,7 +50,7 @@ function Main(props) {
           <Header
             handleLogout={handleLogout}
             mobile={isMobile}
-            loggedIn={knownUser}
+            loggedIn={userLoggedIn}
             toogleMobNav={toogleMobNav}
             isMain={false}
           />
