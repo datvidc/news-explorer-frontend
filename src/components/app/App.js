@@ -3,6 +3,7 @@ import {
   Route,
   Switch,
   Redirect,
+  useHistory,
 } from 'react-router-dom';
 import './App.css';
 import Main from '../main/Main';
@@ -25,7 +26,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [ApiToken, setToken] = useState('');
   const [Articles, SetArticles] = useState([]);
-  const [Loggedin, SetLoggedIn] = useState(false); /* use for testing */
+  const [loggedin, SetLoggedIn] = useState(false); /* use for testing */
   const [UserWindow, SetUserWindow] = useState('');
   const [mobileMenu, SetMobileMenu] = useState(false);
   const [signIn, setSigning] = useState(false);
@@ -38,6 +39,7 @@ const App = () => {
   const [newsSearch, setnewsSearch] = useState('');
   const [bookmarked, setbookmarked] = useState([]);
   const [emptySearch, setEmptySearch] = useState(false);
+  const history = useHistory();
 
   const handleLogin = () => {
     SetLoggedIn(true);
@@ -157,9 +159,6 @@ const App = () => {
       })
       .catch((err) => {
         HandleApiError(err);
-      })
-      .finally(() => {
-        setSuccess(false);
       });
   };
 
@@ -203,6 +202,11 @@ const App = () => {
   };
 
   useEffect(() => {
+    if (!loggedin) {
+      history.push('/');
+    }
+  });
+  useEffect(() => {
     const userDevice = window.screen.width;
     if (userDevice) {
       if (userDevice <= 500) {
@@ -241,7 +245,7 @@ const App = () => {
               signmeup={toggleSigninPopup}
               handleLogout={handleLogout}
               device={UserWindow}
-              knownUser={Loggedin}
+              knownUser={loggedin}
               mainPage
               articleResults={Articles}
               userInfo={currentUser}
@@ -271,7 +275,7 @@ const App = () => {
                 articles={Articles}
                 isMain
                 device={UserWindow}
-                knownUser={Loggedin}
+                knownUser={loggedin}
                 signmeup={toggleSigninPopup}
               />
             )}
@@ -283,11 +287,11 @@ const App = () => {
                 deleteArticle={deleteAnArticle}
                 saveArticle={SaveAnArticle}
                 bookmarked={bookmarked}
-                loggedIn={Loggedin}
+                loggedIn={loggedin}
                 mainPage={false}
                 handleLogout={handleLogout}
                 device={UserWindow}
-                knownUser={Loggedin}
+                knownUser={loggedin}
                 articleResults={savedArticles}
                 userInfo={currentUser}
                 toogleMobNav={toggleMobileMenu}
@@ -310,7 +314,7 @@ const App = () => {
             handleSignin={toggleSigninPopup}
             isOpen={mobileMenu}
             toogleMobNav={toggleMobileMenu}
-            isLoggedIn={Loggedin}
+            isLoggedIn={loggedin}
           />
         )}
         {signIn && (
