@@ -1,0 +1,14 @@
+
+.navbar__linkItem {
+  align-self: center;
+  display: flex;
+  border-top: 11px solid transparent;
+  margin-left: 1em;
+}
+
+.navbar__linkItem-saved {
+  align-self: center;
+  display: flex;
+  margin-left: 2.750em;
+  border-top: 11px solid transparent;
+}

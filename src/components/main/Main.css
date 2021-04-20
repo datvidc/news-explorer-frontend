@@ -1,0 +1,50 @@
+.main {
+  width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 536px;
+  background: url(../../images/georgia-de-lotz--mobile-unsplash.webp) no-repeat;
+}
+
+.main-saved {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+@media (min-width: 321px) {
+  .main {
+    background: url(../../images/georgia-de-lotz--Tablet-unsplash.webp)
+      no-repeat;
+      height: 536px;
+    background-size: cover;
+  }
+
+}
+
+@media (min-width: 700px) {
+  .main {
+    background: url(../../images/georgia-de-lotz--bigScreen-unsplash.webp)
+      no-repeat;
+    background-size: 100%;
+    max-width: 90em;
+    margin: auto;
+    background-size: cover;
+  }
+  .main-saved {
+    background-size: 100%;
+    max-width: 90em;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1400px) {
+  .main {
+    height: 576px;
+
+  }
+
+}
