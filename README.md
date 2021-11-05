@@ -1,6 +1,6 @@
 # FINAL project in Practicum WebDeveloper Bootcamp
 
-Project consists of integrating news API with own backend, serving a frontend that enables users to search for news articles.
+Project consists of creating and integrating news API with own backend, serving a frontend that enables users to search for news articles.
 
 Practicum by Yandex course overview:
 
@@ -11,7 +11,7 @@ Basic JavaScript and Working with the Browser
 Applied JavaScript
 Creating an Interface with React
 Back-end Basics for Web Developers
-Final Project
+Final Project (THIS PROJECT).
 
 ## Backend : 
 API Repo can be found at 
@@ -33,7 +33,7 @@ api.dave.students.nomoreparties.site https://api.dave.students.nomoreparties.sit
 - never work with crappy dataformats. Always FORCE THEM TO BEND TO YOUR WILL. First time you touch them, change them. 
   this will save time...wish I had done it here.
 - micro-code. Rather repeated useEffect with only 1 concern each, then one massive. 
-- Link over a href to avoid a lot of re-rendering
+- Link over a href to avoid a lot of re-rendering- and errors in validation of users. 
 
 # Getting Started with Create React App
 
